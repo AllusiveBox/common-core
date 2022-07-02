@@ -1,0 +1,24 @@
+{
+  "categorizeByGroup": true,
+  "cleanOutputDir": true,
+  "darkHighlightTheme": "dark-plus",
+  "defaultCategory": "Other",
+  "entryPoints": [
+
+  ],
+  "entryPointStrategy": "Resolve",
+  "excludePrivate": true,
+  "includeVersion": true,
+  "out": "docs",
+  "readme": "README.md",
+  "logLevel": "Verbose",
+  "markedOptions": {
+    "breaks": true,
+    "langPrefix": "typescript"
+  },
+  "sort": ["static-first","visibility", "alphabetical"],
+  "validation": {
+    "invalidLink": true,
+    "notExported": true
+  }
+}

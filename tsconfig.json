@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+    "target": "es6",
+    "module": "commonjs",
+    "rootDir": "./",
+    "moduleResolution": "node",
+    "typeRoots": ["./node_modules/@types"],
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "baseUrl": "./"
+  },
+  "include": [
+    ".src/**/*.ts",
+    "./global.d.ts"
+  ],
+  "exclude": ["node_modules", "dist", ".test", "docs"]
+}
