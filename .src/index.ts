@@ -1,3 +1,8 @@
+/** Model Exports */
+export {
+    AbstractEntity
+} from "./models";
+
 /** Type Exports */
 export {
     NestedArray,
