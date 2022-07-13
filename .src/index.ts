@@ -5,14 +5,19 @@ export {
 
 /** Type Exports */
 export {
+    DateString,
     NestedArray,
-    Nullable
+    NestedKeyOf,
+    Nullable,
+    NumericalString
 } from "./types";
 
 /** Utility Exports */
 export {
     ArrayUtil,
+    NumberUtil,
     ObjectUtil,
     StringUtil,
+    TimeUtil,
     TypesUtil
 } from "./utils";
