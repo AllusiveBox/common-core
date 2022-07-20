@@ -3,9 +3,80 @@ import { isEmptyObject, isNotEmptyObject } from "./object.util";
 import { isEmptyString, isSetString } from "./string.util";
 import { DateString } from "../types";
 
+/**
+ *
+ * A regex used to determine of a string meets the requirements of a {@link DateString} or not. Used by the
+ * {@link isDateString} function.
+ *
+ * @type {RegExp}
+ *
+ */
 const DATE_STRING_REGEX = new RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12]\d|3[01])$/);
 
+/**
+ *
+ * An array of all the months with 30 days in them. Used by the {@link isDateString} function to help determine date
+ * accuracy.
+ *
+ * @type {Array<number>}
+ *
+ */
 const MONTHS_WITH_30_DAYS = [4, 6, 9, 11];
+
+/**
+ *
+ * Utility method that returns the type of a provided argument. More descriptive than the native `typeof` feature.
+ *
+ * @param {T} arg The argument to get the type of.
+ * @returns {string} A string representing the type of object.
+ * @template T
+ * @since Introduced in Version 0.1.0.
+ *
+ */
+export function getType<T>(arg: T): string {
+
+    if (isArray(arg)) {
+        return "Array";
+    }
+
+    if (isBoolean(arg)) {
+        return "Boolean";
+    }
+
+    if (isDate(arg)) {
+        return "Date";
+    }
+
+    if (isDateString(arg)) {
+        return "DateString";
+    }
+
+    if (isError(arg)) {
+        return "Error";
+    }
+
+    if (isNull(arg)) {
+        return "Null";
+    }
+
+    if (isNumber(arg)) {
+        return "Number";
+    }
+
+    if (isObject(arg)) {
+        return "Object";
+    }
+
+    if (isString(arg)) {
+        return "String";
+    }
+
+    if (isUndefined(arg)) {
+        return "Undefined";
+    }
+
+    return "Unknown";
+}
 
 /**
  *

@@ -422,4 +422,21 @@ describe("TypesUtil Unit Test Suite", () => {
         expect(TypesUtil.isNotNullOrUndefined(arg)).toBeTrue();
     });
 
+    test.each([
+        { arg: null, result: "Null" },
+        { arg: undefined, result: "Undefined" },
+        { arg: [], result: "Array" },
+        { arg: true, result: "Boolean" },
+        { arg: new Date(), result: "Date" },
+        { arg: "2020-12-31", result: "DateString" },
+        { arg: new Error(), result: "Error" },
+        { arg: 1, result: "Number" },
+        { arg: {}, result: "Object" },
+        { arg: "1", result: "String" },
+        { arg: Symbol, result: "Unknown" }
+    ])
+    ("that given $arg, getType returns $result", ({ arg, result }) => {
+        expect(TypesUtil.getType(arg)).toBe(result);
+    });
+
 });

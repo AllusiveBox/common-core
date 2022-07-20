@@ -108,11 +108,10 @@ describe("TimeUtil Unit Test Suite", () => {
 	});
 
 	const daysList = [
-		// { days: undefined, milliseconds: 8.64e10 },
-		{ days: 1, milliseconds: 8.64e10 },
-		{ days: 7, milliseconds: 6.048e11 },
-		{ days: 15, milliseconds: 1.296e12 },
-		{ days: 31, milliseconds: 2.6784e12 }
+		{ days: 1, milliseconds: 8.64e7 },
+		{ days: 7, milliseconds: 6.048e8 },
+		{ days: 15, milliseconds: 1.296e9 },
+		{ days: 31, milliseconds: 2.6784e9 }
 	];
 
 	test.each(daysList)
@@ -121,7 +120,7 @@ describe("TimeUtil Unit Test Suite", () => {
 	});
 
 	test("that not given any days, inDays returns 8.64e10 milliseconds", () => {
-		expect(TimeUtil.Milliseconds.inDays()).toBe(8.64e10);
+		expect(TimeUtil.Milliseconds.inDays()).toBe(8.64e7);
 	});
 
 	test.each(daysList)
@@ -134,9 +133,9 @@ describe("TimeUtil Unit Test Suite", () => {
 	})
 
 	const weeksList = [
-		{ weeks: 1, milliseconds: 6.048e11 },
-		{ weeks: 12, milliseconds: 7.2576e12 },
-		{ weeks: 52, milliseconds: 3.14496e13 }
+		{ weeks: 1, milliseconds: 6.048e8 },
+		{ weeks: 12, milliseconds: 7.2576e9 },
+		{ weeks: 52, milliseconds: 3.14496e10 }
 	];
 
 	test.each(weeksList)
@@ -145,7 +144,7 @@ describe("TimeUtil Unit Test Suite", () => {
 	});
 
 	test("that given no weeks, inWeeks returns 6.048e11 milliseconds", () => {
-		expect(TimeUtil.Milliseconds.inWeeks()).toBe(6.048e11);
+		expect(TimeUtil.Milliseconds.inWeeks()).toBe(6.048e8);
 	});
 
 	test.each(weeksList)
