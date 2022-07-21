@@ -1,5 +1,5 @@
 {
-  "name": "common-core",
+  "name": "@allusivebox/common-core",
   "version": "0.1.0-beta",
   "description": "",
   "main": "dist/.src/index.js",

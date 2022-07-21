@@ -145,6 +145,7 @@ describe("DateUtil Unit Test Suite", () => {
 		{ arg: new Date("January 2000"), result: "2000-01-01" }
 	])
 	("that given $arg, convertToDateString returns $result", ({ arg, result }) => {
+		// @ts-ignore
 		expect(DateUtil.convertToDateString(arg)).toBe(result);
 	});
 
