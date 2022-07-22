@@ -16,10 +16,11 @@ export default abstract class AbstractEntity {
      * @type {string}
      * @protected
      * @static
+     * @readonly
      * @since Introduced in Version 0.1.0.
      *
      */
-    protected static TYPE: string;
+    protected static readonly TYPE: string;
 
     /**
      *
@@ -59,6 +60,18 @@ export default abstract class AbstractEntity {
 
     /**
      *
+     * An array of all the supported {@link AbstractEntity}s.
+     *
+     * @type {Array<AbstractEntity>}
+     * @static
+     * @readonly
+     * @since Introduced in Version 0.1.0.
+     *
+     */
+    public static readonly SUPPORTED_TYPES: Array<AbstractEntity>;
+
+    /**
+     *
      * Abstract constructor. Sets the {@link code}, {@link text}, and {@link type} fields.
      *
      * @param {string} code A string representing the entity. Comparable to an enum code. Should not have spaces or
@@ -69,8 +82,6 @@ export default abstract class AbstractEntity {
      * an associated class.
      * @protected
      * @constructor
-     * @throws {Error} An error can be thrown if the code, text, or type parameters are null, undefined, or
-     * non-string values.
      * @since Introduced in Version 0.1.0.
      *
      */
@@ -85,6 +96,7 @@ export default abstract class AbstractEntity {
      * Method that indicates the type for a class at the static level.
      *
      * @returns {string} The class-level typing information.
+     * @static
      * @since Introduced in Version 0.1.0.
      *
      */
@@ -92,14 +104,38 @@ export default abstract class AbstractEntity {
 
     /**
      *
+     * Indicates if a provided entity is supported.
+     *
+     * @param {AbstractEntity} entity the entity to check.
+     * @returns {boolean} True if the entity is supported, otherwise false.
+     * @since Introduced in Version 0.1.0.
+     *
+     */
+    public static isSupported(entity: AbstractEntity): boolean {
+        return this.SUPPORTED_TYPES.includes(entity);
+    }
+
+    /**
+     *
      * Method that indicates the string formatting for a class at the static level.
      *
      * @returns {string} The class-level string formatting.
+     * @static
      * @since Introduced in Version 0.1.0.
      *
      */
     public static toString(): string { return this.getType(); }
 
+    /**
+     *
+     * Gets all the fields associated with the entity.
+     *
+     * @returns {Array<string>}
+     * @protected
+     * @abstract
+     * @since Introduced in Version 0.1.0.
+     *
+     */
     protected abstract getFields(): Array<string>;
 
     /**
@@ -146,6 +182,14 @@ export default abstract class AbstractEntity {
         return isMatch;
     }
 
+    /**
+     *
+     * Converts the entity to a string.
+     *
+     * @returns {string} The entity as a string.
+     * @since Introduced in Version 0.1.0.
+     *
+     */
     public toString(): string { return `${this.type}:${this.code}`; }
 
     /**

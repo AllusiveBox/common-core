@@ -2,6 +2,7 @@ import { isEmptyArray, isNotEmptyArray } from "./array.util";
 import { isEmptyObject, isNotEmptyObject } from "./object.util";
 import { isEmptyString, isSetString } from "./string.util";
 import { DateString } from "../types";
+import { AbstractEntity } from "../models";
 
 /**
  *
@@ -27,16 +28,19 @@ const MONTHS_WITH_30_DAYS = [4, 6, 9, 11];
  *
  * Utility method that returns the type of a provided argument. More descriptive than the native `typeof` feature.
  *
- * @param {T} arg The argument to get the type of.
+ * @param {unknown} arg The argument to get the type of.
  * @returns {string} A string representing the type of object.
- * @template T
  * @since Introduced in Version 0.1.0.
  *
  */
-export function getType<T>(arg: T): string {
+export function getType(arg: unknown): string {
 
     if (isArray(arg)) {
         return "Array";
+    }
+
+    if (isAbstractEntity(arg)) {
+        return arg.type || "AbstractEntity";
     }
 
     if (isBoolean(arg)) {
@@ -104,6 +108,34 @@ export function isArray<T>(arg: T): arg is T & Array<any> {
  */
 export function isNotArray<T>(arg: T): arg is Exclude<T, Array<any>> {
     return !isArray(arg);
+}
+
+/**
+ *
+ * Checks if a value is an AbstractEntity.
+ *
+ * @param {T} arg The value to check.
+ * @returns {boolean}
+ * @template T
+ * @since Introduced in Version 0.1.0.
+ *
+ */
+export function isAbstractEntity<T>(arg: T): arg is T & AbstractEntity {
+    return arg instanceof AbstractEntity;
+}
+
+/**
+ *
+ * Checks if a value is not an AbstractEntity.
+ *
+ * @param {T} arg The value to check.
+ * @returns {boolean}
+ * @template T
+ * @since Introduced in Version 0.1.0.
+ *
+ */
+export function isNotAbstractEntity<T>(arg: T): arg is Exclude<T, AbstractEntity> {
+    return !isAbstractEntity(arg);
 }
 
 /**

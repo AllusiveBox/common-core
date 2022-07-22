@@ -1,6 +1,7 @@
 /** Model Exports */
 export {
-    AbstractEntity
+    AbstractEntity,
+    Environment
 } from "./models";
 
 /** Type Exports */

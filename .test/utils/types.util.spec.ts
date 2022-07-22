@@ -1,5 +1,6 @@
 import "jest-extended";
 import { TypesUtil } from "../../.src/utils";
+import { Environment } from "../../.src";
 
 /**
  *
@@ -58,6 +59,24 @@ describe("TypesUtil Unit Test Suite", () => {
     test.each(nonArrayValues)
     ("that given %s, isNotArray returns true", (arg) => {
         expect(TypesUtil.isNotArray(arg)).toBeTrue();
+    });
+
+    test.each(nullOrUndefinedValues)
+    ("that given %s, isAbstractEntity returns false", (arg) => {
+        expect(TypesUtil.isAbstractEntity(arg)).toBeFalse();
+    });
+
+    test("that given an AbstractEntity, isAbstractEntity returns true", () => {
+        expect(TypesUtil.isAbstractEntity(Environment.TEST)).toBeTrue();
+    });
+
+    test("that given an AbstractEntity, isNotAbstractEntity returns false", () => {
+        expect(TypesUtil.isNotAbstractEntity(Environment.TEST)).toBeFalse();
+    });
+
+    test.each(nullOrUndefinedValues)
+    ("that given %s, isNotAbstractEntity returns true", (arg) => {
+        expect(TypesUtil.isNotAbstractEntity(arg)).toBeTrue();
     });
 
     const nonBooleanValues = [
@@ -433,7 +452,8 @@ describe("TypesUtil Unit Test Suite", () => {
         { arg: 1, result: "Number" },
         { arg: {}, result: "Object" },
         { arg: "1", result: "String" },
-        { arg: Symbol, result: "Unknown" }
+        { arg: Symbol, result: "Unknown" },
+        { arg: Environment.TEST, result: "Environment" }
     ])
     ("that given $arg, getType returns $result", ({ arg, result }) => {
         expect(TypesUtil.getType(arg)).toBe(result);
