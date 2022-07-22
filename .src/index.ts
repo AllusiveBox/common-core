@@ -18,6 +18,7 @@ export {
     ArrayUtil,
     NumberUtil,
     ObjectUtil,
+    ProcessUtil,
     StringUtil,
     TimeUtil,
     TypesUtil
