@@ -12,7 +12,7 @@ let environment: string;
  * @group process
  *
  */
-describe(" Unit Test Suite", () => {
+describe("ProcessUtil Unit Test Suite", () => {
 
 	beforeAll(() => {
 		initializeTestData();

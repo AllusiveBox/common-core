@@ -14,7 +14,8 @@ export default class Environment extends AbstractEntity {
 
 	/**
 	 *
-	 * Static string that represents the value that should be returned
+	 * Static string that represents the value that should be returned when the class is converted to a string.
+	 *
 	 * @type {string}
 	 * @protected
 	 * @static

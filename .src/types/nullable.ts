@@ -7,4 +7,4 @@
  * @since Introduced in Version 0.1.0.
  *
  */
-export type Nullable<T> = T | null;
+export type Nullable<T> = T | null | undefined;
