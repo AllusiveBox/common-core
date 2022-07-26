@@ -1,6 +1,7 @@
 /** Model Exports */
 export {
     AbstractEntity,
+    AbstractSystemEntity,
     Environment,
     FileSystemFlag
 } from "./models";
