@@ -8,7 +8,7 @@ import { getType, isNotString, isNullOrUndefined } from "../utils/types.util";
  *
  * @class FileSystemFlag
  * @extends AbstractEntity
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export default class FileSystemFlag extends AbstractEntity {
@@ -32,7 +32,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @protected
 	 * @static
 	 * @readonly
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	protected static readonly TYPE: string = "FileSystemFlag";
@@ -49,7 +49,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @see {@link APPEND_ONLY_EXISTING} for the version of this flag that errors when the file does not already exist.
 	 * @see {@link WRITE} for a flag that will replace existing data in a file when writing to it, instead of
 	 * appending to the end of the file.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly APPEND: FileSystemFlag = new FileSystemFlag(
@@ -70,7 +70,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * appending data.
 	 * @see {@link WRITE_ONLY_EXISTING} for a flag that will replace existing data in a file when writing to it,
 	 * instead of appending to the end of the file. This flag will still throw an error if the file does not exist.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly APPEND_ONLY_EXISTING: FileSystemFlag = new FileSystemFlag(
@@ -89,7 +89,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @see {@link APPEND_AND_READ_SYNCHRONOUS} for the synchronous version of this flag.
 	 * @see {@link APPEND_AND_READ_ONLY_EXISTING} for the version of this flag that errors when the file does not
 	 * already exist.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly APPEND_AND_READ: FileSystemFlag = new FileSystemFlag(
@@ -106,7 +106,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @type {FileSystemFlag}
 	 * @see {@link APPEND_AND_READ} for the version of this flag that will create the file before attempting to
 	 * operate on it.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly APPEND_AND_READ_ONLY_EXISTING: FileSystemFlag = new FileSystemFlag(
@@ -122,7 +122,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 *
 	 * @type {FileSystemFlag}
 	 * @see {@link APPEND} for the asynchronous version of this flag.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly APPEND_SYNCHRONOUS: FileSystemFlag = new FileSystemFlag(
@@ -138,7 +138,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 *
 	 * @type {FileSystemFlag}
 	 * @see {@link APPEND_AND_READ} for the asynchronous version of this flag.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly APPEND_AND_READ_SYNCHRONOUS: FileSystemFlag = new FileSystemFlag(
@@ -153,7 +153,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * this flag will throw an error.
 	 *
 	 * @type {FileSystemFlag}
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly READ: FileSystemFlag = new FileSystemFlag(
@@ -169,7 +169,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 *
 	 * @type {FileSystemFlag}
 	 * @see {@link READ_AND_WRITE_SYNCHRONOUS} for the synchronous version of this flag.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly READ_AND_WRITE: FileSystemFlag = new FileSystemFlag(
@@ -185,7 +185,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 *
 	 * @type {FileSystemFlag}
 	 * @see {@link READ_AND_WRITE} for the asynchronous version of this flag.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly READ_AND_WRITE_SYNCHRONOUS: FileSystemFlag = new FileSystemFlag(
@@ -222,7 +222,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @type {FileSystemFlag}
 	 * @see {@link WRITE} for the version of this flag that does not throw an error when the file doesn't already
 	 * exist.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly WRITE_ONLY_NON_EXISTING: FileSystemFlag = new FileSystemFlag(
@@ -240,7 +240,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @type {FileSystemFlag}
 	 * @see {@link APPEND_AND_READ} for a flag that appends data to the end of an existing file, instead of
 	 * overwriting existing data.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly WRITE_AND_READ: FileSystemFlag = new FileSystemFlag(
@@ -256,7 +256,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * it using this flag, an error is thrown.
 	 *
 	 * @type {FileSystemFlag}
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly WRITE_AND_READ_ONLY_NON_EXISTING: FileSystemFlag = new FileSystemFlag(
@@ -271,7 +271,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 *
 	 * @type {FileSystemFlag}
 	 * @see {@link NULL} for a null representation of the file system flag class.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly UNKNOWN_FLAG: FileSystemFlag = new FileSystemFlag(
@@ -286,7 +286,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * there is no default, an error is thrown.
 	 *
 	 * @type {FileSystemFlag}
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly NULL: FileSystemFlag = new FileSystemFlag(
@@ -302,7 +302,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @type {Map<Nullable<string>, FileSystemFlag>}
 	 * @static
 	 * @readonly
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly MAP: Map<Nullable<string>, FileSystemFlag> = new Map<Nullable<string>, FileSystemFlag>([
@@ -329,7 +329,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @type {Array<FileSystemFlag>}
 	 * @static
 	 * @readonly
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static readonly SUPPORTED_TYPES: Array<FileSystemFlag> = [
@@ -357,7 +357,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @private
 	 * @static
 	 * @readonly
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	static readonly #ASYNCHRONOUS_APPEND_FLAGS: Array<FileSystemFlag> = [
@@ -409,7 +409,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @private
 	 * @static
 	 * @readonly
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	static readonly #SYNCHRONOUS_READ_FLAGS: Array<FileSystemFlag> = [
@@ -424,7 +424,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @type {Array<FileSystemFlag>}
 	 * @static
 	 * @readonly
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	static readonly #ASYNCHRONOUS_WRITE_FLAGS: Array<FileSystemFlag> = [
@@ -443,7 +443,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @private
 	 * @static
 	 * @readonly
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	static readonly #SYNCHRONOUS_WRITE_FLAGS: Array<FileSystemFlag> = [
@@ -459,7 +459,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @param {Nullable<string>} flag A string representing the flag entity. Used by node.
 	 * @private
 	 * @constructor
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	private constructor(code: string, text: string, flag: Nullable<string>) {
@@ -476,7 +476,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * {@link FileSystemFlag.NULL} if the provided flag is null, or {@link FileSystemFlag.UNKNOWN_FLAG} if an
 	 * unknown flag is provided.
 	 * @throws {TypeError} An error is thrown if the provided value is not a string.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static getFileSystemFlag(flag: Nullable<string>): FileSystemFlag {
@@ -496,7 +496,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 *
 	 * @returns {Array<string>} An array of the fields used by the FileSystemFlag class.
 	 * @protected
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	protected getFields(): Array<string> {
@@ -508,7 +508,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * Indicates if the flag can perform appending operations.
 	 *
 	 * @returns {boolean} True if the flag can perform appending operations, otherwise false.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public canAppend(): boolean {
@@ -521,7 +521,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * Indicates if the flag can perform reading operations.
 	 *
 	 * @returns {boolean} True if the flag can perform reading operations, otherwise false.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public canRead(): boolean {
@@ -534,7 +534,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * Indicates if the flag can perform writing operations.
 	 *
 	 * @returns {boolean} True if the flag can perform writing operations, otherwise false.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public canWrite(): boolean {
@@ -547,7 +547,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * Indicates if the flag is asynchronous.
 	 *
 	 * @returns {boolean} True if the flag is asynchronous, otherwise false.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public isAsynchronous(): boolean {
@@ -561,7 +561,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * Indicates if the flag is synchronous.
 	 *
 	 * @returns {boolean} True if the flag is synchronous, otherwise false.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public isSynchronous(): boolean {
@@ -575,7 +575,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * Indicates if the flag is null or not.
 	 *
 	 * @returns {boolean} True if the flag is null, otherwise false.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public isNull(): boolean { return this === FileSystemFlag.NULL; }
@@ -585,7 +585,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * Indicates if the flag is unknown or not.
 	 *
 	 * @returns {boolean} True if the flag is unknown, otherwise false.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public isUnknown(): boolean { return this === FileSystemFlag.UNKNOWN_FLAG; }
@@ -595,7 +595,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * Gets the flag in a format that is usable by node.
 	 *
 	 * @returns {Nullable<string>}
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	get flag(): Nullable<string> { return this.#flag; }

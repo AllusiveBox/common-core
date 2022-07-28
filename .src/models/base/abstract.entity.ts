@@ -4,7 +4,7 @@
  *
  * @class AbstractEntity
  * @abstract
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export default abstract class AbstractEntity {
@@ -17,7 +17,7 @@ export default abstract class AbstractEntity {
      * @protected
      * @static
      * @readonly
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     protected static readonly TYPE: string;
@@ -29,7 +29,7 @@ export default abstract class AbstractEntity {
      * @type {string}
      * @private
      * @readonly
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     readonly #code: string;
@@ -41,7 +41,7 @@ export default abstract class AbstractEntity {
      * @type {string}
      * @private
      * @readonly
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     readonly #text: string;
@@ -53,7 +53,7 @@ export default abstract class AbstractEntity {
      * @type {string}
      * @private
      * @readonly
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     readonly #type: string;
@@ -65,7 +65,7 @@ export default abstract class AbstractEntity {
      * @type {Array<AbstractEntity>}
      * @static
      * @readonly
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     public static readonly SUPPORTED_TYPES: Array<AbstractEntity>;
@@ -82,7 +82,7 @@ export default abstract class AbstractEntity {
      * an associated class.
      * @protected
      * @constructor
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     protected constructor(code: string, text: string, type: string) {
@@ -97,7 +97,7 @@ export default abstract class AbstractEntity {
      *
      * @returns {string} The class-level typing information.
      * @static
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     public static getType(): string { return this.TYPE; }
@@ -108,7 +108,7 @@ export default abstract class AbstractEntity {
      *
      * @param {AbstractEntity} entity the entity to check.
      * @returns {boolean} True if the entity is supported, otherwise false.
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     public static isSupported(entity: AbstractEntity): boolean {
@@ -121,7 +121,7 @@ export default abstract class AbstractEntity {
      *
      * @returns {string} The class-level string formatting.
      * @static
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     public static toString(): string { return this.getType(); }
@@ -133,7 +133,7 @@ export default abstract class AbstractEntity {
      * @returns {Array<string>}
      * @protected
      * @abstract
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     protected abstract getFields(): Array<string>;
@@ -144,7 +144,7 @@ export default abstract class AbstractEntity {
      *
      * @param {AbstractEntity} entity The entity to check against.
      * @returns {boolean} True if the two entities are strictly equal, otherwise false.
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     public isStrictEqual(entity: AbstractEntity): boolean {
@@ -157,7 +157,7 @@ export default abstract class AbstractEntity {
      *
      * @param {AbstractEntity} entity The entity to check against.
      * @returns {boolean} True if the two entities are equal, otherwise false.
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     public isEqual(entity: AbstractEntity): boolean {
@@ -187,7 +187,7 @@ export default abstract class AbstractEntity {
      * Converts the entity to a string.
      *
      * @returns {string} The entity as a string.
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     public toString(): string { return `${this.type}:${this.code}`; }
@@ -197,7 +197,7 @@ export default abstract class AbstractEntity {
      * Gets the entity's code.
      *
      * @returns {string}
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     get code(): string { return this.#code; }
@@ -207,7 +207,7 @@ export default abstract class AbstractEntity {
      * Gets the entity's text.
      *
      * @returns {string}
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     get text(): string { return this.#text; }
@@ -217,7 +217,7 @@ export default abstract class AbstractEntity {
      * Gets the entity's type.
      *
      * @returns {string}
-     * @since Introduced in Version 0.1.0.
+     * @since Version 0.1.0
      *
      */
     get type(): string { return this.#type; }

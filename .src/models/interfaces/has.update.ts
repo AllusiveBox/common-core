@@ -4,7 +4,7 @@
  * method.
  *
  * @interface HasUpdate
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export default interface HasUpdate {
@@ -15,7 +15,7 @@ export default interface HasUpdate {
 	 *
 	 * @param {any} args
 	 * @returns {any} the results from the operation.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 * 
 	 */
 	update(...args: any): any;

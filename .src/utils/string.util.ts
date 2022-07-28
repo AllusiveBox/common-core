@@ -7,7 +7,7 @@ import { isNotString, isString } from "./types.util";
  * @param {string} arg The string to wrap in quotes.
  * @returns {string} The provided string wrapped in double quotes.
  * @throws {Error} An error is thrown if the provided value is not a string.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function doubleQuotes(arg: string): string {
@@ -25,7 +25,7 @@ export function doubleQuotes(arg: string): string {
  *
  * @param {string} arg The string to check.
  * @returns {boolean} True if the string is empty, otherwise false.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isEmptyString(arg: string): arg is "" {
@@ -38,7 +38,7 @@ export function isEmptyString(arg: string): arg is "" {
  *
  * @param {string} arg the string to check.
  * @returns {boolean} True if the string is not empty, otherwise false.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isSetString(arg: string): arg is Exclude<typeof arg, ""> {

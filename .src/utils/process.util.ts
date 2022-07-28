@@ -6,7 +6,7 @@ import { Environment } from "../models";
  * Gets the environment from the node process.
  *
  * @returns {Environment} The environment that the node environment is set on.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function getEnvironment(): Environment {
@@ -20,7 +20,7 @@ export function getEnvironment(): Environment {
  *
  * @param {Environment} environment The Environment to set.
  * @throws {TypeError} An error is thrown if the provided value is not an Environment.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function setEnvironment(environment: Environment);
@@ -33,7 +33,7 @@ export function setEnvironment(environment: Environment);
  *
  * @param {string} environmentString The environment as a string.
  * @throws {TypeError} An error is thrown if the provided value is not a string.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function setEnvironment(environmentString: string);
@@ -44,7 +44,7 @@ export function setEnvironment(environmentString: string);
  *
  * @param {(Environment | string)} arg The environment to set.
  * @throws {TypeError} An error is thrown if the provided value is not an Environment or string value.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function setEnvironment(arg: Environment | string) {

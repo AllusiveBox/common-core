@@ -4,7 +4,7 @@
  * method.
  *
  * @interface HasRead
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export default interface HasRead {
@@ -15,7 +15,7 @@ export default interface HasRead {
 	 *
 	 * @param {any} args
 	 * @returns {any} The results from the operation.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	read(...args): any;

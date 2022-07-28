@@ -44,7 +44,7 @@ type FormatAsTwoCharacterOptions = {
  * Variable for the number zero.
  *
  * @type {number}
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export const ZERO = 0;
@@ -54,7 +54,7 @@ export const ZERO = 0;
  * Variable for the number one.
  *
  * @type {number}
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export const ONE = 1;
@@ -64,7 +64,7 @@ export const ONE = 1;
  * Variable for the number ten.
  *
  * @type {number}
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export const TEN = 10;
@@ -74,7 +74,7 @@ export const TEN = 10;
  * Variable for the number one hundred.
  *
  * @type {number}
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export const ONE_HUNDRED = 100;
@@ -84,7 +84,7 @@ export const ONE_HUNDRED = 100;
  * Variable for the number one thousand.
  *
  * @type {number}
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export const ONE_THOUSAND = 1000;
@@ -94,7 +94,7 @@ export const ONE_THOUSAND = 1000;
  * Variable for the number ten thousand.
  *
  * @type {number}
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export const TEN_THOUSAND = 10000;
@@ -107,7 +107,7 @@ export const TEN_THOUSAND = 10000;
  * @returns {NumericalString} The provided number formatted as a numerical string.
  * @throws {TypeError} An error is thrown if the provided num param is not a number.
  * @throws {Error} An error is thrown if the provided number is more than two digits.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function convertToTwoCharacterNumericalString(
@@ -130,7 +130,7 @@ export function convertToTwoCharacterNumericalString(
  * @throws {TypeError} An error is thrown if the provided `options.errorOnNegative` param is not a boolean.
  * @throws {Error} An error is thrown if the provided number is more than two digits, unless the
  * `options.suppressError` flag is set.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function convertToTwoCharacterNumericalString(
@@ -152,7 +152,7 @@ export function convertToTwoCharacterNumericalString(
  * @throws {TypeError} An error is thrown if the provided `options.errorOnNegative` param is not a boolean.
  * @throws {Error} An error is thrown if the provided number is more than two digits, unless the
  * `options.suppressError` flag is set.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function convertToTwoCharacterNumericalString(
@@ -232,7 +232,7 @@ export function convertToTwoCharacterNumericalString(
  * @returns {number} The provided number rounded to the specified decimal place.
  * @throws {TypeError} An error is thrown if the provided num param is not a number.
  * @throws {TypeError} An error is thrown if the provided decimalPlaces param is not a number.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function roundToNth(

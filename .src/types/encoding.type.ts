@@ -7,7 +7,7 @@
  * for additional information.
  *
  * @type {EncodingType}
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export type EncodingType = "utf8" | "utf16le" | "latin1" | "base64" | "hex" | "ascii" | "binary" | "ucs2"

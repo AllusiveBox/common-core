@@ -30,7 +30,7 @@ const MONTHS_WITH_30_DAYS = [4, 6, 9, 11];
  *
  * @param {unknown} arg The argument to get the type of.
  * @returns {string} A string representing the type of object.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function getType(arg: unknown): string {
@@ -89,7 +89,7 @@ export function getType(arg: unknown): string {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is an array, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isArray<T>(arg: T): arg is T & Array<any> {
@@ -103,7 +103,7 @@ export function isArray<T>(arg: T): arg is T & Array<any> {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not an array, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotArray<T>(arg: T): arg is Exclude<T, Array<any>> {
@@ -117,7 +117,7 @@ export function isNotArray<T>(arg: T): arg is Exclude<T, Array<any>> {
  * @param {T} arg The value to check.
  * @returns {boolean}
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isAbstractEntity<T>(arg: T): arg is T & AbstractEntity {
@@ -131,7 +131,7 @@ export function isAbstractEntity<T>(arg: T): arg is T & AbstractEntity {
  * @param {T} arg The value to check.
  * @returns {boolean}
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotAbstractEntity<T>(arg: T): arg is Exclude<T, AbstractEntity> {
@@ -145,7 +145,7 @@ export function isNotAbstractEntity<T>(arg: T): arg is Exclude<T, AbstractEntity
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is a boolean, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isBoolean<T>(arg: T): arg is T & boolean {
@@ -159,7 +159,7 @@ export function isBoolean<T>(arg: T): arg is T & boolean {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not a boolean, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotBoolean<T>(arg: T): arg is Exclude<T, boolean> {
@@ -173,7 +173,7 @@ export function isNotBoolean<T>(arg: T): arg is Exclude<T, boolean> {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is a Date, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isDate<T>(arg: T): arg is T & Date {
@@ -189,7 +189,7 @@ export function isDate<T>(arg: T): arg is T & Date {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not a Date, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotDate<T>(arg: T): arg is Exclude<T, Date> {
@@ -203,7 +203,7 @@ export function isNotDate<T>(arg: T): arg is Exclude<T, Date> {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is a {@link DateString}, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isDateString<T>(arg: T): arg is T & DateString {
@@ -254,7 +254,7 @@ export function isDateString<T>(arg: T): arg is T & DateString {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not a {@link DateString}, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotDateString<T>(arg: T): arg is Exclude<T, DateString> {
@@ -268,7 +268,7 @@ export function isNotDateString<T>(arg: T): arg is Exclude<T, DateString> {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is empty, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isEmpty<T>(arg: T): arg is T & (Array<T> | object | string) {
@@ -290,7 +290,7 @@ export function isEmpty<T>(arg: T): arg is T & (Array<T> | object | string) {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not empty, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotEmpty<T>(arg: T): arg is Exclude<T, Array<any> | object | string> {
@@ -312,7 +312,7 @@ export function isNotEmpty<T>(arg: T): arg is Exclude<T, Array<any> | object | s
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is an Error, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isError<T>(arg: T): arg is T & Error {
@@ -326,7 +326,7 @@ export function isError<T>(arg: T): arg is T & Error {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not an Error, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotError<T>(arg: T): arg is Exclude<T, Error> {
@@ -340,7 +340,7 @@ export function isNotError<T>(arg: T): arg is Exclude<T, Error> {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is null, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNull<T>(arg: T): arg is T & null {
@@ -354,7 +354,7 @@ export function isNull<T>(arg: T): arg is T & null {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not null, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotNull<T>(arg: T): arg is Exclude<T, null> {
@@ -368,7 +368,7 @@ export function isNotNull<T>(arg: T): arg is Exclude<T, null> {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is a number, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNumber<T>(arg: T): arg is T & number {
@@ -382,7 +382,7 @@ export function isNumber<T>(arg: T): arg is T & number {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not a number, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotNumber<T>(arg: T): arg is Exclude<T, number> {
@@ -396,7 +396,7 @@ export function isNotNumber<T>(arg: T): arg is Exclude<T, number> {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is an object, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isObject<T>(arg: T): arg is T & object {
@@ -413,7 +413,7 @@ export function isObject<T>(arg: T): arg is T & object {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not an object, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotObject<T>(arg: T): arg is Exclude<T, object> {
@@ -427,7 +427,7 @@ export function isNotObject<T>(arg: T): arg is Exclude<T, object> {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is a string, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isString<T>(arg: T): arg is T & string {
@@ -441,7 +441,7 @@ export function isString<T>(arg: T): arg is T & string {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not a string, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotString<T>(arg: T): arg is Exclude<T, string> {
@@ -455,7 +455,7 @@ export function isNotString<T>(arg: T): arg is Exclude<T, string> {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is undefined, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isUndefined<T>(arg: T): arg is T & undefined {
@@ -469,7 +469,7 @@ export function isUndefined<T>(arg: T): arg is T & undefined {
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not undefined, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotUndefined<T>(arg: T): arg is Exclude<T, undefined> {
@@ -483,7 +483,7 @@ export function isNotUndefined<T>(arg: T): arg is Exclude<T, undefined> {
  * @param {T} arg
  * @returns {boolean} True if the value is either null or undefined, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNullOrUndefined<T>(arg: T): arg is T & (null | undefined) {
@@ -497,7 +497,7 @@ export function isNullOrUndefined<T>(arg: T): arg is T & (null | undefined) {
  * @param {T} arg
  * @returns {boolean} True if the value is neither null nor undefined, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotNullOrUndefined<T>(arg: T): arg is Exclude<T, null | undefined> {

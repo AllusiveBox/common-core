@@ -16,7 +16,7 @@ interface Millisecond {
 	 * @param {number} [seconds=1] The number of seconds to convert.
 	 * @returns {number} The number of seconds converted to milliseconds.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	inSeconds(seconds?: number): number;
@@ -28,7 +28,7 @@ interface Millisecond {
 	 * @param {number} milliseconds The number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into seconds.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	toSeconds(milliseconds?: number): number;
@@ -40,7 +40,7 @@ interface Millisecond {
 	 * @param {number} [minutes=1] The number of minutes to convert.
 	 * @returns {number} The number of minutes converted to milliseconds.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	inMinutes(minutes?: number): number;
@@ -52,7 +52,7 @@ interface Millisecond {
 	 * @param {number} milliseconds The number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into seconds.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	toMinutes(milliseconds?: number): number;
@@ -64,7 +64,7 @@ interface Millisecond {
 	 * @param {number} [hours=1] The number of hours to convert.
 	 * @returns {number} The number of minutes converted to milliseconds.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	inHours(hours?: number): number;
@@ -76,7 +76,7 @@ interface Millisecond {
 	 * @param {number} milliseconds The number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into hours.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	toHours(milliseconds?: number): number;
@@ -88,7 +88,7 @@ interface Millisecond {
 	 * @param {number} [days=1] The number of days to convert.
 	 * @returns {number} The number of days converted to milliseconds.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	inDays(days?: number): number;
@@ -100,7 +100,7 @@ interface Millisecond {
 	 * @param {number} milliseconds The number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into days.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	toDays(milliseconds?: number): number;
@@ -112,7 +112,7 @@ interface Millisecond {
 	 * @param {number} [weeks=1] The number of weeks to convert.
 	 * @returns {number} The number of weeks converted to milliseconds.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	inWeeks(weeks?: number): number;
@@ -124,7 +124,7 @@ interface Millisecond {
 	 * @param {number} milliseconds The number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into weeks.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	toWeeks(milliseconds?: number): number;
@@ -136,7 +136,7 @@ interface Millisecond {
 	 * @param {number} [months=1] The number of months to convert.
 	 * @returns {number} The number of months converted to milliseconds.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	inMonths(months?: number): number;
@@ -148,7 +148,7 @@ interface Millisecond {
 	 * @param {number} milliseconds The number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into months.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	toMonths(milliseconds?: number): number;
@@ -160,7 +160,7 @@ interface Millisecond {
 	 * @param {number} [years=1] The number of years to convert.
 	 * @returns {number} The number of years converted to milliseconds.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	inYears(years?: number): number;
@@ -172,7 +172,7 @@ interface Millisecond {
 	 * @param {number} milliseconds the number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into years.
 	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	toYears(milliseconds?: number): number;

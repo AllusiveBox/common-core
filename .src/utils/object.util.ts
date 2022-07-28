@@ -13,7 +13,7 @@ import { NestedKeyOf, Nullable } from "../types";
  * as the `propertyName`, `fieldName`, or `key`.
  * @returns {Nullable<TObject[keyof TObject]>} The value stored in the object at the specified path. Can be null.
  * @template TObject
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function getProperty<TObject extends object>(
@@ -43,7 +43,7 @@ export function getProperty<TObject extends object>(
  *
  * @param {object} arg The object to check.
  * @returns {boolean} True if the value is an empty object, otherwise false.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isEmptyObject(arg: object): arg is Record<string, never>  {
@@ -56,7 +56,7 @@ export function isEmptyObject(arg: object): arg is Record<string, never>  {
  *
  * @param {object} arg The object to check.
  * @returns {boolean} True if the value is not an empty object, otherwise false.
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotEmptyObject(arg: object): arg is object {

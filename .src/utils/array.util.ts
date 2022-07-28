@@ -7,7 +7,7 @@ import { isArray } from "./types.util";
  * @param {Array<T>} arg The array to check.
  * @returns {boolean} True if the array is empty, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isEmptyArray<T>(arg: Array<T>): arg is Exclude<typeof arg, Array<T>> {
@@ -21,7 +21,7 @@ export function isEmptyArray<T>(arg: Array<T>): arg is Exclude<typeof arg, Array
  * @param {Array<T>} arg The array to check.
  * @returns {boolean} True if the array is not empty, otherwise false.
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export function isNotEmptyArray<T>(arg: Array<T>): arg is Array<T> {

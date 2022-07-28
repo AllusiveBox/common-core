@@ -7,7 +7,7 @@
  *
  * @type NestedKeyOf<TObject>
  * @template TObject
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  * @see {@link https://dev.to/pffigueiredo/typescript-utility-keyof-nested-object-2pa3 This article} for detailed
  * explanation of this type and how it works.
  *

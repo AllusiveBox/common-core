@@ -1,4 +1,4 @@
-import { EventEmitter } from "events";
+import { ListenerSignature, TypedEmitter } from "tiny-typed-emitter";
 import { Nullable } from "../../types";
 
 /**
@@ -6,12 +6,12 @@ import { Nullable } from "../../types";
  * Abstract class for operating system based entities.
  *
  * @class AbstractSystemEntity
- * @extends EventEmitter
+ * @extends TypedEmitter
  * @abstract
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
-export default abstract class AbstractSystemEntity extends EventEmitter {
+export default abstract class AbstractSystemEntity<L extends ListenerSignature<L>> extends TypedEmitter<L> {
 
 	/**
 	 *
@@ -21,7 +21,7 @@ export default abstract class AbstractSystemEntity extends EventEmitter {
 	 * @protected
 	 * @static
 	 * @readonly
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	protected static readonly TYPE: string;
@@ -32,7 +32,7 @@ export default abstract class AbstractSystemEntity extends EventEmitter {
 	 *
 	 * @type {string}
 	 * @private
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	#name: string;
@@ -43,7 +43,7 @@ export default abstract class AbstractSystemEntity extends EventEmitter {
 	 *
 	 * @type {string}
 	 * @private
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	#location: string;
@@ -53,10 +53,11 @@ export default abstract class AbstractSystemEntity extends EventEmitter {
 	 * Abstract constructor. Sets the {@link name}, {@link location}, and {@link options}.
 	 *
 	 * @param {string}           name     The name of the entity in the system.
-	 * @param {Nullable<string>} location The location of the entity in the system.
+	 * @param {Nullable<string>} location The location of the entity in the system. If not provided, the current
+	 * working directory is used.
 	 * @protected
 	 * @constructor
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	protected constructor(
@@ -74,7 +75,7 @@ export default abstract class AbstractSystemEntity extends EventEmitter {
 	 *
 	 * @returns {string} The class-level typing information.
 	 * @static
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static getType(): string { return this.TYPE; }
@@ -85,7 +86,7 @@ export default abstract class AbstractSystemEntity extends EventEmitter {
 	 *
 	 * @returns {string} The class-level string formatting.
 	 * @static
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public static toString(): string { return this.getType(); }
@@ -96,7 +97,7 @@ export default abstract class AbstractSystemEntity extends EventEmitter {
 	 *
 	 * @returns {string} The entity as a string.
 	 * @abstract
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	public abstract toString(): string;
@@ -106,7 +107,7 @@ export default abstract class AbstractSystemEntity extends EventEmitter {
 	 * Gets the name of the entity.
 	 *
 	 * @returns {string}
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	get name(): string { return this.#name; }
@@ -117,7 +118,7 @@ export default abstract class AbstractSystemEntity extends EventEmitter {
 	 *
 	 * @param {string} arg
 	 * @protected
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	protected set name(arg: string) { this.#name = arg; }
@@ -127,7 +128,7 @@ export default abstract class AbstractSystemEntity extends EventEmitter {
 	 * Gets the entity's location in the file system.
 	 *
 	 * @returns {string}
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	get location(): string { return this.#location; }
@@ -138,7 +139,7 @@ export default abstract class AbstractSystemEntity extends EventEmitter {
 	 *
 	 * @param {string} arg
 	 * @protected
-	 * @since Introduced in Version 0.1.0.
+	 * @since Version 0.1.0
 	 *
 	 */
 	protected set location(arg: string) { this.#location = arg; }

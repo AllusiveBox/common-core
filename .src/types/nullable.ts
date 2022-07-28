@@ -4,7 +4,7 @@
  *
  * @typedef Nullable<T>
  * @template T
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export type Nullable<T> = T | null | undefined;

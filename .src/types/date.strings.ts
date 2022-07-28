@@ -9,7 +9,7 @@ type Day = `${"0"}${OneToNine}` | `${"1" | "2"}${ZeroToNine}` | `3${"0" | "1"}`
  * Utility type used to represent the year, month, and date in `YYYY-MM-DD` format.
  *
  * @type DateString
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export type DateString = `${Year}-${Month}-${Day}`;
@@ -19,7 +19,7 @@ export type DateString = `${Year}-${Month}-${Day}`;
  * Utility type used to represent a partial date, the year and month in `YYYY-MM` format.
  *
  * @type YearMonthDateString
- * @since Introduced in Version 0.1.0.
+ * @since Version 0.1.0
  *
  */
 export type YearMonthDateString = `${Year}-${Month}`;
