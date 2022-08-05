@@ -1,3 +1,7 @@
+/** Error Exports */
+export {
+    NilError
+} from "./errors";
 /** Model Exports */
 export {
     AbstractEntity,

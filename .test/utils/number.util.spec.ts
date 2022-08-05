@@ -13,7 +13,7 @@ import { NumberUtil } from "../../.src/utils";
 describe("NumberUtil Unit Test Suite", () => {
 
 	beforeAll(() => {
-		jest.spyOn(console, "debug").mockImplementation(() => {})
+		jest.spyOn(console, "debug").mockImplementation(() => {});
 	});
 
 	afterAll(() => {

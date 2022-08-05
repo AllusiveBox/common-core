@@ -184,7 +184,7 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 	 * @since Version 0.1.0
 	 *
 	 */
-	protected static readonly TYPE: string;
+	protected static readonly TYPE: string = "File";
 
 	/**
 	 *
@@ -212,6 +212,17 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 
 	/**
 	 *
+	 * Flag indicating if the file is open.
+	 *
+	 * @type {boolean}
+	 * @private
+	 * @since Version 0.1.0
+	 *
+	 */
+	#isOpen: boolean;
+
+	/**
+	 *
 	 * Abstract constructor. Sets the {@link fullName} for the file entity.
 	 *
 	 * @param {string}           name     The file's name.
@@ -235,6 +246,7 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 				* It is updated with the update method.
 		 */
 		this.#content = null;
+		this.#isOpen = false;
 	}
 
 	/**
@@ -301,6 +313,7 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 	 */
 	public async close(): Promise<void> {
 		await this.operate({ event: "close" });
+		this.#isOpen = false;
 	}
 
 	/**
@@ -340,6 +353,7 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 	 */
 	public async open(): Promise<AbstractFileEntity> {
 		await this.operate({ event: "open" });
+		this.#isOpen = true;
 		return this;
 	}
 
@@ -436,5 +450,15 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 	 *
 	 */
 	get fullName(): string { return this.#getFullName(); }
+
+	/**
+	 *
+	 * Indicates if the file is open or not
+	 *
+	 * @returns {boolean}
+	 * @since Version 0.1.0
+	 *
+	 */
+	get isOpen(): boolean { return this.#isOpen; }
 
 }

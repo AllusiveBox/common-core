@@ -1,8 +1,10 @@
 import {
+	isNotNullOrUndefined,
 	isNullOrUndefined,
 	isObject
 } from "./types.util";
 import { NestedKeyOf, Nullable } from "../types";
+import { NilError } from "../errors";
 
 /**
  *
@@ -21,11 +23,18 @@ export function getProperty<TObject extends object>(
 	path: NestedKeyOf<TObject>
 ): Nullable<TObject[keyof TObject]> {
 	// Validate
-	if (isNullOrUndefined(object)) {
-		throw new Error("Cannot get property of an object that is either null or undefined");
+	if (isNullOrUndefined(object)
 		// @ts-ignore
+		&& (isNotNullOrUndefined(path))) {
+
+		// @ts-ignore
+		throw new NilError(`Attempted to get ${path}`);
 	} else if (isNullOrUndefined(path)) {
-		throw new Error("Cannot get property of an object with a path that is either null or undefined");
+		throw new NilError("Null or undefined path");
+	} else if (isNullOrUndefined(object)
+		&& (isNullOrUndefined(path))) {
+
+		throw new NilError();
 	}
 
 	const keys = path.split('.');

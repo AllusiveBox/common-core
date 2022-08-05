@@ -130,7 +130,7 @@ describe("TimeUtil Unit Test Suite", () => {
 
 	test("that not given any milliseconds, toDays returns 0 days", () => {
 		expect(TimeUtil.Milliseconds.toDays()).toBe(0);
-	})
+	});
 
 	const weeksList = [
 		{ weeks: 1, milliseconds: 6.048e8 },

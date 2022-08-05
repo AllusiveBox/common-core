@@ -4,8 +4,6 @@ import { AbstractFileEntity, FileSystemFlag, OperationOptions } from "../../../.
 
 class TestFile extends AbstractFileEntity {
 
-	protected static readonly TYPE = "TestFileEntity";
-
 	protected readonly extension = ".txt";
 
 	operationOptions: Array<OperationOptions> = [];
@@ -51,7 +49,7 @@ describe("AbstractFileEntity Unit Test Suite", () => {
 	});
 
 	test("that static toString returns TestFileEntity", () => {
-		expect(`${TestFile}`).toBe("TestFileEntity");
+		expect(`${TestFile}`).toBe("File");
 	});
 
 	test("that creating a new instance is possible and correctly assigns default values", () => {
@@ -83,6 +81,7 @@ describe("AbstractFileEntity Unit Test Suite", () => {
 		expect(options).toEqual({
 			event: "close"
 		});
+		expect(testFile.isOpen).toBeFalse();
 	});
 
 	test("that delete passes the correct parameters to operate", async () => {
@@ -105,7 +104,7 @@ describe("AbstractFileEntity Unit Test Suite", () => {
 			flag: FileSystemFlag.WRITE_ONLY_NON_EXISTING,
 			data: "new/location"
 		});
-	})
+	});
 
 	test("that open passes the correct parameters to operate", async () => {
 		await testFile.open();
@@ -115,6 +114,7 @@ describe("AbstractFileEntity Unit Test Suite", () => {
 		expect(options).toEqual({
 			event: "open"
 		});
+		expect(testFile.isOpen).toBeTrue();
 	});
 
 	test("that read passes the correct parameters to operate", async () => {
@@ -161,7 +161,7 @@ describe("AbstractFileEntity Unit Test Suite", () => {
 			data: "Hello world",
 			flag: FileSystemFlag.APPEND_ONLY_EXISTING
 		});
-	})
+	});
 
 	test("that exists correctly flags if a file does not exist", () => {
 		// Setup
