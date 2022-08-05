@@ -1,7 +1,7 @@
 import "jest-extended";
 import { AbstractSystemEntity, Nullable } from "../../../.src";
 
-class TestEntity extends AbstractSystemEntity {
+class TestEntity extends AbstractSystemEntity<any> {
 
 	protected static TYPE = "TestEntity";
 
