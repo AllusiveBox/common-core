@@ -306,13 +306,13 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 
 				this.#fileNumber = null;
 			});
+
+			this.emit("close", this.name);
 		} else if (!this.exists) {
 			throw new FileSystemError(`Unable to close ${this.name}; File does not exist`);
 		} else if (isNullOrUndefined(this.#fileNumber)) {
 			throw new FileSystemError(`Unable to close ${this.name}; Unable to determine file descriptor`);
 		}
-
-		this.emit("close", this.name);
 
 		return this;
 	}
@@ -329,8 +329,8 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 	 *
 	 */
 	public async delete(): Promise<void> {
-		if ((this.exists)
-			&& (!this.isOpen)) {
+		if ((this.isOpen)
+			&& (this.exists)) {
 
 			throw new FileSystemError(`Unable to delete ${this.name}; File is currently open`);
 		} else if (!this.exists) {
@@ -368,19 +368,19 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 	 */
 	public async open(flag: FileSystemFlag): Promise<AbstractFileEntity> {
 		// Validate
-		if ((this.exists)
-			&& (!this.isOpen)) {
+		if ((!this.isOpen)
+			&& (this.exists)) {
 
 			await fs.open(this.#getFullPath(), flag.flag || "r", (error, file) => {
 				if (error) throw error;
 
 				this.fileNumber = file;
 			});
+
+			this.emit("open", this.name, this.fileNumber);
 		} else if (!this.exists) {
 			throw new FileSystemError(`Unable to open ${this.name}; File does not exist`);
 		}
-
-		this.emit("open", this.name, this.fileNumber);
 
 		return this;
 	}
