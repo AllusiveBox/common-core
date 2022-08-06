@@ -3,8 +3,11 @@ export {
     AbstractEntity,
     AbstractFileEntity,
     AbstractSystemEntity,
-    OperationOptions
 } from "./base";
+
+export {
+    IFile
+} from "./interfaces";
 
 /** Models */
 export { default as Environment } from "./environment";

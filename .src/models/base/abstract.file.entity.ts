@@ -1,6 +1,10 @@
 import * as fs from "fs";
 import AbstractSystemEntity from "./abstract.system.entity";
+import { IFile } from "../interfaces";
 import { Nullable } from "../../types";
+import { FileSystemError } from "../../errors";
+import { FileSystemFlag } from "../index";
+import { isNotNullOrUndefined, isNullOrUndefined } from "../../utils/types.util";
 
 /**
  *
@@ -96,12 +100,12 @@ interface AbstractFileEvents {
 	 * Event fired when a file is opened.
 	 *
 	 * @event AbstractFileEntity#open
-	 * @param {string}        fileName The name of the file that was opened.
-	 * @param {Nullable<any>} data     The contents of the file. If the file has no contents, this will be null.
+	 * @param {string} fileName The name of the file that was opened.
+	 * @param {number} data     The file descriptor assigned to the file by the system.
 	 * @since Version 0.1.0
 	 *
 	 */
-	open: (fileName: string, data?: Nullable<any>) => void;
+	open: (fileName: string, data?: Nullable<number>) => void;
 
 	/**
 	 *
@@ -123,10 +127,12 @@ interface AbstractFileEvents {
  *
  * @class AbstractFileEntity
  * @extends AbstractSystemEntity
+ * @implements IFile
  * @since Version 0.1.0
  *
  */
-export default abstract class AbstractFileEntity extends AbstractSystemEntity<AbstractFileEvents> {
+export default abstract class AbstractFileEntity extends AbstractSystemEntity<AbstractFileEvents>
+	implements IFile {
 
 	/**
 	 *
@@ -164,6 +170,16 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 	 *
 	 */
 	#content: any;
+
+	/**
+	 *
+	 * The file descriptor used by the file system to differentiate between files.
+	 *
+	 * @type {Nullable<number>}
+	 * @private
+	 *
+	 */
+	#fileNumber: Nullable<number>;
 
 	/**
 	 *
@@ -230,38 +246,103 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 
 	/**
 	 *
-	 * Abstract method to create a new file in the system and fill it with the supplied content.
+	 * Builds the full file path for a file based off location and full name.
 	 *
-	 * @param {Nullable<any>} contents The contents of the file that is being created in the system.
+	 * @returns {string}
+	 * @private
+	 * @since Version 0.1.0
+	 *
+	 */
+	#getFullPath(): string { return `${this.location}/${this.fullName}`}
+
+	/**
+	 *
+	 * Creates the file in the file system. If any content is provided, it is written into the file.
+	 *
+	 * @param {Nullable<any>} content The contents of the file that is being created in the system.
 	 * @returns {Promise<AbstractFileEntity>} The file after it is created in the system.
-	 * @abstract
+	 * @throws {FileSystemError} An error is thrown if the file already exists in the system at the specified location.
+	 * @throws {Error} An error is thrown if there process is unable to write to the file system.
 	 * @since Version 0.1.0
 	 *
 	 */
-	public abstract create(contents?: Nullable<any>): Promise<AbstractFileEntity>;
+	public async create(content?: Nullable<any>): Promise<AbstractFileEntity> {
+		// Validate
+		if (this.exists) {
+			throw new FileSystemError(`Unable to create ${this.name}; File already exists`);
+		}
 
+		fs.writeFile(this.#getFullPath(), content, (error) => {
+			if (error)
+				throw error;
+
+		});
+
+		this.#content = content;
+		this.emit("create", content);
+
+		return this;
+	}
 
 	/**
 	 *
-	 * Abstract method that closes an opened file.
+	 * Closes the file, if it is open.
 	 *
-	 * @returns {Promise<void>}
-	 * @abstract
+	 * @returns {Promise<AbstractFileEntity>}
+	 * @throws {FileSystemError} An error is thrown if the file does not exist.
+	 * @throws {FileSystemError} An error is thrown if the process is unable to determine the file descriptor.
+	 * @throws {Error} An error is thrown if there process is unable to write to the file system.
 	 * @since Version 0.1.0
 	 *
 	 */
-	public abstract close(): Promise<void>;
+	public async close(): Promise<AbstractFileEntity> {
+		// Validate
+		if ((this.isOpen)
+			&& (this.exists)
+			&& (isNotNullOrUndefined(this.#fileNumber))) {
+
+			await fs.close(this.#fileNumber, (error) => {
+				if (error) throw error;
+
+				this.#fileNumber = null;
+			});
+		} else if (!this.exists) {
+			throw new FileSystemError(`Unable to close ${this.name}; File does not exist`);
+		} else if (isNullOrUndefined(this.#fileNumber)) {
+			throw new FileSystemError(`Unable to close ${this.name}; Unable to determine file descriptor`);
+		}
+
+		this.emit("close", this.name);
+
+		return this;
+	}
 
 	/**
 	 *
-	 * Abstract method that deletes a file.
+	 * Deletes the file from the system.
 	 *
 	 * @returns {Promise<void>}
-	 * @abstract
+	 * @throws {FileSystemError} An error is thrown if the file is currently open.
+	 * @throws {FileSystemError} An error is thrown if the file does not exist.
+	 * @throws {Error} An error is thrown if there process is unable to write to the file system.
 	 * @since Version 0.1.0
 	 *
 	 */
-	public abstract delete(): Promise<void>;
+	public async delete(): Promise<void> {
+		if ((this.exists)
+			&& (!this.isOpen)) {
+
+			throw new FileSystemError(`Unable to delete ${this.name}; File is currently open`);
+		} else if (!this.exists) {
+			throw new FileSystemError(`Unable to delete ${this.name}; File does not exist`);
+		}
+
+		await fs.unlink(this.#getFullPath(), (error) => {
+			if (error) throw error;
+		});
+
+		this.emit("delete", this.name);
+	}
 
 	/**
 	 *
@@ -277,14 +358,32 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 
 	/**
 	 *
-	 * Abstract method for opening files.
+	 * Opens the file, if it exists
 	 *
 	 * @returns {Promise<AbstractFileEntity>} The file after it has been opened.
-	 * @abstract
+	 * @throws {FileSystemError} An error is thrown if the file does not exist.
+	 * @throws {Error} An error is thrown if there process is unable to write to the file system.
 	 * @since Version 0.1.0
 	 *
 	 */
-	public abstract open(): Promise<AbstractFileEntity>;
+	public async open(flag: FileSystemFlag): Promise<AbstractFileEntity> {
+		// Validate
+		if ((this.exists)
+			&& (!this.isOpen)) {
+
+			await fs.open(this.#getFullPath(), flag.flag || "r", (error, file) => {
+				if (error) throw error;
+
+				this.fileNumber = file;
+			});
+		} else if (!this.exists) {
+			throw new FileSystemError(`Unable to open ${this.name}; File does not exist`);
+		}
+
+		this.emit("open", this.name, this.fileNumber);
+
+		return this;
+	}
 
 	/**
 	 *
@@ -371,6 +470,28 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 	 *
 	 */
 	get fullName(): string { return this.#getFullName(); }
+
+	/**
+	 *
+	 * Gets the file number.
+	 *
+	 * @returns {Nullable<number>}
+	 * @protected
+	 * @since Version 0.1.0
+	 *
+	 */
+	protected get fileNumber(): Nullable<number> { return this.#fileNumber; }
+
+	/**
+	 *
+	 * Sets the file number.
+	 *
+	 * @param {number} arg
+	 * @protected
+	 * @since Version 0.1.0
+	 *
+	 */
+	protected set fileNumber(arg: Nullable<number>) { this.#fileNumber = arg; }
 
 	/**
 	 *
