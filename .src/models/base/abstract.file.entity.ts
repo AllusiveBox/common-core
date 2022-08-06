@@ -1,9 +1,6 @@
 import * as fs from "fs";
 import AbstractSystemEntity from "./abstract.system.entity";
-import {
-	FileSystemFlag,
-	Nullable
-} from "../../../.src";
+import { Nullable } from "../../types";
 
 /**
  *
@@ -122,48 +119,6 @@ interface AbstractFileEvents {
 
 /**
  *
- * Interface that describes the object used by the {@link AbstractFileEntity#operate} method.
- *
- * @interface OperationOptions
- * @since Version 0.1.0
- *
- */
-export interface OperationOptions {
-
-	/**
-	 *
-	 * The system flag to use when performing the operation.
-	 *
-	 * @type {Nullable<FileSystemFlag>}
-	 * @since Version 0.1.0
-	 *
-	 */
-	flag?: Nullable<FileSystemFlag>;
-
-	/**
-	 *
-	 * The data to use when performing the operation.
-	 *
-	 * @type {Nullable<any>}
-	 * @since Version 0.1.0
-	 *
-	 */
-	data?: Nullable<any>;
-
-	/**
-	 *
-	 * Indicates the type of event being performed.
-	 *
-	 * @type {keyof AbstractFileEvents}
-	 * @since Version 0.1.0
-	 *
-	 */
-	event: keyof AbstractFileEvents;
-
-}
-
-/**
- *
  * Abstract class for file based entities in the operating system.
  *
  * @class AbstractFileEntity
@@ -275,114 +230,84 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 
 	/**
 	 *
-	 * Abstract method to handle file operations.
-	 *
-	 * @param {OperationOptions} options The options to use when performing the operation.
-	 * @returns {Promise<void>} Returns the results of the operation.
-	 * @protected
-	 * @abstract
-	 * @template T
-	 * @since Version 0.1.0
-	 *
-	 */
-	protected abstract operate(options: OperationOptions): Promise<void>;
-
-	/**
-	 *
-	 * Creates a new file in the system and fills it with the supplied content, if any.
+	 * Abstract method to create a new file in the system and fill it with the supplied content.
 	 *
 	 * @param {Nullable<any>} contents The contents of the file that is being created in the system.
 	 * @returns {Promise<AbstractFileEntity>} The file after it is created in the system.
+	 * @abstract
 	 * @since Version 0.1.0
 	 *
 	 */
-	public async create(contents?: Nullable<any>): Promise<AbstractFileEntity> {
-		await this
-			.operate({ event: "create", data: contents, flag: FileSystemFlag.WRITE_ONLY_NON_EXISTING });
-		return this;
-	}
+	public abstract create(contents?: Nullable<any>): Promise<AbstractFileEntity>;
 
 
 	/**
 	 *
-	 * Closes an opened file.
+	 * Abstract method that closes an opened file.
 	 *
 	 * @returns {Promise<void>}
+	 * @abstract
 	 * @since Version 0.1.0
 	 *
 	 */
-	public async close(): Promise<void> {
-		await this.operate({ event: "close" });
-		this.#isOpen = false;
-	}
+	public abstract close(): Promise<void>;
 
 	/**
 	 *
-	 * Deletes a file from the system, as well as all the contents of the instance.
+	 * Abstract method that deletes a file.
 	 *
 	 * @returns {Promise<void>}
+	 * @abstract
 	 * @since Version 0.1.0
 	 *
 	 */
-	public async delete(): Promise<void> {
-		await this.operate({ event: "delete" });
-	}
+	public abstract delete(): Promise<void>;
 
 	/**
 	 *
-	 * Moves a file to another location in the file system.
+	 * Abstract method that moves a file to another location in the file system.
 	 *
 	 * @param {string} location The location to move the file to.
 	 * @returns {Promise<AbstractFileEntity>} The file after it has been moved.
+	 * @abstract
 	 * @since Version 0.1.0
 	 *
 	 */
-	public async move(location: string): Promise<AbstractFileEntity> {
-		await this
-			.operate({ event: "fileMoved", data: location, flag: FileSystemFlag.WRITE_ONLY_NON_EXISTING });
-		return this;
-	}
+	public abstract move(location: string): Promise<AbstractFileEntity>;
 
 	/**
 	 *
-	 * Opens an existing file.
+	 * Abstract method for opening files.
 	 *
 	 * @returns {Promise<AbstractFileEntity>} The file after it has been opened.
+	 * @abstract
 	 * @since Version 0.1.0
 	 *
 	 */
-	public async open(): Promise<AbstractFileEntity> {
-		await this.operate({ event: "open" });
-		this.#isOpen = true;
-		return this;
-	}
+	public abstract open(): Promise<AbstractFileEntity>;
 
 	/**
 	 *
-	 * Reads from an existing file. Sets the {@link content} field with the results.
+	 * Abstract method for reading the contents of a file.
 	 *
 	 * @returns {Promise<AbstractFileEntity>} The file after it has been read.
+	 * @abstract
 	 * @since Version 0.1.0
 	 *
 	 */
-	public async read(): Promise<AbstractFileEntity> {
-		await this.operate({ event: "read", flag: FileSystemFlag.READ });
-		return this;
-	}
+	public abstract read(): Promise<AbstractFileEntity>;
 
 	/**
 	 *
-	 * Renames a file in the file system.
+	 * Abstract method for renaming a file.
 	 *
 	 * @param {string} fileName The new name for the file.
 	 * @returns {Promise<AbstractFileEntity>} The file after it has been renamed.
+	 * @abstract
 	 * @since Version 0.1.0
 	 *
 	 */
-	public async rename(fileName: string): Promise<AbstractFileEntity> {
-		await this.operate({ event: "fileRenamed", data: fileName });
-		return this;
-	}
+	public abstract rename(fileName: string): Promise<AbstractFileEntity>;
 
 	/**
 	 *
@@ -390,26 +315,22 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 	 *
 	 * @param {any} content The contents to write to the file.
 	 * @returns {Promise<AbstractFileEntity>} The file after it has been written to.
+	 * @abstract
 	 * @since Version 0.1.0
 	 *
 	 */
-	public async write(content: any): Promise<AbstractFileEntity> {
-		await this.operate({ event: "contentChange", data: content, flag: FileSystemFlag.WRITE });
-		return this;
-	}
+	public abstract write(content: any): Promise<AbstractFileEntity>;
 
 	/**
 	 *
 	 * Updates the contents of a file.
 	 * @param {any} content The content to update the file with.
 	 * @returns {Promise<AbstractFileEntity>} The file after it has been updated.
+	 * @abstract
 	 * @since Version 0.1.0
 	 *
 	 */
-	public async update(content: any): Promise<AbstractFileEntity> {
-		await this.operate({ event: "contentChange", data: content, flag: FileSystemFlag.APPEND_ONLY_EXISTING });
-		return this;
-	}
+	public abstract update(content: any): Promise<AbstractFileEntity>;
 
 	/**
 	 *
@@ -460,5 +381,16 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 	 *
 	 */
 	get isOpen(): boolean { return this.#isOpen; }
+
+	/**
+	 *
+	 * Sets the file open flag.
+	 *
+	 * @param {boolean} arg
+	 * @protected
+	 * @since Version 0.1.0
+	 *
+	 */
+	protected set isOpen(arg: boolean) { this.#isOpen = arg; }
 
 }

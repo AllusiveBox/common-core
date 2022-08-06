@@ -1,5 +1,6 @@
 /** Error Exports */
 export {
+    FileSystemError,
     NilError
 } from "./errors";
 /** Model Exports */
@@ -17,6 +18,7 @@ export {
     DateString,
     NestedArray,
     NestedKeyOf,
+    Nilable,
     Nullable,
     NumericalString
 } from "./types";

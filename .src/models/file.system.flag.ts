@@ -1,5 +1,5 @@
 import { AbstractEntity } from "./base";
-import { Nullable } from "../types";
+import { Nilable } from "../types";
 import { getType, isNotString, isNullOrUndefined } from "../utils/types.util";
 
 /**
@@ -22,7 +22,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @readonly
 	 *
 	 */
-	readonly #flag: Nullable<string>;
+	readonly #flag: Nilable<string>;
 
 	/**
 	 *
@@ -299,13 +299,13 @@ export default class FileSystemFlag extends AbstractEntity {
 	 *
 	 * Maps that has all the mapping information for converting a flag string to a {@link FileSystemFlag} entity.
 	 *
-	 * @type {Map<Nullable<string>, FileSystemFlag>}
+	 * @type {Map<Nilable<string>, FileSystemFlag>}
 	 * @static
 	 * @readonly
 	 * @since Version 0.1.0
 	 *
 	 */
-	public static readonly MAP: Map<Nullable<string>, FileSystemFlag> = new Map<Nullable<string>, FileSystemFlag>([
+	public static readonly MAP: Map<Nilable<string>, FileSystemFlag> = new Map<Nilable<string>, FileSystemFlag>([
 		[FileSystemFlag.APPEND.flag, FileSystemFlag.APPEND],
 		[FileSystemFlag.APPEND_ONLY_EXISTING.flag, FileSystemFlag.APPEND_ONLY_EXISTING],
 		[FileSystemFlag.APPEND_AND_READ.flag, FileSystemFlag.APPEND_AND_READ],
@@ -456,13 +456,13 @@ export default class FileSystemFlag extends AbstractEntity {
 	 *
 	 * @param {string}           code A string representing the flag.
 	 * @param {string}           text A string representing the flag in readable format.
-	 * @param {Nullable<string>} flag A string representing the flag entity. Used by node.
+	 * @param {Nilable<string>} flag A string representing the flag entity. Used by node.
 	 * @private
 	 * @constructor
 	 * @since Version 0.1.0
 	 *
 	 */
-	private constructor(code: string, text: string, flag: Nullable<string>) {
+	private constructor(code: string, text: string, flag: Nilable<string>) {
 		super(code, text, FileSystemFlag.TYPE);
 		this.#flag = flag;
 	}
@@ -479,7 +479,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @since Version 0.1.0
 	 *
 	 */
-	public static getFileSystemFlag(flag: Nullable<string>): FileSystemFlag {
+	public static getFileSystemFlag(flag: Nilable<string>): FileSystemFlag {
 		// Validate
 		if (isNullOrUndefined(flag)) {
 			return FileSystemFlag.NULL;
@@ -594,10 +594,10 @@ export default class FileSystemFlag extends AbstractEntity {
 	 *
 	 * Gets the flag in a format that is usable by node.
 	 *
-	 * @returns {Nullable<string>}
+	 * @returns {Nilable<string>}
 	 * @since Version 0.1.0
 	 *
 	 */
-	get flag(): Nullable<string> { return this.#flag; }
+	get flag(): Nilable<string> { return this.#flag; }
 
 }
