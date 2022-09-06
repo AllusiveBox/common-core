@@ -29,12 +29,14 @@ export function getProperty<TObject extends object>(
 
 		// @ts-ignore
 		throw new NilError(`Attempted to get ${path}`);
-	} else if (isNullOrUndefined(path)) {
+	} else if ((isNullOrUndefined(path))
+		&& (isNotNullOrUndefined(object))) {
+
 		throw new NilError("Null or undefined path");
 	} else if (isNullOrUndefined(object)
 		&& (isNullOrUndefined(path))) {
 
-		throw new NilError();
+		throw new NilError("Unable to get property when both path and object are null");
 	}
 
 	const keys = path.split('.');

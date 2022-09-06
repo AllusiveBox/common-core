@@ -46,7 +46,8 @@ describe("ObjectUtil Unit Test Suite", () => {
 		expect(() => {
 			// @ts-ignore
 			ObjectUtil.getProperty(null, null);
-		}).toThrowError("Null or Undefined value");
+		}).toThrowError("Null or Undefined value; Cause: Unable to get property when both path and object are" +
+			" null");
 	});
 
 	test("that given a shallow object, getProperty returns the value stored at the specified path", () => {
