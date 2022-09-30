@@ -10,7 +10,8 @@ export {
     AbstractSystemEntity,
     Environment,
     FileSystemFlag,
-    IFile
+    IFile,
+    TextFile
 } from "./models";
 
 /** Type Exports */

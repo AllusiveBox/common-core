@@ -5,6 +5,7 @@ import { Nullable } from "../../types";
 import { FileSystemError } from "../../errors";
 import { FileSystemFlag } from "../index";
 import { isNotNullOrUndefined, isNullOrUndefined } from "../../utils/types.util";
+import { isEmptyString } from "../../utils/string.util";
 
 /**
  *
@@ -44,7 +45,7 @@ interface AbstractFileEvents {
 
 	/**
 	 *
-	 * Event fired when a file has its content changed.
+	 * Event fired when a file has its content changed with a write operation.
 	 *
 	 * @event AbstractFileEntity#contentChange
 	 * @param {string} fileName   The name of the file that was changed.
@@ -55,6 +56,17 @@ interface AbstractFileEvents {
 	 *
 	 */
 	contentChange:(fileName: string, oldContent: any, newContent: any) => void;
+
+	/**
+	 *
+	 * Event fired when a file has content updated.
+	 *
+	 * @param {string} fileName The name of the file that was updated.
+	 * @return {void}
+	 * @since Version 0.1.0
+	 *
+	 */
+	contentUpdated: (fileName: string) => void;
 
 	/**
 	 *
@@ -257,41 +269,23 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 
 	/**
 	 *
-	 * Creates the file in the file system. If any content is provided, it is written into the file.
+	 * Abstract method that creates a file in the file system.
 	 *
-	 * @param {Nullable<any>} content The contents of the file that is being created in the system.
-	 * @returns {Promise<AbstractFileEntity>} The file after it is created in the system.
-	 * @throws {FileSystemError} An error is thrown if the file already exists in the system at the specified location.
-	 * @throws {Error} An error is thrown if there process is unable to write to the file system.
-	 * @since Version 0.1.0
+	 * @param {Nullable<any>} content The content to write to the file.
+	 * @returns {Promise<AbstractFileEntity>} The file after it has been created.
+	 * @abstract
 	 *
 	 */
-	public async create(content?: Nullable<any>): Promise<AbstractFileEntity> {
-		// Validate
-		if (this.exists) {
-			throw new FileSystemError(`Unable to create ${this.name}; File already exists`);
-		}
-
-		fs.writeFile(this.#getFullPath(), content, (error) => {
-			if (error)
-				throw error;
-
-		});
-
-		this.#content = content;
-		this.emit("create", content);
-
-		return this;
-	}
+	public abstract create(content?: Nullable<any>): Promise<AbstractFileEntity>;
 
 	/**
 	 *
 	 * Closes the file, if it is open.
 	 *
 	 * @returns {Promise<AbstractFileEntity>}
-	 * @throws {FileSystemError} An error is thrown if the file does not exist.
-	 * @throws {FileSystemError} An error is thrown if the process is unable to determine the file descriptor.
-	 * @throws {Error} An error is thrown if there process is unable to write to the file system.
+	 * @throws {FileSystemError} If the file does not exist.
+	 * @throws {FileSystemError} If the process is unable to determine the file descriptor.
+	 * @throws {Error} If there process is unable to write to the file system.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -322,9 +316,9 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 	 * Deletes the file from the system.
 	 *
 	 * @returns {Promise<void>}
-	 * @throws {FileSystemError} An error is thrown if the file is currently open.
-	 * @throws {FileSystemError} An error is thrown if the file does not exist.
-	 * @throws {Error} An error is thrown if there process is unable to write to the file system.
+	 * @throws {FileSystemError} If the file is currently open.
+	 * @throws {FileSystemError} If the file does not exist.
+	 * @throws {Error} If there process is unable to write to the file system.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -346,23 +340,43 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 
 	/**
 	 *
-	 * Abstract method that moves a file to another location in the file system.
+	 * Moves the file to another location in the file system.
 	 *
-	 * @param {string} location The location to move the file to.
-	 * @returns {Promise<AbstractFileEntity>} The file after it has been moved.
-	 * @abstract
+	 * @param {string} location
+	 * @returns {Promise<AbstractFileEntity>}
+	 * @throws {Error} If the system is unable to move the file.
 	 * @since Version 0.1.0
 	 *
 	 */
-	public abstract move(location: string): Promise<AbstractFileEntity>;
+	public async move(
+		location: string
+	): Promise<AbstractFileEntity> {
+		if ((isNullOrUndefined(location))
+			|| (isEmptyString(location))) {
+
+			throw new FileSystemError(`Unable to move ${this.name}; No destination provided`);
+		} else if (!this.exists) {
+			throw new FileSystemError(`Unable to move ${this.name}; File does not exist`);
+		}
+
+		const oldLocation = this.location;
+		const oldPath = this.fullPath
+
+		this.location = location;
+
+		fs.renameSync(oldPath, this.fullPath);
+
+		this.emit("fileMoved", this.name, oldLocation, this.location);
+		return this;
+	}
 
 	/**
 	 *
 	 * Opens the file, if it exists
 	 *
 	 * @returns {Promise<AbstractFileEntity>} The file after it has been opened.
-	 * @throws {FileSystemError} An error is thrown if the file does not exist.
-	 * @throws {Error} An error is thrown if there process is unable to write to the file system.
+	 * @throws {FileSystemError} If the file does not exist.
+	 * @throws {Error} If there process is unable to write to the file system.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -398,15 +412,38 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 
 	/**
 	 *
-	 * Abstract method for renaming a file.
+	 * Renames a file in the file system.
 	 *
 	 * @param {string} fileName The new name for the file.
 	 * @returns {Promise<AbstractFileEntity>} The file after it has been renamed.
-	 * @abstract
+	 * @throws {Error} If the system is unable to rename the file.
 	 * @since Version 0.1.0
 	 *
 	 */
-	public abstract rename(fileName: string): Promise<AbstractFileEntity>;
+	public async rename(
+		fileName: string
+	): Promise<AbstractFileEntity> {
+		if ((isNullOrUndefined(fileName))
+			|| (isEmptyString(fileName))) {
+
+			throw new FileSystemError(`Unable to rename ${this.name}; No name provided`);
+		} else if (!this.exists) {
+			throw new FileSystemError(`Unable to rename ${this.name}; File does not exist`);
+		} else if (this.name === fileName) {
+			return this;
+		}
+
+		const oldName = this.name;
+		this.name = fileName;
+
+		fs.renameSync(
+			`${this.location}/${oldName}${this.extension}`,
+			`${this.location}/${fileName}${this.extension}`
+		);
+
+		this.emit("fileRenamed", oldName, fileName);
+		return this;
+	}
 
 	/**
 	 *
@@ -492,6 +529,17 @@ export default abstract class AbstractFileEntity extends AbstractSystemEntity<Ab
 	 *
 	 */
 	protected set fileNumber(arg: Nullable<number>) { this.#fileNumber = arg; }
+
+	/**
+	 *
+	 * Gets the full path for the file.
+	 *
+	 * @returns {string}
+	 * @protected
+	 * @since Version 0.1.0
+	 *
+	 */
+	protected get fullPath(): string { return this.#getFullPath(); }
 
 	/**
 	 *

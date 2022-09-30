@@ -19,7 +19,7 @@ export function getEnvironment(): Environment {
  * Sets the `process.env.NODE_ENV` variable with the supplied Environment.
  *
  * @param {Environment} environment The Environment to set.
- * @throws {TypeError} An error is thrown if the provided value is not an Environment.
+ * @throws {TypeError} If the provided value is not an Environment.
  * @since Version 0.1.0
  *
  */
@@ -32,7 +32,7 @@ export function setEnvironment(environment: Environment);
  * value does not map to a valid Environment, {@link Environment.UNKNOWN} is set instead.
  *
  * @param {string} environmentString The environment as a string.
- * @throws {TypeError} An error is thrown if the provided value is not a string.
+ * @throws {TypeError} If the provided value is not a string.
  * @since Version 0.1.0
  *
  */
@@ -43,7 +43,7 @@ export function setEnvironment(environmentString: string);
  * Sets the node processes environment setting.
  *
  * @param {(Environment | string)} arg The environment to set.
- * @throws {TypeError} An error is thrown if the provided value is not an Environment or string value.
+ * @throws {TypeError} If the provided value is not an Environment or string value.
  * @since Version 0.1.0
  *
  */

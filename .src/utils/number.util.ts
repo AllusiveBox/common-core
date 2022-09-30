@@ -105,8 +105,8 @@ export const TEN_THOUSAND = 10000;
  *
  * @param {number} num The number to format.
  * @returns {NumericalString} The provided number formatted as a numerical string.
- * @throws {TypeError} An error is thrown if the provided num param is not a number.
- * @throws {Error} An error is thrown if the provided number is more than two digits.
+ * @throws {TypeError} If the provided num param is not a number.
+ * @throws {Error} If the provided number is more than two digits.
  * @since Version 0.1.0
  *
  */
@@ -123,12 +123,12 @@ export function convertToTwoCharacterNumericalString(
  * @param {?boolean}                    [options.suppressErrorOnValueTooLarge=true]
  * @param {?boolean}                    [options.errorOnNegative
  * @returns {NumericalString} The provided number formatted as a numerical string.
- * @throws {TypeError} An error is thrown if the provided num param is not a number.
- * @throws {TypeError} An error is thrown if the provided options param is not an object.
- * @throws {TypeError} An error is thrown if the provided `options.suppressErrorOnValueTooLarge` param is not a
+ * @throws {TypeError} If the provided num param is not a number.
+ * @throws {TypeError} If the provided options param is not an object.
+ * @throws {TypeError} If the provided `options.suppressErrorOnValueTooLarge` param is not a
  * boolean.
- * @throws {TypeError} An error is thrown if the provided `options.errorOnNegative` param is not a boolean.
- * @throws {Error} An error is thrown if the provided number is more than two digits, unless the
+ * @throws {TypeError} If the provided `options.errorOnNegative` param is not a boolean.
+ * @throws {Error} If the provided number is more than two digits, unless the
  * `options.suppressError` flag is set.
  * @since Version 0.1.0
  *
@@ -145,12 +145,12 @@ export function convertToTwoCharacterNumericalString(
  * @param {number}                       num       The number to format.
  * @param {?FormatAsTwoCharacterOptions} [options] An object containing optional configurations.
  * @returns {NumericalString} The provided number formatted as a numerical string.
- * @throws {TypeError} An error is thrown if the provided num param is not a number.
- * @throws {TypeError} An error is thrown if the provided options param is not an object.
- * @throws {TypeError} An error is thrown if the provided `options.suppressErrorOnValueTooLarge` param is not a
+ * @throws {TypeError} If the provided num param is not a number.
+ * @throws {TypeError} If the provided options param is not an object.
+ * @throws {TypeError} If the provided `options.suppressErrorOnValueTooLarge` param is not a
  * boolean.
- * @throws {TypeError} An error is thrown if the provided `options.errorOnNegative` param is not a boolean.
- * @throws {Error} An error is thrown if the provided number is more than two digits, unless the
+ * @throws {TypeError} If the provided `options.errorOnNegative` param is not a boolean.
+ * @throws {Error} If the provided number is more than two digits, unless the
  * `options.suppressError` flag is set.
  * @since Version 0.1.0
  *
@@ -230,8 +230,8 @@ export function convertToTwoCharacterNumericalString(
  * @param {number} num           The number to round.
  * @param {number} decimalPlaces The number of decimal places to round.
  * @returns {number} The provided number rounded to the specified decimal place.
- * @throws {TypeError} An error is thrown if the provided num param is not a number.
- * @throws {TypeError} An error is thrown if the provided decimalPlaces param is not a number.
+ * @throws {TypeError} If the provided num param is not a number.
+ * @throws {TypeError} If the provided decimalPlaces param is not a number.
  * @since Version 0.1.0
  *
  */

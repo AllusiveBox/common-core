@@ -475,7 +475,7 @@ export default class FileSystemFlag extends AbstractEntity {
 	 * @returns {FileSystemFlag} The FileSystemFlag associated with the provided flag. Returns
 	 * {@link FileSystemFlag.NULL} if the provided flag is null, or {@link FileSystemFlag.UNKNOWN_FLAG} if an
 	 * unknown flag is provided.
-	 * @throws {TypeError} An error is thrown if the provided value is not a string.
+	 * @throws {TypeError} If the provided value is not a string.
 	 * @since Version 0.1.0
 	 *
 	 */

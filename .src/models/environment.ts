@@ -115,7 +115,7 @@ export default class Environment extends AbstractEntity {
 	 * @param {string} environmentCode The environment code or text to search off.
 	 * @returns {Environment} An environment associated with the provided string value. If unable to determine an
 	 * association, {@link Environment.UNKNOWN} is returned.
-	 * @throws {TypeError} An error is thrown if the provided value is not a string.
+	 * @throws {TypeError} If the provided value is not a string.
 	 * @since Version 0.1.0
 	 *
 	 */

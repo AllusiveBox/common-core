@@ -6,7 +6,7 @@ import { isNotString, isString } from "./types.util";
  *
  * @param {string} arg The string to wrap in quotes.
  * @returns {string} The provided string wrapped in double quotes.
- * @throws {Error} An error is thrown if the provided value is not a string.
+ * @throws {Error} If the provided value is not a string.
  * @since Version 0.1.0
  *
  */

@@ -15,7 +15,7 @@ interface Millisecond {
 	 *
 	 * @param {number} [seconds=1] The number of seconds to convert.
 	 * @returns {number} The number of seconds converted to milliseconds.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -27,7 +27,7 @@ interface Millisecond {
 	 *
 	 * @param {number} milliseconds The number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into seconds.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -39,7 +39,7 @@ interface Millisecond {
 	 *
 	 * @param {number} [minutes=1] The number of minutes to convert.
 	 * @returns {number} The number of minutes converted to milliseconds.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -51,7 +51,7 @@ interface Millisecond {
 	 *
 	 * @param {number} milliseconds The number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into seconds.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -63,7 +63,7 @@ interface Millisecond {
 	 *
 	 * @param {number} [hours=1] The number of hours to convert.
 	 * @returns {number} The number of minutes converted to milliseconds.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -75,7 +75,7 @@ interface Millisecond {
 	 *
 	 * @param {number} milliseconds The number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into hours.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -87,7 +87,7 @@ interface Millisecond {
 	 *
 	 * @param {number} [days=1] The number of days to convert.
 	 * @returns {number} The number of days converted to milliseconds.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -99,7 +99,7 @@ interface Millisecond {
 	 *
 	 * @param {number} milliseconds The number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into days.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -111,7 +111,7 @@ interface Millisecond {
 	 *
 	 * @param {number} [weeks=1] The number of weeks to convert.
 	 * @returns {number} The number of weeks converted to milliseconds.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -123,7 +123,7 @@ interface Millisecond {
 	 *
 	 * @param {number} milliseconds The number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into weeks.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -135,7 +135,7 @@ interface Millisecond {
 	 *
 	 * @param {number} [months=1] The number of months to convert.
 	 * @returns {number} The number of months converted to milliseconds.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -147,7 +147,7 @@ interface Millisecond {
 	 *
 	 * @param {number} milliseconds The number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into months.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -159,7 +159,7 @@ interface Millisecond {
 	 *
 	 * @param {number} [years=1] The number of years to convert.
 	 * @returns {number} The number of years converted to milliseconds.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -171,7 +171,7 @@ interface Millisecond {
 	 *
 	 * @param {number} milliseconds the number of milliseconds to convert.
 	 * @returns {number} The number of milliseconds converted into years.
-	 * @throws {TypeError} An error is thrown if the provided value to convert is not a number.
+	 * @throws {TypeError} If the provided value to convert is not a number.
 	 * @since Version 0.1.0
 	 *
 	 */
@@ -186,7 +186,7 @@ interface Millisecond {
  * @param {number} [multiplier=1] The millisecond multiplier.
  * @returns {(unit: number) => number} A function configured with a specified multiplier. Takes a single additional
  * unit of time and calculates the number of milliseconds in it. (e.g. seconds, minutes, hours, etc).
- * @throws {TypeError} An error is thrown if the unit passed to the returned function is not a number.
+ * @throws {TypeError} If the unit passed to the returned function is not a number.
  *
  */
 function calculateMilliseconds(multiplier: number): (unit: number) => number {
@@ -205,7 +205,7 @@ function calculateMilliseconds(multiplier: number): (unit: number) => number {
  * @param {number} [divider=1] The milliseconds divider.
  * @returns {(unit: number) => number} A function configured with a specified divider. Takes a single additional
  * amount of milliseconds and uses it to calculate the number of the specified unit.
- * @throws {TypeError} An error is thrown if the milliseconds passed to the returned function is not a number.
+ * @throws {TypeError} If the milliseconds passed to the returned function is not a number.
  *
  */
 function convertFromMilliseconds(divider: number): (unit: number) => number {

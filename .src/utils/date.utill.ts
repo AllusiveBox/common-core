@@ -31,8 +31,8 @@ export function calculateDaysApart(date: Date): number;
  * @param {Date} firstDate  The first date to compare against.
  * @param {Date} secondDate The second date to compare against.
  * @returns {number} The number of days between the two dates.
- * @throws {TypeError} An Error is thrown if the first param is not a Date.
- * @throws {TypeError} An Error is thrown if the second param is not a Date.
+ * @throws {TypeError} If the first param is not a Date.
+ * @throws {TypeError} If the second param is not a Date.
  * @since Version 0.1.0
  *
  */
@@ -46,8 +46,8 @@ export function calculateDaysApart(firstDate: Date, secondDate: Date): number;
  * @param {Date} [secondDate=new Date()] The second date to compare against. Defaults to new date, if a value is not
  * provided.
  * @returns {number} The number of days between the two dates.
- * @throws {TypeError} An Error is thrown if the first param is not a Date.
- * @throws {TypeError} An Error is thrown if the second param is not a Date.
+ * @throws {TypeError} If the first param is not a Date.
+ * @throws {TypeError} If the second param is not a Date.
  * @since Version 0.1.0
  *
  */
@@ -72,7 +72,7 @@ export function calculateDaysApart(firstDate: Date, secondDate: Date = new Date(
  *
  * @param {Date} date The Date object to convert.
  * @returns {DateString} The Date object as a DateString.
- * @throws {TypeError} An error is thrown if the provided value is not a Date object.
+ * @throws {TypeError} If the provided value is not a Date object.
  * @since Version 0.1.0
  *
  */
@@ -84,7 +84,7 @@ export function convertToDateString(date: Date): DateString;
  *
  * @param {string} dateAsString A Date object converted to string form to convert.
  * @returns {DateString} The string converted to a DateString.
- * @throws {TypeError} An error is thrown if the provided value is not a valid Date formatted string.
+ * @throws {TypeError} If the provided value is not a valid Date formatted string.
  * @since Version 0.1.0
  *
  */
@@ -96,7 +96,7 @@ export function convertToDateString(dateAsString: string): DateString;
  *
  * @param {(Date | string)} dateOrString The Date object or string to convert.
  * @returns {DateString} The provided value converted to a DateString.
- * @throws {TypeError} An error is thrown if the provided value is not a Date object or Date formatted string.
+ * @throws {TypeError} If the provided value is not a Date object or Date formatted string.
  * @since Version 0.1.0
  *
  */
@@ -128,7 +128,7 @@ export function convertToDateString(dateOrString: Date | string): DateString {
  *
  * @param {(Date | string)} dateOrString The Date object or string to convert.
  * @returns {DateString} The provided value converted to a YearMonthDateString.
- * @throws {TypeError} An error is thrown if the provided value is not a Date object or Date formatted string.
+ * @throws {TypeError} If the provided value is not a Date object or Date formatted string.
  * @since Version 0.1.0
  *
  */
@@ -159,7 +159,7 @@ export function convertToYearAndMonthDateString(dateOrString: Date | string): Ye
  *
  * @param {Date} date The Date object to get the month offset of.
  * @returns {number} The month associated with the Date object, formatted as a standard number.
- * @throws {Error} An error is thrown if the provided param is not a Date object.
+ * @throws {Error} If the provided param is not a Date object.
  * @since Version 0.1.0
  *
  */
