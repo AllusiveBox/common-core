@@ -20,7 +20,9 @@ export default interface IFile {
 	 * @since Version 0.1.0
 	 *
 	 */
-	create(content?: Nullable<any>): Promise<IFile>;
+	create(
+		content?: Nullable<any>
+	): Promise<IFile>;
 
 	/**
 	 *
@@ -51,7 +53,9 @@ export default interface IFile {
 	 * @since Version 0.1.0
 	 *
 	 */
-	move(location: string): Promise<IFile>;
+	move(
+		location: string
+	): Promise<IFile>;
 
 	/**
 	 *
@@ -61,7 +65,9 @@ export default interface IFile {
 	 * @since Version 0.1.0
 	 *
 	 */
-	open(flag: FileSystemFlag): Promise<IFile>;
+	open(
+		flag: FileSystemFlag
+	): Promise<IFile>;
 
 	/**
 	 *
@@ -82,18 +88,22 @@ export default interface IFile {
 	 * @since Version 0.1.0
 	 *
 	 */
-	rename(fileName: string): Promise<IFile>;
+	rename(
+		fileName: string
+	): Promise<IFile>;
 
 	/**
 	 *
 	 * Writes to the file.
 	 *
-	 * @param {string} content The file content to write.
+	 * @param {Nullable<string>} content The file content to write.
 	 * @returns {Promise<IFile>}
 	 * @since Version 0.1.0
 	 *
 	 */
-	write(content: string): Promise<IFile>;
+	write(
+		content?: Nullable<string>
+	): Promise<IFile>;
 
 	/**
 	 *
@@ -104,6 +114,8 @@ export default interface IFile {
 	 * @since Version 0.1.0
 	 *
 	 */
-	update(content: string): Promise<IFile>;
+	update(
+		content: string
+	): Promise<IFile>;
 
 }
