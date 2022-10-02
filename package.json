@@ -9,7 +9,7 @@
     "build:docs": "npm run build && npm run build:nocomments && typedoc",
     "build:nocomments": "tsc -p ./tsconfig.nocomments.json",
     "build:npmrelease": "npm run build && npm run build:nocomments",
-    "prepublish": "jest && npm run build:npmrelease",
+    "prepublishOnly": "jest && npm run build:npmrelease",
     "test": "jest",
     "integration": "jest --group=Integration",
     "unit": "jest --group=Unit"

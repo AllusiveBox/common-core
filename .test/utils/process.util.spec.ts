@@ -41,10 +41,10 @@ describe("ProcessUtil Unit Test Suite", () => {
 	});
 
 	test.each([
-		{ arg: [], error: "" },
-		{ arg: true, error: "" },
-		{ arg: 1, error: "" },
-		{ arg: null, error: "" },
+		{ arg: [], error: "Unable to set environment with type: Array; Must be of type Environment or string" },
+		{ arg: true, error: "Unable to set environment with type: Boolean; Must be of type Environment or string" },
+		{ arg: 1, error: "Unable to set environment with type: Number; Must be of type Environment or string" },
+		{ arg: null, error: "Unable to set environment with type: Null; Must be of type Environment or string" },
 	])
 	("that given $arg, setEnvironment throws \"$error\"", ({ arg, error }) => {
 		expect(() => {
@@ -54,22 +54,50 @@ describe("ProcessUtil Unit Test Suite", () => {
 	});
 
 	test.each([
-		{ arg: Environment.DEVELOPMENT, result: Environment.DEVELOPMENT },
-		{ arg: Environment.PRODUCTION, result: Environment.PRODUCTION },
-		{ arg: Environment.TEST, result: Environment.TEST },
-		{ arg: Environment.UNKNOWN, result: Environment.UNKNOWN },
-		{ arg: "development", result: Environment.DEVELOPMENT },
-		{ arg: "production", result: Environment.PRODUCTION },
-		{ arg: "test", result: Environment.TEST },
-		{ arg: "unknown", result: Environment.UNKNOWN }
+		{
+			testName: `${Environment.DEVELOPMENT}`,
+			testArg: Environment.DEVELOPMENT,
+			expectedResult: Environment.DEVELOPMENT,
+			resultName: "Environment:DEVELOPMENT"
+		},
+		{
+			testName: `${Environment.PRODUCTION}`,
+			testArg: Environment.PRODUCTION,
+			expectedResult: Environment.PRODUCTION,
+			resultName: "Environment:PRODUCTION"
+		},
+		{
+			testName: `${Environment.TEST}`,
+			testArg: Environment.TEST,
+			expectedResult: Environment.TEST,
+			resultName: "Environment:TEST"
+		},
+		{
+			testName: "development",
+			testArg: "development",
+			expectedResult: Environment.DEVELOPMENT,
+			resultName: "Environment:DEVELOPMENT"
+		},
+		{
+			testName: "production",
+			testArg: "production",
+			expectedResult: Environment.PRODUCTION,
+			resultName: "Environment:PRODUCTION"
+		},
+		{
+			testName: "test",
+			testArg: "test",
+			expectedResult: Environment.TEST,
+			resultName: "Environment:TEST"
+		}
 	])
-	("that given $arg, setEnvironment returns $result", ({ arg, result }) => {
+	("that given $testName, setEnvironment returns $resultName", ({ testName, testArg, expectedResult, resultName }) => {
 		expect(() => {
 			// @ts-ignore
-			ProcessUtil.setEnvironment(arg);
+			ProcessUtil.setEnvironment(testArg);
 		}).not.toThrowError();
 
-		expect(ProcessUtil.getEnvironment()).toStrictEqual(result);
+		expect(ProcessUtil.getEnvironment()).toStrictEqual(expectedResult);
 	});
 
 });
