@@ -1,17 +1,11 @@
 /** Error Exports */
 export {
-    FileSystemError,
     NilError
 } from "./errors";
 /** Model Exports */
 export {
     AbstractEntity,
-    AbstractFileEntity,
-    AbstractSystemEntity,
-    Environment,
-    FileSystemFlag,
-    IFile,
-    TextFile
+    Environment
 } from "./models";
 
 /** Type Exports */
