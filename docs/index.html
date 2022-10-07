@@ -1,0 +1,541 @@
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@allusivebox/core - v0.1.0</title><meta name="description" content="Documentation for @allusivebox/core - v0.1.0"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@allusivebox/core - v0.1.0</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1> @allusivebox/core - v0.1.0 </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#version-010-beta-release" id="version-010-beta-release" style="color: inherit; text-decoration: none;">
+  <h1>Version 0.1.0 (Beta Release)</h1>
+</a>
+<details>
+    <summary>Version 0.1.0 change log</summary>
+
+
+<a href="#newly-added" id="newly-added" style="color: inherit; text-decoration: none;">
+  <h2>Newly Added</h2>
+</a>
+
+<a href="#errors" id="errors" style="color: inherit; text-decoration: none;">
+  <h3>Errors</h3>
+</a>
+
+<a href="#nilerror" id="nilerror" style="color: inherit; text-decoration: none;">
+  <h4>NilError</h4>
+</a>
+<ul>
+<li>Added the <code>NilError</code>. Intended to be thrown in instances where a value is not supposed to be null or undefined, but is null or undefined.</li>
+<li>This class has the following constructor signatures:<ul>
+<li><code>new NilError();</code></li>
+<li><code>new NilError(causedBy: string);</code></li>
+</ul>
+</li>
+<li>If provided, the optional <code>causedBy</code> parameter sets a field indicating what caused the error. This is additional information, alongside the Error&#39;s stack.</li>
+</ul>
+
+<a href="#models" id="models" style="color: inherit; text-decoration: none;">
+  <h3>Models</h3>
+</a>
+
+<a href="#abstractentity" id="abstractentity" style="color: inherit; text-decoration: none;">
+  <h4>AbstractEntity</h4>
+</a>
+<ul>
+<li>Added the <code>AbstractEntity</code> model. Intended to be used as a base for any custom entities that that do things? Not really sure what all I&#39;ll do with this, but I wanted it, so it&#39;s here.</li>
+<li>This class has the following constructor signature:<ul>
+<li><code>new AbstractEntity(code: string, text: string, type: string);</code></li>
+<li><strong>Note</strong>: This class&#39; constructor is <strong>protected</strong>, it cannot be called as is without first being extended.</li>
+</ul>
+</li>
+<li>This class has the following static variables:<ul>
+<li><code>SUPPORTED_TYPES: Array&lt;AbstractEntity&gt;;</code></li>
+</ul>
+</li>
+<li>This class has the following static methods:<ul>
+<li><code>getType(): string;</code></li>
+<li><code>isSupported(): boolean;</code></li>
+<li><code>toString(): string</code></li>
+</ul>
+</li>
+<li>This class has the following instance based methods:<ul>
+<li><code>isStrictEqual(entity: AbstractEntity): boolean;</code></li>
+<li><code>isEqual(entity: AbstractEntity): boolean;</code></li>
+<li><code>toString(): string;</code></li>
+</ul>
+</li>
+</ul>
+
+<a href="#environment" id="environment" style="color: inherit; text-decoration: none;">
+  <h4>Environment</h4>
+</a>
+<ul>
+<li>Added the <code>Environment</code> model. This class extends the <code>AbstractEntity</code> model. It is intended to be a class based instance for the actual node process options that I intended to use / support, plus an unknown option.</li>
+<li>This class has the following constructor signature:<ul>
+<li><code>new Environment(code: string, text: string);</code></li>
+<li><strong>Note</strong>: This class&#39; constructor is <strong>private</strong>, it cannot be called, even if extended.</li>
+</ul>
+</li>
+<li>This class has the following static variables:<ul>
+<li><code>DEVELOPMENT: Environment;</code></li>
+<li><code>PRODUCTION: Environment;</code></li>
+<li><code>TEST: Environment;</code></li>
+<li><code>UNKNOWN: Environment;</code></li>
+<li><code>SUPPORTED_TYPES: Array&lt;Environment&gt;;</code></li>
+</ul>
+</li>
+<li>This class has the following static methods:<ul>
+<li><code>getEnvironment(environmentCode: string): Environment;</code></li>
+</ul>
+</li>
+<li>This class has the following instance based methods:<ul>
+<li><code>isDev(): boolean;</code></li>
+<li><code>isProd(): boolean;</code></li>
+<li><code>isTest(): boolean;</code></li>
+<li><code>isUnknown(): boolean;</code></li>
+</ul>
+</li>
+</ul>
+
+<a href="#types" id="types" style="color: inherit; text-decoration: none;">
+  <h3>Types</h3>
+</a>
+
+<a href="#datestring-yearmonthdatestring-day-month-year-zerotonine-and-onetonine" id="datestring-yearmonthdatestring-day-month-year-zerotonine-and-onetonine" style="color: inherit; text-decoration: none;">
+  <h4>DateString, YearMonthDateString, Day, Month, Year, ZeroToNine, and OneToNine</h4>
+</a>
+<ul>
+<li>The <code>DateString</code> type is a utility type for strings formatted as YYYY-MM-DD strings. Due to TypeScript limitations, this is limited to between the years 1900 - 2099, but hey, that&#39;s a long time, yeah?</li>
+<li>The <code>YearMonthDateString</code> type is a utility type for strings formatted as YYYY-MM. Again, due to TypeScript limitations, this is limited to between the years 1900 - 2099.</li>
+<li>The <code>Day</code> type is a utility type representing strings between 01 - 31, as you would see in for calendar day.</li>
+<li>The <code>Month</code> type is a utility type representing strings between 01 - 12, as you would see in for calendar month.</li>
+<li>The <code>Year</code> type is a utility type representing strings between 1900 - 2099.</li>
+<li>The <code>ZeroToNine</code> type is a utility type representing the numbers 0 - 9 as strings.</li>
+<li>The <code>OneToNine</code> type is a utility type representing the numbers 1 - 9 as strings.</li>
+</ul>
+
+<a href="#nestedarray" id="nestedarray" style="color: inherit; text-decoration: none;">
+  <h4>NestedArray</h4>
+</a>
+<ul>
+<li>The <code>NestedArray</code> type is a utility type indicating a variable is an array containing another array(s).</li>
+</ul>
+
+<a href="#nestedkeyof" id="nestedkeyof" style="color: inherit; text-decoration: none;">
+  <h4>NestedKeyOf</h4>
+</a>
+<ul>
+<li>The <code>NestedKeyOf</code> type is a utility type that is used to indicate nested objects.</li>
+</ul>
+
+<a href="#nilable" id="nilable" style="color: inherit; text-decoration: none;">
+  <h4>Nilable</h4>
+</a>
+<ul>
+<li>The <code>Nilable</code> type is a utility type indicating that a variable can either be the specified value, <code>null</code>, <em>or</em>, <code>undefined</code>.</li>
+</ul>
+
+<a href="#nullable" id="nullable" style="color: inherit; text-decoration: none;">
+  <h4>Nullable</h4>
+</a>
+<ul>
+<li>The <code>Nullable</code> type is a utility type indicating that a variable can be either the specified value <em>or</em> <code>null</code>, but not <code>undefined</code>.</li>
+</ul>
+
+<a href="#numericalstring" id="numericalstring" style="color: inherit; text-decoration: none;">
+  <h4>NumericalString</h4>
+</a>
+<ul>
+<li>The <code>NumericalString</code> type is a utility type that represents a number <em>or</em> a string, and is used in instances where the value can be either or.</li>
+</ul>
+
+<a href="#utilities" id="utilities" style="color: inherit; text-decoration: none;">
+  <h3>Utilities</h3>
+</a>
+
+<a href="#arrayutil" id="arrayutil" style="color: inherit; text-decoration: none;">
+  <h4>ArrayUtil</h4>
+</a>
+<ul>
+<li>Added the <code>ArrayUtil</code> namespace, which has a bunch of utility functions related to JavaScript Arrays.</li>
+<li>Added the <code>isEmptyArray</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isEmptyArray&lt;T&gt;(arg: Array&lt;T&gt;): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotEmptyArray</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotEmptyArray&lt;T&gt;(arg: Array&lt;T&gt;): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<a href="#dateutil" id="dateutil" style="color: inherit; text-decoration: none;">
+  <h4>DateUtil</h4>
+</a>
+<ul>
+<li>Added the <code>DateUtil</code> namespace, which has a bunch of utilty functions related to JavaScript dates (which everyone loves).</li>
+<li>Added the <code>calculateDaysApart</code> function.<ul>
+<li>This function has the following signatures:<ul>
+<li><code>calculateDaysApart(date: Date): number;</code></li>
+<li><code>calculateDaysApart(firstDate: Date, secondDate: Date): number;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>convertToDateString</code> function.<ul>
+<li>This function has the following signatures:<ul>
+<li><code>convertToDateString(date: Date): DateString;</code></li>
+<li><code>convertToDatekString(dateAsString: string): DateString;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>convertToYearAndMonthDateString</code> function.<ul>
+<li>This function has the following signatures:<ul>
+<li><code>convertToYearAndMonthDateString(date: Date): YearMonthDateString;</code></li>
+<li><code>convertToYearAndMonthDateString(dateAsString: string): YearMonthDateString;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>getMonthOffset</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>getMonthOffset(date: Date): number;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<a href="#numberutil" id="numberutil" style="color: inherit; text-decoration: none;">
+  <h4>NumberUtil</h4>
+</a>
+<ul>
+<li>Added the <code>NumberUtil</code> namespace, which has a bunch of utility functions for JavaScript numbers.</li>
+<li>Added the following constants:<ul>
+<li><code>ZERO: number = 0;</code></li>
+<li><code>ONE: number = 1;</code></li>
+<li><code>TEN: number = 10;</code></li>
+<li><code>ONE_HUNDRED: number = 100;</code></li>
+<li><code>ONE_THOUSAND: number = 1000;</code></li>
+<li><code>TEN_THOUSAND: number = 10000;</code></li>
+</ul>
+</li>
+<li>Added the <code>convertToTwoCharacterNumericalString</code> function.<ul>
+<li>This function has the following signatures:<ul>
+<li><code>convertToTwoCharacterNumericalString(num: number): NumericalString;</code></li>
+<li><code>convertToTwoCharacterNumericalString(num: number, options: FormatAsTwoCharacterOptions): NumericalString;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>roundToNth</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>roundToNth(num: number, decimalPlaces: number): number;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<a href="#objectutil" id="objectutil" style="color: inherit; text-decoration: none;">
+  <h4>ObjectUtil</h4>
+</a>
+<ul>
+<li>Added the <code>ObjectUtil</code> namespace, which has a bunch of utility functions for JavaScript objects.</li>
+<li>Added the <code>getProperty</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>getProperty&lt;TObject extends object&gt;(object: TObject, path: NestedKeyOf&lt;TObject&gt;): Nullable&lt;TObject&lt;keyof TObject]&gt;;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isEmptyObject</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isEmptyObject(arg: object): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotEmptyObject</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotEmptyObject(arg: object): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<a href="#processutil" id="processutil" style="color: inherit; text-decoration: none;">
+  <h4>ProcessUtil</h4>
+</a>
+<ul>
+<li>Added the <code>ProcessUtil</code> namespace, which has a bunch of utility functions relating to the node process variable.</li>
+<li>Added the <code>getEnvironment</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>getEnvironment(): Environment;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>setEnvironment</code> function.<ul>
+<li>This function has the following signatures:<ul>
+<li><code>setEnvironment(environment: Environment): void;</code></li>
+<li><code>setEnvironment(environmentString: string): void;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<a href="#stringutil" id="stringutil" style="color: inherit; text-decoration: none;">
+  <h4>StringUtil</h4>
+</a>
+<ul>
+<li>Added the <code>StringUtil</code> namespace, which has a bunch of utility functions relating to JavaScript strings.</li>
+<li>Added the <code>doubleQuotes</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>doubleQuotes(arg: string): string;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isEmptyString</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isEmptyString(arg: string): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isSetString</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isSetString(arg: string): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<a href="#timeutil" id="timeutil" style="color: inherit; text-decoration: none;">
+  <h4>TimeUtil</h4>
+</a>
+<ul>
+<li>Added the <code>TimeUtil</code> namespace, which has a utility functions related to time.</li>
+<li>Added the Millisecond interface.<ul>
+<li>This interface has the following methods associated with it:<ul>
+<li><code>inSeconds(seconds?: number): number;</code></li>
+<li><code>toSeconds(milliseconds?: number): number;</code></li>
+<li><code>inMinutes(minutes?: number): number;</code></li>
+<li><code>toMinutes(milliseconds?: number): number;</code></li>
+<li><code>inHours(hours?: number): number;</code></li>
+<li><code>toHours(milliseconds?: number): number;</code></li>
+<li><code>inDays(days?: number): number;</code></li>
+<li><code>toDays(milliseconds?: number): number;</code></li>
+<li><code>inWeeks(weeks?: number): number;</code></li>
+<li><code>toWeeks(milliseconds?: number): number;</code></li>
+<li><code>inMonths(months?: number): number;</code></li>
+<li><code>toMonths(milliseconds?: number): number;</code></li>
+<li><code>inYears(years?: number): number;</code></li>
+<li><code>toYears(milliseconds?: number): number;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the Milliseconds constant, which extends the Millisecond interface.</li>
+</ul>
+
+<a href="#typesutil" id="typesutil" style="color: inherit; text-decoration: none;">
+  <h4>TypesUtil</h4>
+</a>
+<ul>
+<li>Added the <code>TypesUtil</code> namespace, which has a lot of type guarding and general typing related functions in it.</li>
+<li>Added the <code>getType</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>getType(arg: unknown): string;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isArray</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isArray&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotArray</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotArray&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isAbstractEntity</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isAbstractEntity&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotAbstractEntity</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotAbstractEntity&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isBoolean</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isBoolean&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotBoolean</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotBoolean&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isDate</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isDate&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotDate</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotDate&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isDateString</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isDateString&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotDateString</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotDateString&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isEmpty</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isEmpty&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotEmpty</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotEmpty&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isError</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isError&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotError</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotError&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Aded the <code>isNull</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNull&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotNull</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotNull&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNumber</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNumber&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotNumber</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotNumber&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isObject</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isObject&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotObject</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotObject&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isString</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isString&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotString</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotString&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isUndefined</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isUndefined&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotUndefined</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotUndefined&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNullOrUndefined</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNullOrUndefined&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>isNotNullOrUndefined</code> function.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isNotNullOrUndefined&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</details>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Modules</a></li><li class=" tsd-kind-module"><a href="modules/errors.html">errors</a></li><li class=" tsd-kind-module"><a href="modules/models.html">models</a></li><li class=" tsd-kind-module"><a href="modules/types.html">types</a></li><li class=" tsd-kind-module"><a href="modules/utils.html">utils</a></li></ul></nav></div></div></div><footer class=""><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-namespace"><span class="tsd-kind-icon">Namespace</span></li><li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="overlay"></div><script src="assets/main.js"></script></body></html>
