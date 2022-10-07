@@ -1,5 +1,3 @@
-# @allusivebox/core
-
 [![npm (scoped)](https://img.shields.io/npm/v/@allusivebox/core.svg)](https://github.com/AllusiveBox/common-core) [![install size](https://packagephobia.com/badge?p=@allusivebox/core)](https://packagephobia.com/result?p=@allusivebox/core)
 
 # What is this?
@@ -15,3 +13,7 @@ As previously stated, the intended usage of this is for commonly reused function
 # What's Included?
 
 I'm trying to keep this pretty bare bones. At present, there are a few classes and stuff, but the vast majority of this package (at least presently) is the various utility functions included. I do have plans for adding more stuff, it's just a matter of do they belong in the core package, or in others, is where I'm at now in the debate process.
+
+# What's new?
+
+Check the [change log](./ChangeLog.md) for a complete list of all the changes between releases.

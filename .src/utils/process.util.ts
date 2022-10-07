@@ -19,11 +19,12 @@ export function getEnvironment(): Environment {
  * Sets the `process.env.NODE_ENV` variable with the supplied Environment.
  *
  * @param {Environment} environment The Environment to set.
+ * @returns {void}
  * @throws {TypeError} If the provided value is not an Environment.
  * @since Version 0.1.0
  *
  */
-export function setEnvironment(environment: Environment);
+export function setEnvironment(environment: Environment): void;
 
 /**
  *
@@ -32,22 +33,24 @@ export function setEnvironment(environment: Environment);
  * value does not map to a valid Environment, {@link Environment.UNKNOWN} is set instead.
  *
  * @param {string} environmentString The environment as a string.
+ * @returns {void}
  * @throws {TypeError} If the provided value is not a string.
  * @since Version 0.1.0
  *
  */
-export function setEnvironment(environmentString: string);
+export function setEnvironment(environmentString: string): void;
 
 /**
  *
  * Sets the node processes environment setting.
  *
  * @param {(Environment | string)} arg The environment to set.
+ * @returns {void}
  * @throws {TypeError} If the provided value is not an Environment or string value.
  * @since Version 0.1.0
  *
  */
-export function setEnvironment(arg: Environment | string) {
+export function setEnvironment(arg: Environment | string): void {
 	let environment: Environment;
 
 	if (isString(arg)) {

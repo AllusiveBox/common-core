@@ -16,7 +16,7 @@ import { NumericalString } from "../types";
  * @type FormatAsTwoCharacterOptions
  *
  */
-type FormatAsTwoCharacterOptions = {
+export type FormatAsTwoCharacterOptions = {
 
 	/**
 	 *
@@ -47,7 +47,7 @@ type FormatAsTwoCharacterOptions = {
  * @since Version 0.1.0
  *
  */
-export const ZERO = 0;
+export const ZERO: number = 0;
 
 /**
  *
@@ -57,7 +57,7 @@ export const ZERO = 0;
  * @since Version 0.1.0
  *
  */
-export const ONE = 1;
+export const ONE: number = 1;
 
 /**
  *
@@ -67,7 +67,7 @@ export const ONE = 1;
  * @since Version 0.1.0
  *
  */
-export const TEN = 10;
+export const TEN: number = 10;
 
 /**
  *
@@ -77,7 +77,7 @@ export const TEN = 10;
  * @since Version 0.1.0
  *
  */
-export const ONE_HUNDRED = 100;
+export const ONE_HUNDRED: number = 100;
 
 /**
  *
@@ -87,7 +87,7 @@ export const ONE_HUNDRED = 100;
  * @since Version 0.1.0
  *
  */
-export const ONE_THOUSAND = 1000;
+export const ONE_THOUSAND: number = 1000;
 
 /**
  *
@@ -97,7 +97,7 @@ export const ONE_THOUSAND = 1000;
  * @since Version 0.1.0
  *
  */
-export const TEN_THOUSAND = 10000;
+export const TEN_THOUSAND: number = 10000;
 
 /**
  *

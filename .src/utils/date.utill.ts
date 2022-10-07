@@ -124,10 +124,34 @@ export function convertToDateString(dateOrString: Date | string): DateString {
 
 /**
  *
+ * Takes a Date object and converts it to a YearMonthDateString.
+ *
+ * @param {Date} date The date to convert.
+ * @returns {YearMonthDateString} The provided value converted to a YearMonthDateString.
+ * @throws {TypeError} If the provided value is not a valid Date object.
+ * @since Version 0.1.0
+ *
+ */
+export function convertToYearAndMonthDateString(date: Date): YearMonthDateString;
+
+/**
+ *
+ * Takes a Date formatted string and converts it to a YearMonthDateString.
+ *
+ * @param {string} dateAsString A Date object converted to string form to convert.
+ * @returns {YearMonthDateString} The provided value converted to a YearMonthDateString.
+ * @throws {TypeError} If the provided value is not a Date object or Date formatted string.
+ * @since Version 0.1.0
+ *
+ */
+export function convertToYearAndMonthDateString(dateAsString: string): YearMonthDateString;
+
+/**
+ *
  * Takes a Date object or a Date formatted string and converts it to a YearMonthDateString.
  *
  * @param {(Date | string)} dateOrString The Date object or string to convert.
- * @returns {DateString} The provided value converted to a YearMonthDateString.
+ * @returns {YearMonthDateString} The provided value converted to a YearMonthDateString.
  * @throws {TypeError} If the provided value is not a Date object or Date formatted string.
  * @since Version 0.1.0
  *

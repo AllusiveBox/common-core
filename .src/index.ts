@@ -10,7 +10,13 @@ export {
 
 /** Type Exports */
 export {
+    OneToNine,
+    ZeroToNine,
+    Day,
+    Month,
+    Year,
     DateString,
+    YearMonthDateString,
     NestedArray,
     NestedKeyOf,
     Nilable,

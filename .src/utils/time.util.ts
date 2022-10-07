@@ -7,7 +7,7 @@ import { isNotNumber } from "./types.util";
  * @interface Millisecond
  *
  */
-interface Millisecond {
+export interface Millisecond {
 
 	/**
 	 *

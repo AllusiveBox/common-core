@@ -1,4 +1,9 @@
 export {
+	OneToNine,
+	ZeroToNine,
+	Day,
+	Month,
+	Year,
 	DateString,
 	YearMonthDateString
 } from "./date.strings";

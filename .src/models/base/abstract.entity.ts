@@ -72,7 +72,7 @@ export default abstract class AbstractEntity {
 
     /**
      *
-     * Abstract constructor. Sets the {@link code}, {@link text}, and {@link type} fields.
+     * Abstract constructor. Sets the code, text, and type fields.
      *
      * @param {string} code A string representing the entity. Comparable to an enum code. Should not have spaces or
      * lowercase letters.
@@ -169,7 +169,7 @@ export default abstract class AbstractEntity {
             return false;
         }
 
-        let isMatch = true;
+        let isMatch: boolean = true;
         myFields.forEach((field) => {
             // Validate that the field is in the other entities fields
             if (!otherFields.includes(field)) {

@@ -1,16 +1,20 @@
 {
   "categorizeByGroup": true,
   "cleanOutputDir": true,
-  "darkHighlightTheme": "dark-plus",
   "defaultCategory": "Other",
   "entryPoints": [
-
+    "./.src/errors",
+    "./.src/models",
+    "./.src/types",
+    "./.src/utils"
   ],
-  "entryPointStrategy": "Resolve",
+  "entryPointStrategy": "resolve",
   "excludePrivate": true,
+  "hideGenerator": true,
   "includeVersion": true,
+  "includes": "./",
   "out": "docs",
-  "readme": "README.md",
+  "readme": "ChangeLog.md",
   "logLevel": "Verbose",
   "markedOptions": {
     "breaks": true,
