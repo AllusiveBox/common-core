@@ -1,6 +1,6 @@
 {
   "name": "@allusivebox/core",
-  "version": "0.1.0-beta",
+  "version": "0.1.0",
   "description": "A simple package containing small, possibly overkill, code for projects I work on.",
   "main": "dist/.src/index.js",
   "types": "dist/.src/index.d.ts",
