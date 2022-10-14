@@ -1,6 +1,9 @@
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
-    setupFilesAfterEnv: ["jest-extended/all"],
-    preset: 'ts-jest',
-    testEnvironment: 'node'
+    globalSetup: "./jest.global.ts",
+    preset: "ts-jest",
+    reporters: ["default"],
+    runner: "groups",
+    setupFilesAfterEnv: ["./.test/jest.setup.ts"],
+    testEnvironment: "node"
 };

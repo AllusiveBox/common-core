@@ -1,36 +1,16 @@
-/** Error Exports */
+/* type exports */
 export {
-    NilError
-} from "./errors";
-/** Model Exports */
-export {
-    AbstractEntity,
-    Environment
-} from "./models";
-
-/** Type Exports */
-export {
-    OneToNine,
-    ZeroToNine,
-    Day,
-    Month,
-    Year,
-    DateString,
-    YearMonthDateString,
-    NestedArray,
-    NestedKeyOf,
-    Nilable,
-    Nullable,
-    NumericalString
+	Nilable,
+	Nullable,
+	EXnumable
 } from "./types";
 
-/** Utility Exports */
+/* util exports */
+
+/* exnum exports */
 export {
-    ArrayUtil,
-    NumberUtil,
-    ObjectUtil,
-    ProcessUtil,
-    StringUtil,
-    TimeUtil,
-    TypesUtil
-} from "./utils";
+	Environment,
+	EXnum,
+	EXnumDoesNotExist,
+	EXnumMissingRequiredValue
+} from "./exnums";

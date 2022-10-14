@@ -1,11 +1,12 @@
 /**
  *
- * Utility type that is used to indicate if a type can be null or not.
+ * Utility type that is used to indicate if a type can be `null` or the supplied type.
+ * <br />
+ * Useful for TypeScript projects where the `strictNullChecks` flag is enabled.
  *
- * @type Nullable<T>
- * @template T
- * @see {@link Nilable} for a version that supports the wrapped type, null, and undefined.
- * @since Version 0.1.0
+ * @type Nullable
+ * @beta
+ * @since Version 0.2.0
  *
  */
 export type Nullable<T> = T | null;
