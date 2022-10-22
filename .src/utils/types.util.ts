@@ -1,4 +1,3 @@
-// import { isEmptyArray, isNotEmptyArray } from "./array.util";
 // import { isEmptyObject, isNotEmptyObject } from "./object.util";
 // import { isEmptyString, isSetString } from "./string.util";
 // import { DateString } from "../types";
@@ -24,6 +23,9 @@
 //  */
 // const MONTHS_WITH_30_DAYS = [4, 6, 9, 11];
 
+import { isEmptyArray, isNotEmptyArray } from "./array.util";
+import { EXnum } from "../../.src/exnums/EXnum";
+
 /**
  *
  * Utility method that returns the type of a provided argument. More descriptive than the native `typeof` feature.
@@ -39,12 +41,12 @@ export function getType(arg: unknown): string {
         return "Array";
     }
 
-	// if (isAbstractEntity(arg)) {
-	// 	return arg.type || "AbstractEntity";
-	// }
+    if (isEXnum(arg)) {
+        return arg.type || "EXnum";
+    }
 
     if (isBoolean(arg)) {
-        return "Boolean";
+        return "boolean";
     }
 
     if (isDate(arg)) {
@@ -60,26 +62,26 @@ export function getType(arg: unknown): string {
     }
 
     if (isNull(arg)) {
-        return "Null";
+        return "null";
     }
 
     if (isNumber(arg)) {
-        return "Number";
+        return "number";
     }
 
     if (isObject(arg)) {
-        return "Object";
+        return "object";
     }
 
     if (isString(arg)) {
-        return "String";
+        return "string";
     }
 
     if (isUndefined(arg)) {
-        return "Undefined";
+        return "undefined";
     }
 
-    return "Unknown";
+    return "unknown";
 }
 
 /**
@@ -109,34 +111,6 @@ export function isArray<T>(arg: T): arg is T & Array<any> {
 export function isNotArray<T>(arg: T): arg is Exclude<T, Array<any>> {
     return !isArray(arg);
 }
-
-// /**
-//  *
-//  * Checks if a value is an AbstractEntity.
-//  *
-//  * @param {T} arg The value to check.
-//  * @returns {boolean}
-//  * @template T
-//  * @since Version 0.1.0
-//  *
-//  */
-// export function isAbstractEntity<T>(arg: T): arg is T & AbstractEntity {
-// 	return arg instanceof AbstractEntity;
-// }
-//
-// /**
-//  *
-//  * Checks if a value is not an AbstractEntity.
-//  *
-//  * @param {T} arg The value to check.
-//  * @returns {boolean}
-//  * @template T
-//  * @since Version 0.1.0
-//  *
-//  */
-// export function isNotAbstractEntity<T>(arg: T): arg is Exclude<T, AbstractEntity> {
-// 	return !isAbstractEntity(arg);
-// }
 
 /**
  *
@@ -261,49 +235,53 @@ export function isNotDate<T>(arg: T): arg is Exclude<T, Date> {
 // 	return !isDateString(arg);
 // }
 //
-// /**
-//  *
-//  * Checks if a value is empty.
-//  *
-//  * @param {T} arg The value to check.
-//  * @returns {boolean} True if the value is empty, otherwise false.
-//  * @template T
-//  * @since Version 0.1.0
-//  *
-//  */
-// export function isEmpty<T>(arg: T): arg is T & (Array<T> | object | string) {
-// 	if (isArray(arg)) {
-// 		return isEmptyArray(arg);
-// 	} else if (isString(arg)) {
-// 		return isEmptyString(arg);
-// 	} else if (isObject(arg)) {
-// 		return isEmptyObject(arg);
-// 	} else {
-// 		return isNullOrUndefined(arg);
-// 	}
-// }
-//
-// /**
-//  *
-//  * Checks if a value is not empty.
-//  *
-//  * @param {T} arg The value to check.
-//  * @returns {boolean} True if the value is not empty, otherwise false.
-//  * @template T
-//  * @since Version 0.1.0
-//  *
-//  */
-// export function isNotEmpty<T>(arg: T): arg is Exclude<T, Array<any> | object | string> {
-//     if (isArray(arg)) {
-//         return isNotEmptyArray(arg);
-//     } else if (isString(arg)) {
-//         return isSetString(arg);
-//     } else if (isObject(arg)) {
-//         return isNotEmptyObject(arg);
-//     } else {
-//         return isNotNullOrUndefined(arg);
-//     }
-// }
+/**
+ *
+ * Checks if a value is empty.
+ *
+ * @param {T} arg The value to check.
+ * @returns {boolean} True if the value is empty, otherwise false.
+ * @template T
+ * @since Version 0.1.0
+ *
+ */
+export function isEmpty<T>(arg: T): arg is T & (Array<T> | object | string) {
+	if (isArray(arg)) {
+		return isEmptyArray(arg);
+	} else if (isString(arg)) {
+		// return isEmptyString(arg);
+        return false;
+	} else if (isObject(arg)) {
+		// return isEmptyObject(arg);
+        return false;
+	} else {
+		return isNullOrUndefined(arg);
+	}
+}
+
+/**
+ *
+ * Checks if a value is not empty.
+ *
+ * @param {T} arg The value to check.
+ * @returns {boolean} True if the value is not empty, otherwise false.
+ * @template T
+ * @since Version 0.1.0
+ *
+ */
+export function isNotEmpty<T>(arg: T): arg is Exclude<T, Array<any> | object | string> {
+    if (isArray(arg)) {
+        return isNotEmptyArray(arg);
+    } else if (isString(arg)) {
+        // return isSetString(arg);
+        return false;
+    } else if (isObject(arg)) {
+        // return isNotEmptyObject(arg);
+        return false;
+    } else {
+        return isNotNullOrUndefined(arg);
+    }
+}
 
 /**
  *
@@ -331,6 +309,34 @@ export function isError<T>(arg: T): arg is T & Error {
  */
 export function isNotError<T>(arg: T): arg is Exclude<T, Error> {
     return !isError(arg);
+}
+
+/**
+ *
+ * Checks if a value is an EXnum.
+ *
+ * @param {T} arg The value to check.
+ * @returns {boolean} True if the value is an EXnum, otherwise false.
+ * @template T
+ * @since Version 0.2.0
+ *
+ */
+export function isEXnum<T>(arg: T): arg is T & EXnum {
+    return arg instanceof EXnum;
+}
+
+/**
+ *
+ * Checks if a value is not an EXnum.
+ *
+ * @param {T} arg The value to check.
+ * @returns {boolean} True if the value is not an EXnum, otherwise false.
+ * @template T
+ * @since Version 0.2.0
+ *
+ */
+export function isNotEXnum<T>(arg: T): arg is Exclude<T, EXnum> {
+    return !isEXnum(arg);
 }
 
 /**

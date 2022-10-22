@@ -1,6 +1,11 @@
 import { EXnumDoesNotExist, EXnumMissingRequiredValue } from "./errors"
 import { EXnumable, Nullable } from "../../types";
-import { isNotNumber, isNotString, isNullOrUndefined, isString } from "../../utils/types.util";
+import {
+	isNotNumber,
+	isNotString,
+	isNullOrUndefined,
+	isString
+} from "../../utils/types.util";
 
 /**
  *
@@ -285,13 +290,14 @@ export default abstract class EXnum {
 			Format the data to ensure uniformity.
 
 			* All codes should be stored in uppercase.
-			* All types should be stored as lowercase.
+			* All types should be stored as capital first letter and the rest lowercase.
 		 */
 		if (isString(code)) {
 			code = code.toUpperCase();
 		}
 
 		this.#code = Symbol(code);
+		// todo: zakauff 10/21/2022 Capitalize first letter only
 		this.#type = type.toLowerCase();
 
 		this.setEXnumMap(code);

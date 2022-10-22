@@ -5,7 +5,6 @@
  * Useful for TypeScript projects where the `strictNullChecks` flag is enabled.
  *
  * @type Nilable
- * @beta
  * @since Version 0.2.0
  *
  */

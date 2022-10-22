@@ -1,12 +1,3 @@
-/* type exports */
-export {
-	Nilable,
-	Nullable,
-	EXnumable
-} from "./types";
-
-/* util exports */
-
 /* exnum exports */
 export {
 	Environment,
@@ -14,3 +5,17 @@ export {
 	EXnumDoesNotExist,
 	EXnumMissingRequiredValue
 } from "./exnums";
+
+/* type exports */
+export {
+	EXnumable,
+	NestedArray,
+	Nilable,
+	Nullable
+} from "./types";
+
+/* utility exports */
+export {
+	ArrayUtil,
+	TypesUtil
+} from "./utils";

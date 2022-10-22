@@ -9,7 +9,7 @@ import { EXnumable } from "../../types";
  * @extends EXnum
  * @beta
  * @since Version 0.2.0
- * 
+ *
  */
 export default class Environment extends EXnum {
 
@@ -191,7 +191,7 @@ export default class Environment extends EXnum {
 	private constructor(
 		code: EXnumable
 	) {
-		super(code, Environment.TYPE);
+		super(code, "Environment");
 	}
 
 	/**
