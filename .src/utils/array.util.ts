@@ -204,7 +204,9 @@ export function flatten<T>(
  * @since Version 0.1.0
  *
  */
-export function isEmptyArray<T>(arg: Array<T>): arg is Exclude<typeof arg, Array<T>> {
+export function isEmptyArray<T>(
+	arg: Array<T>
+): arg is Exclude<typeof arg, Array<T>> {
 	return isArray(arg) && arg.length === 0;
 }
 
@@ -218,6 +220,8 @@ export function isEmptyArray<T>(arg: Array<T>): arg is Exclude<typeof arg, Array
  * @since Version 0.1.0
  *
  */
-export function isNotEmptyArray<T>(arg: Array<T>): arg is Array<T> {
+export function isNotEmptyArray<T>(
+	arg: Array<T>
+): arg is Array<T> {
 	return !isEmptyArray(arg);
 }

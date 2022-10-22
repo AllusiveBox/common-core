@@ -28,14 +28,17 @@ import { EXnum } from "../../.src/exnums/EXnum";
 
 /**
  *
- * Utility method that returns the type of a provided argument. More descriptive than the native `typeof` feature.
+ * Utility method that returns the type of the provided argument. More descriptive compared to the JavaScript
+ * `typeof` operation.
  *
  * @param {unknown} arg The argument to get the type of.
  * @returns {string} A string representing the type of object.
  * @since Version 0.1.0
  *
  */
-export function getType(arg: unknown): string {
+export function getType(
+    arg: unknown
+): string {
 
     if (isArray(arg)) {
         return "Array";
@@ -94,7 +97,9 @@ export function getType(arg: unknown): string {
  * @since Version 0.1.0
  *
  */
-export function isArray<T>(arg: T): arg is T & Array<any> {
+export function isArray<T>(
+    arg: T
+): arg is T & Array<any> {
     return Array.isArray(arg);
 }
 
@@ -108,7 +113,9 @@ export function isArray<T>(arg: T): arg is T & Array<any> {
  * @since Version 0.1.0
  *
  */
-export function isNotArray<T>(arg: T): arg is Exclude<T, Array<any>> {
+export function isNotArray<T>(
+    arg: T
+): arg is Exclude<T, Array<any>> {
     return !isArray(arg);
 }
 
@@ -122,7 +129,9 @@ export function isNotArray<T>(arg: T): arg is Exclude<T, Array<any>> {
  * @since Version 0.1.0
  *
  */
-export function isBoolean<T>(arg: T): arg is T & boolean {
+export function isBoolean<T>(
+    arg: T
+): arg is T & boolean {
     return typeof arg === "boolean";
 }
 
@@ -136,7 +145,9 @@ export function isBoolean<T>(arg: T): arg is T & boolean {
  * @since Version 0.1.0
  *
  */
-export function isNotBoolean<T>(arg: T): arg is Exclude<T, boolean> {
+export function isNotBoolean<T>(
+    arg: T
+): arg is Exclude<T, boolean> {
     return !isBoolean(arg);
 }
 
@@ -150,7 +161,9 @@ export function isNotBoolean<T>(arg: T): arg is Exclude<T, boolean> {
  * @since Version 0.1.0
  *
  */
-export function isDate<T>(arg: T): arg is T & Date {
+export function isDate<T>(
+    arg: T
+): arg is T & Date {
     return (isNotNull(arg)
         && (Object.prototype.toString.call(arg) === "[object Date]")
         && (!!Date.parse(arg as unknown as string)));
@@ -166,7 +179,9 @@ export function isDate<T>(arg: T): arg is T & Date {
  * @since Version 0.1.0
  *
  */
-export function isNotDate<T>(arg: T): arg is Exclude<T, Date> {
+export function isNotDate<T>(
+    arg: T
+): arg is Exclude<T, Date> {
     return !isDate(arg);
 }
 
@@ -245,7 +260,9 @@ export function isNotDate<T>(arg: T): arg is Exclude<T, Date> {
  * @since Version 0.1.0
  *
  */
-export function isEmpty<T>(arg: T): arg is T & (Array<T> | object | string) {
+export function isEmpty<T>(
+    arg: T
+): arg is T & (Array<T> | object | string) {
 	if (isArray(arg)) {
 		return isEmptyArray(arg);
 	} else if (isString(arg)) {
@@ -269,7 +286,9 @@ export function isEmpty<T>(arg: T): arg is T & (Array<T> | object | string) {
  * @since Version 0.1.0
  *
  */
-export function isNotEmpty<T>(arg: T): arg is Exclude<T, Array<any> | object | string> {
+export function isNotEmpty<T>(
+    arg: T
+): arg is Exclude<T, Array<any> | object | string> {
     if (isArray(arg)) {
         return isNotEmptyArray(arg);
     } else if (isString(arg)) {
@@ -293,7 +312,9 @@ export function isNotEmpty<T>(arg: T): arg is Exclude<T, Array<any> | object | s
  * @since Version 0.1.0
  *
  */
-export function isError<T>(arg: T): arg is T & Error {
+export function isError<T>(
+    arg: T
+): arg is T & Error {
     return arg instanceof Error;
 }
 
@@ -307,7 +328,9 @@ export function isError<T>(arg: T): arg is T & Error {
  * @since Version 0.1.0
  *
  */
-export function isNotError<T>(arg: T): arg is Exclude<T, Error> {
+export function isNotError<T>(
+    arg: T
+): arg is Exclude<T, Error> {
     return !isError(arg);
 }
 
@@ -321,7 +344,9 @@ export function isNotError<T>(arg: T): arg is Exclude<T, Error> {
  * @since Version 0.2.0
  *
  */
-export function isEXnum<T>(arg: T): arg is T & EXnum {
+export function isEXnum<T>(
+    arg: T
+): arg is T & EXnum {
     return arg instanceof EXnum;
 }
 
@@ -335,7 +360,9 @@ export function isEXnum<T>(arg: T): arg is T & EXnum {
  * @since Version 0.2.0
  *
  */
-export function isNotEXnum<T>(arg: T): arg is Exclude<T, EXnum> {
+export function isNotEXnum<T>(
+    arg: T
+): arg is Exclude<T, EXnum> {
     return !isEXnum(arg);
 }
 
@@ -349,7 +376,9 @@ export function isNotEXnum<T>(arg: T): arg is Exclude<T, EXnum> {
  * @since Version 0.1.0
  *
  */
-export function isNull<T>(arg: T): arg is T & null {
+export function isNull<T>(
+    arg: T
+): arg is T & null {
     return arg === null;
 }
 
@@ -363,7 +392,9 @@ export function isNull<T>(arg: T): arg is T & null {
  * @since Version 0.1.0
  *
  */
-export function isNotNull<T>(arg: T): arg is Exclude<T, null> {
+export function isNotNull<T>(
+    arg: T
+): arg is Exclude<T, null> {
     return !isNull(arg);
 }
 
@@ -377,7 +408,9 @@ export function isNotNull<T>(arg: T): arg is Exclude<T, null> {
  * @since Version 0.1.0
  *
  */
-export function isNumber<T>(arg: T): arg is T & number {
+export function isNumber<T>(
+    arg: T
+): arg is T & number {
     return typeof arg === "number" && !isNaN(arg);
 }
 
@@ -391,7 +424,9 @@ export function isNumber<T>(arg: T): arg is T & number {
  * @since Version 0.1.0
  *
  */
-export function isNotNumber<T>(arg: T): arg is Exclude<T, number> {
+export function isNotNumber<T>(
+    arg: T
+): arg is Exclude<T, number> {
     return !isNumber(arg);
 }
 
@@ -405,7 +440,9 @@ export function isNotNumber<T>(arg: T): arg is Exclude<T, number> {
  * @since Version 0.1.0
  *
  */
-export function isObject<T>(arg: T): arg is T & object {
+export function isObject<T>(
+    arg: T
+): arg is T & object {
     return isNotNull(arg)
         && isNotArray(arg)
         && isNotDate(arg)
@@ -422,7 +459,9 @@ export function isObject<T>(arg: T): arg is T & object {
  * @since Version 0.1.0
  *
  */
-export function isNotObject<T>(arg: T): arg is Exclude<T, object> {
+export function isNotObject<T>(
+    arg: T
+): arg is Exclude<T, object> {
     return !isObject(arg);
 }
 
@@ -436,7 +475,9 @@ export function isNotObject<T>(arg: T): arg is Exclude<T, object> {
  * @since Version 0.1.0
  *
  */
-export function isString<T>(arg: T): arg is T & string {
+export function isString<T>(
+    arg: T
+): arg is T & string {
     return typeof arg === "string";
 }
 
@@ -450,7 +491,9 @@ export function isString<T>(arg: T): arg is T & string {
  * @since Version 0.1.0
  *
  */
-export function isNotString<T>(arg: T): arg is Exclude<T, string> {
+export function isNotString<T>(
+    arg: T
+): arg is Exclude<T, string> {
     return !isString(arg);
 }
 
@@ -464,7 +507,9 @@ export function isNotString<T>(arg: T): arg is Exclude<T, string> {
  * @since Version 0.1.0
  *
  */
-export function isUndefined<T>(arg: T): arg is T & undefined {
+export function isUndefined<T>(
+    arg: T
+): arg is T & undefined {
     return typeof arg === "undefined";
 }
 
@@ -478,7 +523,9 @@ export function isUndefined<T>(arg: T): arg is T & undefined {
  * @since Version 0.1.0
  *
  */
-export function isNotUndefined<T>(arg: T): arg is Exclude<T, undefined> {
+export function isNotUndefined<T>(
+    arg: T
+): arg is Exclude<T, undefined> {
     return !isUndefined(arg);
 }
 
@@ -492,7 +539,9 @@ export function isNotUndefined<T>(arg: T): arg is Exclude<T, undefined> {
  * @since Version 0.1.0
  *
  */
-export function isNullOrUndefined<T>(arg: T): arg is T & (null | undefined) {
+export function isNullOrUndefined<T>(
+    arg: T
+): arg is T & (null | undefined) {
     return isNull(arg) || isUndefined(arg);
 }
 
@@ -506,6 +555,8 @@ export function isNullOrUndefined<T>(arg: T): arg is T & (null | undefined) {
  * @since Version 0.1.0
  *
  */
-export function isNotNullOrUndefined<T>(arg: T): arg is Exclude<T, null | undefined> {
+export function isNotNullOrUndefined<T>(
+    arg: T
+): arg is Exclude<T, null | undefined> {
     return isNotNull(arg) && isNotUndefined(arg);
 }
