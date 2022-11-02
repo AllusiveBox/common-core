@@ -59,7 +59,7 @@ export default class NilError extends Error {
 	constructor(
 		causedBy?: string
 	) {
-		let errorMessage: string = "Null ur undefined value";
+		let errorMessage: string = "Null or undefined value";
 		if (isNotNullOrUndefined(causedBy)) errorMessage += `; Cause: ${causedBy}`;
 
 		super(errorMessage);
