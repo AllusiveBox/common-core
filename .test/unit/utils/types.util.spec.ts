@@ -196,32 +196,32 @@ describe("TypesUtil Unit Test Suite", () => {
         { foo: "bar "}
     ];
 
-    // const emptyValues = [
-    //     ...nullOrUndefinedValues,
-    //     [],
-    //     "",
-    //     {},
-    // ];
+    const emptyValues = [
+        ...nullOrUndefinedValues,
+        [],
+        "",
+        {},
+    ];
 
-    // test.each(nonEmptyValues)
-    // ("that given %s, isEmpty returns false", (arg) => {
-    //     expect(TypesUtil.isEmpty(arg)).toBeFalse();
-    // });
-    //
-    // test.each(emptyValues)
-    // ("that given %s, isEmpty returns true", (arg) => {
-    //     expect(TypesUtil.isEmpty(arg)).toBeTrue();
-    // });
-    //
-    // test.each(emptyValues)
-    // ("that given %s, isNotEmpty returns false", (arg) => {
-    //     expect(TypesUtil.isNotEmpty(arg)).toBeFalse();
-    // });
-    //
-    // test.each(nonEmptyValues)
-    // ("that given %s, isNotEmpty returns true", (arg) => {
-    //     expect(TypesUtil.isNotEmpty(arg)).toBeTrue();
-    // });
+    test.each(nonEmptyValues)
+    ("that given %s, isEmpty returns false", (arg) => {
+        expect(TypesUtil.isEmpty(arg)).toBeFalse();
+    });
+
+    test.each(emptyValues)
+    ("that given %s, isEmpty returns true", (arg) => {
+        expect(TypesUtil.isEmpty(arg)).toBeTrue();
+    });
+
+    test.each(emptyValues)
+    ("that given %s, isNotEmpty returns false", (arg) => {
+        expect(TypesUtil.isNotEmpty(arg)).toBeFalse();
+    });
+
+    test.each(nonEmptyValues)
+    ("that given %s, isNotEmpty returns true", (arg) => {
+        expect(TypesUtil.isNotEmpty(arg)).toBeTrue();
+    });
 
     const nonErrorValues = [
         ...nullOrUndefinedValues,
