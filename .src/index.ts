@@ -17,5 +17,6 @@ export {
 /* utility exports */
 export {
 	ArrayUtil,
+	StringUtil,
 	TypesUtil
 } from "./utils";
