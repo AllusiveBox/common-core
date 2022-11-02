@@ -1,5 +1,6 @@
 import "jest-extended";
 import { StringUtil } from "../../../.src";
+import { getType } from "../../../.src/utils/types.util";
 
 /**
  *
@@ -34,7 +35,7 @@ describe("StringUtil Unit Test Suite", () => {
 		expect(() => {
 			// @ts-ignore
 			StringUtil.doubleQuotes(arg);
-		}).toThrowError(`Cannot wrap type of ${typeof arg} in double quotes; Convert to a string first`);
+		}).toThrowError(`Cannot wrap type of ${getType(arg)} in double quotes; Convert to a string first`);
 	});
 
 	test.each(stringValues)

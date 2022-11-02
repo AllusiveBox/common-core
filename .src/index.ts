@@ -1,3 +1,8 @@
+/* Error exports */
+export {
+	NilError
+} from "./errors";
+
 /* exnum exports */
 export {
 	Environment,
@@ -10,6 +15,7 @@ export {
 export {
 	EXnumable,
 	NestedArray,
+	NestedKeyOf,
 	Nilable,
 	Nullable
 } from "./types";
@@ -17,6 +23,7 @@ export {
 /* utility exports */
 export {
 	ArrayUtil,
+	ObjectUtil,
 	StringUtil,
 	TypesUtil
 } from "./utils";
