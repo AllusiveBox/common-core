@@ -6,4 +6,4 @@
  * @since Version 0.2.0
  *
  */
-export type NestedArray<T> = T | Array<NestedArray<T>>
+export type NestedArray<T> = T | Array<NestedArray<T>>;

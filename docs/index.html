@@ -1,21 +1,336 @@
 <!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@allusivebox/core - v0.2.0-beta.1</title><meta name="description" content="Documentation for @allusivebox/core - v0.2.0-beta.1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@allusivebox/core - v0.2.0-beta.1</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>@allusivebox/core - v0.2.0-beta.1 </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
-<a href="#version-010-beta-release" id="version-010-beta-release" style="color: inherit; text-decoration: none;">
-  <h1>Version 0.1.0 (Beta Release)</h1>
+<a href="#version-0x-change-log" id="version-0x-change-log" style="color: inherit; text-decoration: none;">
+  <h1>Version 0.X Change Log</h1>
+</a>
+
+<a href="#version-020-beta-release" id="version-020-beta-release" style="color: inherit; text-decoration: none;">
+  <h2>Version 0.2.0 (Beta Release)</h2>
 </a>
 <details>
-    <summary>Version 0.1.0 change log</summary>
+    <summary>Version 0.2.0 Change Log</summary>
 
 
 <a href="#newly-added" id="newly-added" style="color: inherit; text-decoration: none;">
-  <h2>Newly Added</h2>
+  <h3>Newly Added</h3>
 </a>
 
-<a href="#errors" id="errors" style="color: inherit; text-decoration: none;">
-  <h3>Errors</h3>
+<a href="#exnum" id="exnum" style="color: inherit; text-decoration: none;">
+  <h4>EXnum</h4>
+</a>
+<ul>
+<li>Added the EXNum class. This class replaces the old <code>AbstractEntity</code>. While there are some functional differences, it is intended to be a more friendly to work with replacement.</li>
+</ul>
+
+<a href="#exnumdoesnotexist" id="exnumdoesnotexist" style="color: inherit; text-decoration: none;">
+  <h4>EXnumDoesNotExist</h4>
+</a>
+<ul>
+<li>Added the <code>EXNumDoesNotExist</code> Error. This error is intended to be thrown when attempting to look up an EXnum value from an EXnum class and the value does not exist.</li>
+<li>This Error is intended to be thrown during testing, as EXnums should not be designed to be created during runtime.</li>
+</ul>
+
+<a href="#exnummissingrequiredvalue" id="exnummissingrequiredvalue" style="color: inherit; text-decoration: none;">
+  <h4>EXnumMissingRequiredValue</h4>
+</a>
+<ul>
+<li>Added the <code>EXnumMissingRequiredValue</code> Error. This error is intended to be thrown when attempting to create an EXnum that is missing a required field.</li>
+<li>This Error is intended to be thrown during testing, as EXnums should not be designed to be created during runtime.</li>
+</ul>
+
+<a href="#booleanable" id="booleanable" style="color: inherit; text-decoration: none;">
+  <h4>Booleanable</h4>
+</a>
+<ul>
+<li>Added the utility type Booleanable. This type is intended to indicate that a value can be converted to a Boolean.</li>
+</ul>
+
+<a href="#falseable" id="falseable" style="color: inherit; text-decoration: none;">
+  <h4>Falseable</h4>
+</a>
+<ul>
+<li>Added the utility type Falseable. This type is intended to indicate that a value is synonymous with the <code>false</code> boolean value.</li>
+</ul>
+
+<a href="#trueable" id="trueable" style="color: inherit; text-decoration: none;">
+  <h4>Trueable</h4>
+</a>
+<ul>
+<li>Added the utility type Trueable. This type is intended to indicate that a value is synonymous with the <code>true</code> boolean value.</li>
+</ul>
+
+<a href="#booleanutil" id="booleanutil" style="color: inherit; text-decoration: none;">
+  <h4>BooleanUtil</h4>
+</a>
+<ul>
+<li>Added the boolean utility sub package. This package contains a number of functions relating to booleans.</li>
+<li>This package contains the following constants:<ul>
+<li><code>TRUE</code></li>
+<li><code>FALSE</code></li>
+</ul>
+</li>
+<li>This package contains the following functions:<ul>
+<li><code>convertToBoolean</code> - This function is intended to take a value and convert it into a boolean value.<ul>
+<li>This function has the following signature:<ul>
+<li><code>convertToBoolean(arg: any, defaultValue: boolean = null): Nullable&lt;boolean&gt;;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>isBooleanable</code> - This function indicates if a provided value can be converted into a boolean.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isBooleanable&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>isFalse</code> - This function indicates if a provided value would convert to a <code>false</code> boolean value.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isFalse&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>isTrue</code> - This function indicates if a provided value would convert to a <code>true</code> boolean value.<ul>
+<li>This function has the following signature:<ul>
+<li><code>isTrue&lt;T&gt;(arg: T): boolean;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<a href="#updates-to-existing-features" id="updates-to-existing-features" style="color: inherit; text-decoration: none;">
+  <h3>Updates to Existing Features</h3>
 </a>
 
 <a href="#nilerror" id="nilerror" style="color: inherit; text-decoration: none;">
   <h4>NilError</h4>
+</a>
+<ul>
+<li>This resource was moved as part of the restructuring from 0.1.0 to 0.2.0.<ul>
+<li>This resource may now be imported using the following options:<ul>
+<li><code>import { NilError } from &quot;@allusivebox/core&quot;;</code></li>
+<li><code>import { NilError } from &quot;@allusivebox/core/dist/.src&quot;;</code></li>
+<li><code>import { NilError } from &quot;@allusivebox/core/dist/.src/errors&quot;;</code></li>
+<li><code>import { NilError } from &quot;@allusivebox/core/dist/.src/errors/NilError&quot;;</code></li>
+<li><code>import NilError from &quot;@allusivebox/core/dist/.src/errors/NilError/nil.error&quot;;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<a href="#environment" id="environment" style="color: inherit; text-decoration: none;">
+  <h4>Environment</h4>
+</a>
+<ul>
+<li>Refactored the <code>Environment</code> class to extend the <code>EXnum</code> class, now that the <code>AbstractEntity</code> no longer exists.</li>
+<li>This resource was moved as part of the restructuring from 0.1.0 to 0.2.0.<ul>
+<li>This resource may now be imported using the following options:<ul>
+<li><code>import { Environment } from &quot;@allusivebox/core&quot;;</code></li>
+<li><code>import { Environment } from &quot;@allusivebox/core/dist/.src&quot;;</code></li>
+<li><code>import { Environment } from &quot;@allusivebox/core/dist/.src/exnums&quot;;</code></li>
+<li><code>import { Environment } from &quot;@allusivebox/core/dist/.src/exnums/Environment&quot;;</code></li>
+<li><code>import Environment from &quot;@allusivebox/core/dist/.src/exnums/Environment/environment&quot;;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<a href="#nestedarray" id="nestedarray" style="color: inherit; text-decoration: none;">
+  <h4>NestedArray</h4>
+</a>
+<ul>
+<li>Updated the documentation for the <code>NestedArray</code> utility type.</li>
+</ul>
+
+<a href="#nestedkeyof" id="nestedkeyof" style="color: inherit; text-decoration: none;">
+  <h4>NestedKeyOf</h4>
+</a>
+<ul>
+<li>Updated the documentation for the <code>NestedKeyOf</code> utility type.</li>
+<li>Tagged this type as beta, due to the issues with TypeScript resolving infinitely.</li>
+</ul>
+
+<a href="#nilable" id="nilable" style="color: inherit; text-decoration: none;">
+  <h4>Nilable</h4>
+</a>
+<ul>
+<li>Updated the documentation for the <code>Nilable</code> utility type.</li>
+</ul>
+
+<a href="#nullable" id="nullable" style="color: inherit; text-decoration: none;">
+  <h4>Nullable</h4>
+</a>
+<ul>
+<li>Updated the documentation for the <code>Nullable</code> utility type.</li>
+</ul>
+
+<a href="#arrayutil" id="arrayutil" style="color: inherit; text-decoration: none;">
+  <h4>ArrayUtil</h4>
+</a>
+<ul>
+<li>Added the <code>chunk</code> function. This function is intended to take a single array and break it into nested arrays.<ul>
+<li>This function has the following signatures:<ul>
+<li><code>chunk&lt;T&gt;(items: Array&lt;T&gt;): NestedArray&lt;T&gt;;</code></li>
+<li><code>chunk&lt;T&gt;(items: Array&lt;T&gt;, chunkSize: number): NestedArray&lt;T&gt;;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>combine</code> function. This function is intended to combine two arrays into a single array.<ul>
+<li>This function has the following signature:<ul>
+<li><code>combine&lt;T, U&gt;(array1: Array&lt;T&gt;, array2: Array&lt;U&gt;): Array&lt;T | U&gt;;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>convertToString</code> function. This function takes an array and converts it to a string.<ul>
+<li>This function has the following signatures:<ul>
+<li><code>convertToString&lt;T&gt;(items: Array&lt;T&gt;): string;</code></li>
+<li><code>convertToString&lt;T&gt;(items: Array&lt;T&gt;, joinOn: string): string;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>flatten</code> function. This function takes a nested array and converts it into a single array.</li>
+</ul>
+
+<a href="#numberutil" id="numberutil" style="color: inherit; text-decoration: none;">
+  <h4>NumberUtil</h4>
+</a>
+<ul>
+<li>Changed the wording to a lot of the errors thrown by the NumberUtil functions.</li>
+<li>Added the <code>roundToTwo</code> function. This function takes a number and rounds to the nearest two decimal places.<ul>
+<li>This function has the following signature:<ul>
+<li><code>roundToTwo(num: number): number;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<a href="#objectutil" id="objectutil" style="color: inherit; text-decoration: none;">
+  <h4>ObjectUtil</h4>
+</a>
+<ul>
+<li>Updated the documentation for a number of functions.</li>
+</ul>
+
+<a href="#processutil" id="processutil" style="color: inherit; text-decoration: none;">
+  <h4>ProcessUtil</h4>
+</a>
+<ul>
+<li>Updated the documentation for a number of functions.</li>
+<li>Removed extra overloads for the <code>setEnvironment</code> function.<ul>
+<li>This function now has the following signature:<ul>
+<li><code>setEnvironment(arg: Environment, string): void;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<a href="#stringutil" id="stringutil" style="color: inherit; text-decoration: none;">
+  <h4>StringUtil</h4>
+</a>
+<ul>
+<li>Updated the documentation for a number of functions.</li>
+<li>Changed the wording to a lot of errors thrown by the StringUtil functions.</li>
+<li>Added the <code>capitalize</code> function. This function takes a string and capitalizes the first letter, leaving the rest of the string as is.<ul>
+<li>This function has the following signature:<ul>
+<li><code>capitalize(str: string): string;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Added the <code>singleQuotes</code> function. This function takes a string and wraps it in single quotes.<ul>
+<li>This function has the following signature:<ul>
+<li><code>singleQuotes(arg: string): string;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<a href="#timeutil" id="timeutil" style="color: inherit; text-decoration: none;">
+  <h4>TimeUtil</h4>
+</a>
+<ul>
+<li>Added some missing versioning tags in the TimeUtil.</li>
+<li>Changed the wording to a lot of errors thrown by the TimeUtil functions.</li>
+<li>Added the <code>sleep</code> function. This function forces the application to delay further processing for a specified amount of time.<ul>
+<li>This function has the following signatures:<ul>
+<li><code>sleep(): Promise&lt;void&gt;;</code></li>
+<li><code>sleep(ms: number): Promise&lt;void&gt;;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<a href="#typesutil" id="typesutil" style="color: inherit; text-decoration: none;">
+  <h4>TypesUtil</h4>
+</a>
+<ul>
+<li>Updated the documentation for a number of functions.</li>
+</ul>
+
+<a href="#breaking-changes" id="breaking-changes" style="color: inherit; text-decoration: none;">
+  <h3>Breaking Changes</h3>
+</a>
+<ul>
+<li>A number of features were dropped between the 0.1.0 beta and the 0.2.0 beta, additionally, the overall file structure for the project was changed. To see what project content was impacted by the file restructure, check the <a href="#updates-to-existing-features">Updates to existing features</a> section for full details.</li>
+<li>A number of previous features were removed.<ul>
+<li><code>AbstractEntity</code></li>
+<li><code>OneToNine</code></li>
+<li><code>ZeroToNine</code></li>
+<li><code>Year</code></li>
+<li><code>Month</code></li>
+<li><code>Day</code></li>
+<li><code>DateString</code></li>
+<li><code>YearMonthDateString</code></li>
+<li><code>NumericalString</code></li>
+<li><code>DateUtil</code></li>
+</ul>
+</li>
+</ul>
+
+<a href="#numberutil-1" id="numberutil-1" style="color: inherit; text-decoration: none;">
+  <h4>NumberUtil</h4>
+</a>
+<ul>
+<li>The <code>convertToTwoCharacterNumericalString</code> function was renamed to <code>convertToTwoCharacterString</code>. Additionally, this method now only takes a single parameter, and it will always error when given a negative number, or a number that is greater than 99.</li>
+<li>The <code>convertToTwoCharacterString</code> now returns a <code>string</code>, rather than a <code>NumericalString</code>.</li>
+</ul>
+
+<a href="#typesutil-1" id="typesutil-1" style="color: inherit; text-decoration: none;">
+  <h4>TypesUtil</h4>
+</a>
+<ul>
+<li>Removed all references to <code>AbstractEntity</code>, <code>DateString</code>, and <code>YearMonthDateString</code>. </details></li>
+</ul>
+
+<a href="#version-010-beta-release" id="version-010-beta-release" style="color: inherit; text-decoration: none;">
+  <h2>Version 0.1.0 (Beta Release)</h2>
+</a>
+<details>
+    <summary>Version 0.1.0 Change Log</summary>
+
+
+<a href="#newly-added-1" id="newly-added-1" style="color: inherit; text-decoration: none;">
+  <h3>Newly Added</h3>
+</a>
+
+<a href="#errors" id="errors" style="color: inherit; text-decoration: none;">
+  <h4>Errors</h4>
+</a>
+
+<a href="#nilerror-1" id="nilerror-1" style="color: inherit; text-decoration: none;">
+  <h5>NilError</h5>
 </a>
 <ul>
 <li>Added the <code>NilError</code>. Intended to be thrown in instances where a value is not supposed to be null or undefined, but is null or undefined.</li>
@@ -28,11 +343,11 @@
 </ul>
 
 <a href="#models" id="models" style="color: inherit; text-decoration: none;">
-  <h3>Models</h3>
+  <h4>Models</h4>
 </a>
 
 <a href="#abstractentity" id="abstractentity" style="color: inherit; text-decoration: none;">
-  <h4>AbstractEntity</h4>
+  <h5>AbstractEntity</h5>
 </a>
 <ul>
 <li>Added the <code>AbstractEntity</code> model. Intended to be used as a base for any custom entities that that do things? Not really sure what all I&#39;ll do with this, but I wanted it, so it&#39;s here.</li>
@@ -59,8 +374,8 @@
 </li>
 </ul>
 
-<a href="#environment" id="environment" style="color: inherit; text-decoration: none;">
-  <h4>Environment</h4>
+<a href="#environment-1" id="environment-1" style="color: inherit; text-decoration: none;">
+  <h5>Environment</h5>
 </a>
 <ul>
 <li>Added the <code>Environment</code> model. This class extends the <code>AbstractEntity</code> model. It is intended to be a class based instance for the actual node process options that I intended to use / support, plus an unknown option.</li>
@@ -91,11 +406,11 @@
 </ul>
 
 <a href="#types" id="types" style="color: inherit; text-decoration: none;">
-  <h3>Types</h3>
+  <h4>Types</h4>
 </a>
 
 <a href="#datestring-yearmonthdatestring-day-month-year-zerotonine-and-onetonine" id="datestring-yearmonthdatestring-day-month-year-zerotonine-and-onetonine" style="color: inherit; text-decoration: none;">
-  <h4>DateString, YearMonthDateString, Day, Month, Year, ZeroToNine, and OneToNine</h4>
+  <h5>DateString, YearMonthDateString, Day, Month, Year, ZeroToNine, and OneToNine</h5>
 </a>
 <ul>
 <li>The <code>DateString</code> type is a utility type for strings formatted as YYYY-MM-DD strings. Due to TypeScript limitations, this is limited to between the years 1900 - 2099, but hey, that&#39;s a long time, yeah?</li>
@@ -107,47 +422,47 @@
 <li>The <code>OneToNine</code> type is a utility type representing the numbers 1 - 9 as strings.</li>
 </ul>
 
-<a href="#nestedarray" id="nestedarray" style="color: inherit; text-decoration: none;">
-  <h4>NestedArray</h4>
+<a href="#nestedarray-1" id="nestedarray-1" style="color: inherit; text-decoration: none;">
+  <h5>NestedArray</h5>
 </a>
 <ul>
 <li>The <code>NestedArray</code> type is a utility type indicating a variable is an array containing another array(s).</li>
 </ul>
 
-<a href="#nestedkeyof" id="nestedkeyof" style="color: inherit; text-decoration: none;">
-  <h4>NestedKeyOf</h4>
+<a href="#nestedkeyof-1" id="nestedkeyof-1" style="color: inherit; text-decoration: none;">
+  <h5>NestedKeyOf</h5>
 </a>
 <ul>
 <li>The <code>NestedKeyOf</code> type is a utility type that is used to indicate nested objects.</li>
 </ul>
 
-<a href="#nilable" id="nilable" style="color: inherit; text-decoration: none;">
-  <h4>Nilable</h4>
+<a href="#nilable-1" id="nilable-1" style="color: inherit; text-decoration: none;">
+  <h5>Nilable</h5>
 </a>
 <ul>
 <li>The <code>Nilable</code> type is a utility type indicating that a variable can either be the specified value, <code>null</code>, <em>or</em>, <code>undefined</code>.</li>
 </ul>
 
-<a href="#nullable" id="nullable" style="color: inherit; text-decoration: none;">
-  <h4>Nullable</h4>
+<a href="#nullable-1" id="nullable-1" style="color: inherit; text-decoration: none;">
+  <h5>Nullable</h5>
 </a>
 <ul>
 <li>The <code>Nullable</code> type is a utility type indicating that a variable can be either the specified value <em>or</em> <code>null</code>, but not <code>undefined</code>.</li>
 </ul>
 
 <a href="#numericalstring" id="numericalstring" style="color: inherit; text-decoration: none;">
-  <h4>NumericalString</h4>
+  <h5>NumericalString</h5>
 </a>
 <ul>
 <li>The <code>NumericalString</code> type is a utility type that represents a number <em>or</em> a string, and is used in instances where the value can be either or.</li>
 </ul>
 
 <a href="#utilities" id="utilities" style="color: inherit; text-decoration: none;">
-  <h3>Utilities</h3>
+  <h4>Utilities</h4>
 </a>
 
-<a href="#arrayutil" id="arrayutil" style="color: inherit; text-decoration: none;">
-  <h4>ArrayUtil</h4>
+<a href="#arrayutil-1" id="arrayutil-1" style="color: inherit; text-decoration: none;">
+  <h5>ArrayUtil</h5>
 </a>
 <ul>
 <li>Added the <code>ArrayUtil</code> namespace, which has a bunch of utility functions related to JavaScript Arrays.</li>
@@ -168,7 +483,7 @@
 </ul>
 
 <a href="#dateutil" id="dateutil" style="color: inherit; text-decoration: none;">
-  <h4>DateUtil</h4>
+  <h5>DateUtil</h5>
 </a>
 <ul>
 <li>Added the <code>DateUtil</code> namespace, which has a bunch of utilty functions related to JavaScript dates (which everyone loves).</li>
@@ -205,8 +520,8 @@
 </li>
 </ul>
 
-<a href="#numberutil" id="numberutil" style="color: inherit; text-decoration: none;">
-  <h4>NumberUtil</h4>
+<a href="#numberutil-2" id="numberutil-2" style="color: inherit; text-decoration: none;">
+  <h5>NumberUtil</h5>
 </a>
 <ul>
 <li>Added the <code>NumberUtil</code> namespace, which has a bunch of utility functions for JavaScript numbers.</li>
@@ -236,8 +551,8 @@
 </li>
 </ul>
 
-<a href="#objectutil" id="objectutil" style="color: inherit; text-decoration: none;">
-  <h4>ObjectUtil</h4>
+<a href="#objectutil-1" id="objectutil-1" style="color: inherit; text-decoration: none;">
+  <h5>ObjectUtil</h5>
 </a>
 <ul>
 <li>Added the <code>ObjectUtil</code> namespace, which has a bunch of utility functions for JavaScript objects.</li>
@@ -264,8 +579,8 @@
 </li>
 </ul>
 
-<a href="#processutil" id="processutil" style="color: inherit; text-decoration: none;">
-  <h4>ProcessUtil</h4>
+<a href="#processutil-1" id="processutil-1" style="color: inherit; text-decoration: none;">
+  <h5>ProcessUtil</h5>
 </a>
 <ul>
 <li>Added the <code>ProcessUtil</code> namespace, which has a bunch of utility functions relating to the node process variable.</li>
@@ -286,8 +601,8 @@
 </li>
 </ul>
 
-<a href="#stringutil" id="stringutil" style="color: inherit; text-decoration: none;">
-  <h4>StringUtil</h4>
+<a href="#stringutil-1" id="stringutil-1" style="color: inherit; text-decoration: none;">
+  <h5>StringUtil</h5>
 </a>
 <ul>
 <li>Added the <code>StringUtil</code> namespace, which has a bunch of utility functions relating to JavaScript strings.</li>
@@ -314,8 +629,8 @@
 </li>
 </ul>
 
-<a href="#timeutil" id="timeutil" style="color: inherit; text-decoration: none;">
-  <h4>TimeUtil</h4>
+<a href="#timeutil-1" id="timeutil-1" style="color: inherit; text-decoration: none;">
+  <h5>TimeUtil</h5>
 </a>
 <ul>
 <li>Added the <code>TimeUtil</code> namespace, which has a utility functions related to time.</li>
@@ -342,8 +657,8 @@
 <li>Added the Milliseconds constant, which extends the Millisecond interface.</li>
 </ul>
 
-<a href="#typesutil" id="typesutil" style="color: inherit; text-decoration: none;">
-  <h4>TypesUtil</h4>
+<a href="#typesutil-2" id="typesutil-2" style="color: inherit; text-decoration: none;">
+  <h5>TypesUtil</h5>
 </a>
 <ul>
 <li>Added the <code>TypesUtil</code> namespace, which has a lot of type guarding and general typing related functions in it.</li>
@@ -531,11 +846,10 @@
 </li>
 <li>Added the <code>isNotNullOrUndefined</code> function.<ul>
 <li>This function has the following signature:<ul>
-<li><code>isNotNullOrUndefined&lt;T&gt;(arg: T): boolean;</code></li>
+<li><code>isNotNullOrUndefined&lt;T&gt;(arg: T): boolean;</code></details></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</details>
 </div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/ArrayUtil.html">Array<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/BooleanUtil.html">Boolean<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/NumberUtil.html">Number<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/ObjectUtil.html">Object<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/ProcessUtil.html">Process<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/StringUtil.html">String<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/TimeUtil.html">Time<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/TypesUtil.html">Types<wbr/>Util</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/EXnum.html" class="tsd-kind-icon">EXnum</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/EXnumDoesNotExist.html" class="tsd-kind-icon">EXnum<wbr/>Does<wbr/>Not<wbr/>Exist</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/EXnumMissingRequiredValue.html" class="tsd-kind-icon">EXnum<wbr/>Missing<wbr/>Required<wbr/>Value</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#EXnumable" class="tsd-kind-icon">EXnumable</a></li><li class="tsd-kind-class"><a href="classes/Environment.html" class="tsd-kind-icon">Environment</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#NestedArray" class="tsd-kind-icon">Nested<wbr/>Array</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#NestedKeyOf" class="tsd-kind-icon">Nested<wbr/>Key<wbr/>Of</a></li><li class="tsd-kind-class"><a href="classes/NilError.html" class="tsd-kind-icon">Nil<wbr/>Error</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Nilable" class="tsd-kind-icon">Nilable</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Nullable" class="tsd-kind-icon">Nullable</a></li></ul></nav></div></div></div><footer class=""><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="overlay"></div><script src="assets/main.js"></script></body></html>
