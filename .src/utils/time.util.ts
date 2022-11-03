@@ -1,4 +1,5 @@
 import { getType, isNotNumber } from "./types.util";
+import { ONE_THOUSAND } from "./number.util";
 
 /**
  *
@@ -242,3 +243,44 @@ export const Milliseconds: Millisecond = {
 	inYears: calculateMilliseconds(3.154e10),
 	toYears: convertFromMilliseconds(3.154e10)
 };
+
+/**
+ *
+ * Artificially delays application processing by generating a new promise that resolves after 1000 milliseconds.
+ *
+ * @returns {Promise<void>}
+ * @since Version 0.2.0
+ *
+ */
+export function sleep(): Promise<void>;
+
+/**
+ *
+ * Artificially delays application processing by generating a new promise that resolves after the specified number
+ * of milliseconds.
+ *
+ * @param {number} ms The number of milliseconds until the generated promise resolves.
+ * @returns {Promise<void>}
+ * @since Version 0.2.0
+ *
+ */
+export function sleep(
+	ms: number
+): Promise<void>;
+
+/**
+ *
+ * Artificially delays application processing by generating a new promise that resolves after the specified number
+ * of milliseconds.
+ *
+ * @param {number} [ms=ONE_THOUSAND] The number of milliseconds until the generated promise resolves.
+ * @returns {Promise<void>}
+ * @since Version 0.2.0
+ *
+ */
+export function sleep(
+	ms: number = ONE_THOUSAND
+): Promise<void> {
+	if (isNotNumber(ms)) ms = ONE_THOUSAND;
+	return new Promise(resolve => setTimeout(resolve, ms));
+}

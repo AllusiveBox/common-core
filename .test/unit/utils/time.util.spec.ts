@@ -1,5 +1,6 @@
 import "jest-extended";
 import { TimeUtil } from "../../../.src";
+import { ZERO } from "../../../.src/utils/number.util";
 
 /**
  *
@@ -11,6 +12,10 @@ import { TimeUtil } from "../../../.src";
  *
  */
 describe("TimeUtil Unit Test Suite", () => {
+
+	afterEach(() => {
+		jest.clearAllMocks();
+	});
 
 	const invalidList = [
 		null,
@@ -231,5 +236,40 @@ describe("TimeUtil Unit Test Suite", () => {
 		expect(TimeUtil.Milliseconds.toYears())
 			.toBe(0);
 	});
+
+	test("that given no milliseconds, sleep defaults to using ONE_THOUSAND", async () => {
+		// Setup
+		const timeoutSpy = jest.spyOn(global, "setTimeout");
+
+		await TimeUtil.sleep();
+
+		expect(timeoutSpy)
+			.toHaveBeenCalledOnce();
+
+		const timeoutParams = timeoutSpy.mock.calls[0];
+		expect(timeoutParams[1])
+			.toBe(1000);
+	});
+
+	test.each([
+		{ arg: "Hi", expectedResult: 1000 },
+		{ arg: 10, expectedResult: 10 },
+		{ arg: 10000, expectedResult: 10000 },
+		{ arg: ZERO, expectedResult: 0 }
+	])
+	("that given a value of %s, sleep times out after $expectedResult milliseconds", async ({ arg, expectedResult }) => {
+		// Setup
+		const timeoutSpy = jest.spyOn(global, "setTimeout");
+
+		// @ts-ignore
+		await TimeUtil.sleep(arg);
+
+		expect(timeoutSpy)
+			.toHaveBeenCalledOnce();
+
+		const timeoutParams = timeoutSpy.mock.calls[0];
+		expect(timeoutParams[1])
+			.toBe(expectedResult);
+	}, 15000);
 
 });
