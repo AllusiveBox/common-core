@@ -2,6 +2,27 @@ import { getType, isNotString, isString } from "./types.util";
 
 /**
  *
+ * Capitalizes the first character in a string. If the string is empty, returns the empty string.
+ *
+ * @param {string} str The string to capitalize
+ * @returns {string} The string with the first character capitalized.
+ * @throws {TypeError} If the provided value is not a string.
+ * @since Version 0.2.0
+ *
+ */
+export function capitalize(
+	str: string
+): string {
+	// Validate
+	if (isNotString(str)) {
+		throw new TypeError(`Cannot capitalize type of ${getType(str)}; Convert to a string first`);
+	}
+
+	return str ? str.charAt(0).toUpperCase() + str.substring(1, str.length) : "";
+}
+
+/**
+ *
  * Wraps the provided string in double quotes.
  *
  * @param {string} arg The string to wrap in quotes.

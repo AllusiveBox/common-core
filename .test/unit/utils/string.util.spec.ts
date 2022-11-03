@@ -31,6 +31,27 @@ describe("StringUtil Unit Test Suite", () => {
 	];
 
 	test.each(nonStringValues)
+	("that given %s, capitalize throws a TypeError", (arg) => {
+		expect(() => {
+			// @ts-ignore
+			StringUtil.capitalize(arg);
+		}).toThrowError(TypeError);
+	});
+
+	test.each([
+		{ arg: "hello", expectedResult: "Hello" },
+		{ arg: "world", expectedResult: "World" },
+		{ arg: "foo", expectedResult: "Foo" },
+		{ arg: "1", expectedResult: "1" },
+		{ arg: "true", expectedResult: "True" },
+		{ arg: "", expectedResult: "" }
+	])
+	('that given $arg, capitalize returns "$expectedResult"', ({ arg, expectedResult }) => {
+		expect(StringUtil.capitalize(arg))
+			.toBe(expectedResult);
+	});
+
+	test.each(nonStringValues)
 	("that given %s, doubleQuotes throws a TypeError", (arg) => {
 		expect(() => {
 			// @ts-ignore
