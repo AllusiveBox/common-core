@@ -1,10 +1,12 @@
-import { isNotNumber } from "./types.util";
+import { getType, isNotNumber } from "./types.util";
+import { ONE_THOUSAND } from "./number.util";
 
 /**
  *
  * Interface that describes the {@link Milliseconds} utility.
  *
  * @interface Millisecond
+ * @since Version 0.1.0
  *
  */
 export interface Millisecond {
@@ -192,7 +194,7 @@ export interface Millisecond {
 function calculateMilliseconds(multiplier: number): (unit: number) => number {
 	return function(unit: number = 1): number {
 		if (isNotNumber(unit)) {
-			throw new TypeError(`Cannot convert type: ${typeof unit} to milliseconds; Must be of type number`);
+			throw new TypeError(`Cannot convert type: ${getType(unit)} to milliseconds; Must be of type number`);
 		}
 		return unit * multiplier;
 	}
@@ -211,7 +213,7 @@ function calculateMilliseconds(multiplier: number): (unit: number) => number {
 function convertFromMilliseconds(divider: number): (unit: number) => number {
 	return function(milliseconds: number = 1): number {
 		if (isNotNumber(milliseconds)) {
-			throw new TypeError(`Cannot convert type: ${typeof milliseconds} from milliseconds; Must be of type number`);
+			throw new TypeError(`Cannot convert type: ${getType(milliseconds)} from milliseconds; Must be of type number`);
 		}
 		return Math.round(milliseconds / divider);
 	}
@@ -222,6 +224,7 @@ function convertFromMilliseconds(divider: number): (unit: number) => number {
  * Utility type that calculates the number of milliseconds for the specified unit of time.
  *
  * @type {Millisecond}
+ * @since Version 0.1.0
  *
  */
 export const Milliseconds: Millisecond = {
@@ -240,3 +243,44 @@ export const Milliseconds: Millisecond = {
 	inYears: calculateMilliseconds(3.154e10),
 	toYears: convertFromMilliseconds(3.154e10)
 };
+
+/**
+ *
+ * Artificially delays application processing by generating a new promise that resolves after 1000 milliseconds.
+ *
+ * @returns {Promise<void>}
+ * @since Version 0.2.0
+ *
+ */
+export function sleep(): Promise<void>;
+
+/**
+ *
+ * Artificially delays application processing by generating a new promise that resolves after the specified number
+ * of milliseconds.
+ *
+ * @param {number} ms The number of milliseconds until the generated promise resolves.
+ * @returns {Promise<void>}
+ * @since Version 0.2.0
+ *
+ */
+export function sleep(
+	ms: number
+): Promise<void>;
+
+/**
+ *
+ * Artificially delays application processing by generating a new promise that resolves after the specified number
+ * of milliseconds.
+ *
+ * @param {number} [ms=ONE_THOUSAND] The number of milliseconds until the generated promise resolves.
+ * @returns {Promise<void>}
+ * @since Version 0.2.0
+ *
+ */
+export function sleep(
+	ms: number = ONE_THOUSAND
+): Promise<void> {
+	if (isNotNumber(ms)) ms = ONE_THOUSAND;
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
