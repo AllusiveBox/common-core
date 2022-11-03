@@ -27,5 +27,6 @@ export {
 	ObjectUtil,
 	ProcessUtil,
 	StringUtil,
+	TimeUtil,
 	TypesUtil
 } from "./utils";
