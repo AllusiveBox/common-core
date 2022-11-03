@@ -116,3 +116,4 @@ tsconfig.json
 tsconfig.nocomments.json
 typedoc.json
 global.d.ts
+jest.global.ts
