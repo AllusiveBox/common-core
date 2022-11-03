@@ -15,7 +15,7 @@ export default class Environment extends EXnum {
 
 	/**
 	 *
-	 * Map that contains data for converting an Environment to a Xnumable value.
+	 * Map that contains data for converting an Environment to an EXnumable value.
 	 *
 	 * @type {Map<Environment, string>}
 	 * @protected
@@ -26,7 +26,7 @@ export default class Environment extends EXnum {
 
 	/**
 	 *
-	 * Map that contains data for converting an Environment Xnumable to a EXnum.
+	 * Map that contains data for converting an EnvironmentEXnumable to a EXnum.
 	 *
 	 * @type {Map<string, Environment>}
 	 * @protected
