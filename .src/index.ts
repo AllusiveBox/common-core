@@ -25,6 +25,7 @@ export {
 	ArrayUtil,
 	NumberUtil,
 	ObjectUtil,
+	ProcessUtil,
 	StringUtil,
 	TypesUtil
 } from "./utils";

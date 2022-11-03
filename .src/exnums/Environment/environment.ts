@@ -17,23 +17,23 @@ export default class Environment extends EXnum {
 	 *
 	 * Map that contains data for converting an Environment to a Xnumable value.
 	 *
-	 * @type {Map<EXnum, EXnumable>}
+	 * @type {Map<Environment, string>}
 	 * @protected
 	 * @since Version 0.2.0
 	 *
 	 */
-	protected static EXNUM_TO_VALUE_MAP: Map<Environment, EXnumable> = new Map<Environment, EXnumable>();
+	protected static EXNUM_TO_VALUE_MAP: Map<Environment, string> = new Map<Environment, string>();
 
 	/**
 	 *
 	 * Map that contains data for converting an Environment Xnumable to a EXnum.
 	 *
-	 * @type {Map<EXnumable, EXnum>}
+	 * @type {Map<string, Environment>}
 	 * @protected
 	 * @since Version 0.2.0
 	 *
 	 */
-	protected static VALUE_TO_EXNUM_MAP: Map<EXnumable, Environment> = new Map<EXnumable, Environment>();
+	protected static VALUE_TO_EXNUM_MAP: Map<string, Environment> = new Map<string, Environment>();
 
 	/**
 	 *
@@ -167,14 +167,14 @@ export default class Environment extends EXnum {
 	 * Gets the corresponding EXnumable value that maps to the provided Environment.
 	 *
 	 * @param {Environment} environment the environment to use to get the EXnumable value.
-	 * @returns {EXnumable} The EXnumable value associated with the provided Environment.
+	 * @returns {string} The string value associated with the provided Environment.
 	 * @override
 	 * @since Version 0.2.0
 	 *
 	 */
 	public static override getValue(
 		environment: Environment
-	): EXnumable {
+	): string {
 		return this.EXNUM_TO_VALUE_MAP.get(environment) || "UNKNOWN";
 	}
 
@@ -198,14 +198,14 @@ export default class Environment extends EXnum {
 	 *
 	 * Sets the Environment EXnum maps with the provided value.
 	 *
-	 * @param {EXnumable} value The EXnumable value to map to the EXnum.
+	 * @param {string} value The EXnumable value to map to the EXnum.
 	 * @returns {void}
 	 * @protected
 	 * @since Version 0.2.0
 	 *
 	 */
 	protected setEXnumMap(
-		value: EXnumable
+		value: string
 	): void {
 		Environment.EXNUM_TO_VALUE_MAP.set(this, value);
 		Environment.VALUE_TO_EXNUM_MAP.set(value, this);
