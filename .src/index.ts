@@ -23,6 +23,7 @@ export {
 /* utility exports */
 export {
 	ArrayUtil,
+	BooleanUtil,
 	NumberUtil,
 	ObjectUtil,
 	ProcessUtil,
