@@ -3,10 +3,7 @@
   "cleanOutputDir": true,
   "defaultCategory": "Other",
   "entryPoints": [
-    "./.src/errors",
-    "./.src/models",
-    "./.src/types",
-    "./.src/utils"
+    "./.src/"
   ],
   "entryPointStrategy": "resolve",
   "excludePrivate": true,

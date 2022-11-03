@@ -1,15 +1,16 @@
 /**
  *
- * Utility type that is used to indicate nested objects.
+ * Utility type that is used to indicate an object that may contain additional nested objects.
  * <br />
- * <b>Note:</b> Due to how TypeScript generates type unions, as of TypeScript 4.7.4, this logically works, however,
+ * Refer to {@link https://dev.to/pffigueiredo/typescript-utility-keyof-nested-object-2pa3 this article} for a
+ * detailed explanation of how this type is supposed to work.
+ * <br />
+ * <b>Note:</b> Due to how TypeScript generates type unions, as of TypeScript 4.8.4, this logically works, however,
  * it requires the use of a `ts-ignore` to prevent error Type instantiation is excessively deep and possibly infinite.
  *
- * @type NestedKeyOf<TObject>
- * @template TObject
+ * @type NestedKeyOf
+ * @beta
  * @since Version 0.1.0
- * @see https://dev.to/pffigueiredo/typescript-utility-keyof-nested-object-2pa3
- * @see for detailed explanation of this type and how it works.
  *
  */
 export type NestedKeyOf<TObject extends object> =

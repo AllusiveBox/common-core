@@ -1,1 +1,1 @@
-export { default as NilError } from "./nil.error";
+export { NilError } from "./NilError";
