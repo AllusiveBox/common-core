@@ -35,10 +35,8 @@ export function getProperty<TObject extends object>(
 ): Nullable<TObject[keyof TObject]> {
 	// Validate
 	if ((isNullOrUndefined(obj))
-		// @ts-ignore
 		&& (isNotNullOrUndefined(path))) {
 
-		// @ts-ignore
 		throw new NilError(`Attempting to get ${path} for null object`);
 	} else if ((isNullOrUndefined(path))
 		&& (isNotNullOrUndefined(obj))) {
