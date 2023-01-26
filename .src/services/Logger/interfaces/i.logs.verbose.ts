@@ -1,15 +1,15 @@
-import IBasicLogger from "./i.basic.logger";
+import ILogger from "./i.logger";
 
 /**
  *
  * An extended logger type that implements verbose level logging.
  *
- * @interface IHasVerboseLogs
- * @extends IBasicLogger
+ * @interface ILogsVerbose
+ * @extends ILogger
  * @since Version 0.3.0
- * 
+ *
  */
-export default interface IHasVerboseLogs extends IBasicLogger {
+export default interface ILogsVerbose extends ILogger {
 
 	/**
 	 *

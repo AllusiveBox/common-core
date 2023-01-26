@@ -2,11 +2,11 @@
  *
  * Interface that outlines general logger requirements.
  *
- * @interface IBasicLogger
+ * @interface ILogger
  * @since Version 0.3.0
  *
  */
-export default interface IBasicLogger {
+export default interface ILogger {
 
 	/**
 	 *

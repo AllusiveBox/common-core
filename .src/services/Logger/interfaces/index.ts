@@ -1,3 +1,3 @@
-export { default as IBasicLogger } from "./i.basic.logger";
-export { default as IHasFatalLogs } from "./i.has.fatal.logs";
-export { default as IHasVerboseLogs } from "./i.has.verbose.logs";
+export { default as ILogger } from "./i.logger";
+export { default as ILogsFatal } from "./i.logs.fatal";
+export { default as ILogsVerbose } from "./i.logs.verbose";
