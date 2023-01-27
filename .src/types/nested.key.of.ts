@@ -15,7 +15,6 @@
  */
 export type NestedKeyOf<TObject extends object> =
 	{[Key in keyof TObject & string]: TObject[Key] extends object
-		// @ts-ignore
-		? `${Key}` | `${Key}.${NestedKeyOf<TObject[Key]>}`
+		? `${Key}` | `${Key}.${NestedKeyOf<TObject[Key]> extends infer U extends string ? U : never}`
 		: Key
 	}[keyof TObject & string];
