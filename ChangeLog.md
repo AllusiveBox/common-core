@@ -170,7 +170,7 @@
 
 ### Breaking Changes
 
-* A number of features were dropped between the 0.1.0 beta and the 0.2.0 beta, additionally, the overall file structure for the project was changed. To see what project content was impacted by the file restructure, check the [Updates to existing features](#updates-to-existing-features) section for full details.
+* A number of features were dropped between the 0.1.0 beta and the 0.2.0 beta, additionally, the overall file structure for the project was changed. To see what project content was impacted by the file restructure, check the [Updates to existing features](#Updates-to-Existing-Features) section for full details.
 * A number of previous features were removed.
   * `AbstractEntity`
   * `OneToNine`
