@@ -1,5 +1,24 @@
 # Version 0.X Change Log
 
+## Version 0.3.0 (Beta Release)
+<details>
+    <summary>Version 0.3.0 Change Log</summary>
+
+### Newly Added
+
+* Nothing new was added the Version 0.3.0 release.
+
+### Updates to existing Features
+
+#### NestedKeyOf
+
+* Updated the type definition for the NestedKeyOf type. This new definition should make it so that IDEs not complain about infinite possibilities for values and need to be ignored.
+
+#### Breaking Changes
+
+* While not necessarily a breaking change, the `json5` module was updated from version `2.2.1` to version `2.2.3`.
+</details>
+
 ## Version 0.2.0 (Beta Release)
 <details>
     <summary>Version 0.2.0 Change Log</summary>

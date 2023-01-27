@@ -14,7 +14,7 @@
   "readme": "ChangeLog.md",
   "logLevel": "Verbose",
   "markedOptions": {
-    "breaks": true,
+    "breaks": false,
     "langPrefix": "typescript"
   },
   "sort": ["static-first","visibility", "alphabetical"],
