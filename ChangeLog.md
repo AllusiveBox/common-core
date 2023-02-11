@@ -1,4 +1,43 @@
-# Version 0.X Change Log
+# Change Log
+
+## Version 0.3.1 (Beta Release)
+<details>
+    <summary>Version 0.3.1 Change Log</summary>
+
+### Newly Added
+
+#### NumericalString
+
+* Added the `NumericalString` type alias for variables that are both a number, and a string that is a number.
+
+### Updates to existing Features
+
+#### TypesUtil
+
+* Added the `isNumericalString` function. This checks to see if the provided value is a `NumericalString` or not.
+* Added the `isNotNumericalString` function. This check is the inverse of the `isNumericalString` function.
+* Updated the `getType` function to now return `NumericalString`.
+  * As a number should be treated as a number, rather than a NumericalString, `getType(1)` will return `number`, 
+    while `getType("1")` will return `NumericalString`. The logic for strings is otherwise unchanged.
+* Updated the `getType` function to return the passed value should a value of `unknown` ever be returned.
+
+#### Booleanable
+
+* Added the `Booleanable` type to the package's main export.
+
+#### Falseable
+
+* Added the `Falseable` type to the package's main export.
+
+#### Trueable
+
+* Added the `Trueable` type to the package's main export.
+
+### Breaking Changes
+
+* There are no breaking changes when upgrading from version 0.3.0 to 0.3.1
+
+</details>
 
 ## Version 0.3.0 (Beta Release)
 <details>
@@ -14,7 +53,7 @@
 
 * Updated the type definition for the NestedKeyOf type. This new definition should make it so that IDEs not complain about infinite possibilities for values and need to be ignored.
 
-#### Breaking Changes
+### Breaking Changes
 
 * While not necessarily a breaking change, the `json5` module was updated from version `2.2.1` to version `2.2.3`.
 </details>

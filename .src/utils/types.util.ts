@@ -1,3 +1,4 @@
+import { NumericalString } from "../types";
 import { isEmptyArray, isNotEmptyArray } from "./array.util";
 import { isEmptyObject, isNotEmptyObject } from "./object.util";
 import { isEmptyString, isSetString } from "./string.util";
@@ -45,6 +46,10 @@ export function getType(
         return "number";
     }
 
+    if (isNumericalString(arg)) {
+        return "NumericalString";
+    }
+
     if (isObject(arg)) {
         return "object";
     }
@@ -57,7 +62,7 @@ export function getType(
         return "undefined";
     }
 
-    return "unknown";
+    return `unknown (${arg})`;
 }
 
 /**
@@ -332,6 +337,42 @@ export function isNotNumber<T>(
     arg: T
 ): arg is Exclude<T, number> {
     return !isNumber(arg);
+}
+
+/**
+ *
+ * Checks if a value is a numerical string.
+ * <br />
+ * <b>Note</b>: Just because a value passes this check does not mean the value is necessarily a string, just that it
+ * is either a number, or a string that can be parsed into a number.
+ *
+ * @param {T} arg The value to check.
+ * @returns {boolean}
+ * @template T
+ * @since Version 0.3.1
+ *
+ */
+export function isNumericalString<T>(
+    arg: T
+): arg is T & NumericalString {
+    return ((isString(arg)) && (!isNaN(parseInt(arg)))
+        || (isNumber(arg)));
+}
+
+/**
+ *
+ * Checks if a value is not a numerical string.
+ *
+ * @param {T} arg The value to check.
+ * @returns {boolean}
+ * @template T
+ * @since Version 0.3.1
+ *
+ */
+export function isNotNumericalString<T>(
+    arg: T
+): arg is Exclude<T, NumericalString> {
+    return !isNumericalString(arg);
 }
 
 /**

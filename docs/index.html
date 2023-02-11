@@ -1,7 +1,73 @@
-<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@allusivebox/core - v0.3.0</title><meta name="description" content="Documentation for @allusivebox/core - v0.3.0"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@allusivebox/core - v0.3.0</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>@allusivebox/core - v0.3.0 </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
-<a href="#version-0x-change-log" id="version-0x-change-log" style="color: inherit; text-decoration: none;">
-  <h1>Version 0.X Change Log</h1>
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@allusivebox/core - v0.3.1</title><meta name="description" content="Documentation for @allusivebox/core - v0.3.1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@allusivebox/core - v0.3.1</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>@allusivebox/core - v0.3.1 </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#change-log" id="change-log" style="color: inherit; text-decoration: none;">
+  <h1>Change Log</h1>
 </a>
+
+<a href="#version-031-beta-release" id="version-031-beta-release" style="color: inherit; text-decoration: none;">
+  <h2>Version 0.3.1 (Beta Release)</h2>
+</a>
+<details>
+    <summary>Version 0.3.1 Change Log</summary>
+
+
+<a href="#newly-added" id="newly-added" style="color: inherit; text-decoration: none;">
+  <h3>Newly Added</h3>
+</a>
+
+<a href="#numericalstring" id="numericalstring" style="color: inherit; text-decoration: none;">
+  <h4>NumericalString</h4>
+</a>
+<ul>
+<li>Added the <code>NumericalString</code> type alias for variables that are both a number, and a string that is a number.</li>
+</ul>
+
+<a href="#updates-to-existing-features" id="updates-to-existing-features" style="color: inherit; text-decoration: none;">
+  <h3>Updates to existing Features</h3>
+</a>
+
+<a href="#typesutil" id="typesutil" style="color: inherit; text-decoration: none;">
+  <h4>TypesUtil</h4>
+</a>
+<ul>
+<li>Added the <code>isNumericalString</code> function. This checks to see if the provided value is a <code>NumericalString</code> or not.</li>
+<li>Added the <code>isNotNumericalString</code> function. This check is the inverse of the <code>isNumericalString</code> function.</li>
+<li>Updated the <code>getType</code> function to now return <code>NumericalString</code>.<ul>
+<li>As a number should be treated as a number, rather than a NumericalString, <code>getType(1)</code> will return <code>number</code>, 
+while <code>getType(&quot;1&quot;)</code> will return <code>NumericalString</code>. The logic for strings is otherwise unchanged.</li>
+</ul>
+</li>
+<li>Updated the <code>getType</code> function to return the passed value should a value of <code>unknown</code> ever be returned.</li>
+</ul>
+
+<a href="#booleanable" id="booleanable" style="color: inherit; text-decoration: none;">
+  <h4>Booleanable</h4>
+</a>
+<ul>
+<li>Added the <code>Booleanable</code> type to the package&#39;s main export.</li>
+</ul>
+
+<a href="#falseable" id="falseable" style="color: inherit; text-decoration: none;">
+  <h4>Falseable</h4>
+</a>
+<ul>
+<li>Added the <code>Falseable</code> type to the package&#39;s main export.</li>
+</ul>
+
+<a href="#trueable" id="trueable" style="color: inherit; text-decoration: none;">
+  <h4>Trueable</h4>
+</a>
+<ul>
+<li>Added the <code>Trueable</code> type to the package&#39;s main export.</li>
+</ul>
+
+<a href="#breaking-changes" id="breaking-changes" style="color: inherit; text-decoration: none;">
+  <h3>Breaking Changes</h3>
+</a>
+<ul>
+<li>There are no breaking changes when upgrading from version 0.3.0 to 0.3.1</li>
+</ul>
+</details>
+
 
 <a href="#version-030-beta-release" id="version-030-beta-release" style="color: inherit; text-decoration: none;">
   <h2>Version 0.3.0 (Beta Release)</h2>
@@ -10,14 +76,14 @@
     <summary>Version 0.3.0 Change Log</summary>
 
 
-<a href="#newly-added" id="newly-added" style="color: inherit; text-decoration: none;">
+<a href="#newly-added-1" id="newly-added-1" style="color: inherit; text-decoration: none;">
   <h3>Newly Added</h3>
 </a>
 <ul>
 <li>Nothing new was added the Version 0.3.0 release.</li>
 </ul>
 
-<a href="#updates-to-existing-features" id="updates-to-existing-features" style="color: inherit; text-decoration: none;">
+<a href="#updates-to-existing-features-1" id="updates-to-existing-features-1" style="color: inherit; text-decoration: none;">
   <h3>Updates to existing Features</h3>
 </a>
 
@@ -28,8 +94,8 @@
 <li>Updated the type definition for the NestedKeyOf type. This new definition should make it so that IDEs not complain about infinite possibilities for values and need to be ignored.</li>
 </ul>
 
-<a href="#breaking-changes" id="breaking-changes" style="color: inherit; text-decoration: none;">
-  <h4>Breaking Changes</h4>
+<a href="#breaking-changes-1" id="breaking-changes-1" style="color: inherit; text-decoration: none;">
+  <h3>Breaking Changes</h3>
 </a>
 <ul>
 <li>While not necessarily a breaking change, the <code>json5</code> module was updated from version <code>2.2.1</code> to version <code>2.2.3</code>.</details></li>
@@ -42,7 +108,7 @@
     <summary>Version 0.2.0 Change Log</summary>
 
 
-<a href="#newly-added-1" id="newly-added-1" style="color: inherit; text-decoration: none;">
+<a href="#newly-added-2" id="newly-added-2" style="color: inherit; text-decoration: none;">
   <h3>Newly Added</h3>
 </a>
 
@@ -69,21 +135,21 @@
 <li>This Error is intended to be thrown during testing, as EXnums should not be designed to be created during runtime.</li>
 </ul>
 
-<a href="#booleanable" id="booleanable" style="color: inherit; text-decoration: none;">
+<a href="#booleanable-1" id="booleanable-1" style="color: inherit; text-decoration: none;">
   <h4>Booleanable</h4>
 </a>
 <ul>
 <li>Added the utility type Booleanable. This type is intended to indicate that a value can be converted to a Boolean.</li>
 </ul>
 
-<a href="#falseable" id="falseable" style="color: inherit; text-decoration: none;">
+<a href="#falseable-1" id="falseable-1" style="color: inherit; text-decoration: none;">
   <h4>Falseable</h4>
 </a>
 <ul>
 <li>Added the utility type Falseable. This type is intended to indicate that a value is synonymous with the <code>false</code> boolean value.</li>
 </ul>
 
-<a href="#trueable" id="trueable" style="color: inherit; text-decoration: none;">
+<a href="#trueable-1" id="trueable-1" style="color: inherit; text-decoration: none;">
   <h4>Trueable</h4>
 </a>
 <ul>
@@ -133,7 +199,7 @@
 </li>
 </ul>
 
-<a href="#updates-to-existing-features-1" id="updates-to-existing-features-1" style="color: inherit; text-decoration: none;">
+<a href="#updates-to-existing-features-2" id="updates-to-existing-features-2" style="color: inherit; text-decoration: none;">
   <h3>Updates to Existing Features</h3>
 </a>
 
@@ -304,14 +370,14 @@
 </li>
 </ul>
 
-<a href="#typesutil" id="typesutil" style="color: inherit; text-decoration: none;">
+<a href="#typesutil-1" id="typesutil-1" style="color: inherit; text-decoration: none;">
   <h4>TypesUtil</h4>
 </a>
 <ul>
 <li>Updated the documentation for a number of functions.</li>
 </ul>
 
-<a href="#breaking-changes-1" id="breaking-changes-1" style="color: inherit; text-decoration: none;">
+<a href="#breaking-changes-2" id="breaking-changes-2" style="color: inherit; text-decoration: none;">
   <h3>Breaking Changes</h3>
 </a>
 <ul>
@@ -339,7 +405,7 @@
 <li>The <code>convertToTwoCharacterString</code> now returns a <code>string</code>, rather than a <code>NumericalString</code>.</li>
 </ul>
 
-<a href="#typesutil-1" id="typesutil-1" style="color: inherit; text-decoration: none;">
+<a href="#typesutil-2" id="typesutil-2" style="color: inherit; text-decoration: none;">
   <h4>TypesUtil</h4>
 </a>
 <ul>
@@ -353,7 +419,7 @@
     <summary>Version 0.1.0 Change Log</summary>
 
 
-<a href="#newly-added-2" id="newly-added-2" style="color: inherit; text-decoration: none;">
+<a href="#newly-added-3" id="newly-added-3" style="color: inherit; text-decoration: none;">
   <h3>Newly Added</h3>
 </a>
 
@@ -482,7 +548,7 @@
 <li>The <code>Nullable</code> type is a utility type indicating that a variable can be either the specified value <em>or</em> <code>null</code>, but not <code>undefined</code>.</li>
 </ul>
 
-<a href="#numericalstring" id="numericalstring" style="color: inherit; text-decoration: none;">
+<a href="#numericalstring-1" id="numericalstring-1" style="color: inherit; text-decoration: none;">
   <h5>NumericalString</h5>
 </a>
 <ul>
@@ -689,7 +755,7 @@
 <li>Added the Milliseconds constant, which extends the Millisecond interface.</li>
 </ul>
 
-<a href="#typesutil-2" id="typesutil-2" style="color: inherit; text-decoration: none;">
+<a href="#typesutil-3" id="typesutil-3" style="color: inherit; text-decoration: none;">
   <h5>TypesUtil</h5>
 </a>
 <ul>
@@ -884,4 +950,4 @@
 </ul>
 </li>
 </ul>
-</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/ArrayUtil.html">Array<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/BooleanUtil.html">Boolean<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/NumberUtil.html">Number<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/ObjectUtil.html">Object<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/ProcessUtil.html">Process<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/StringUtil.html">String<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/TimeUtil.html">Time<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/TypesUtil.html">Types<wbr/>Util</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/EXnum.html" class="tsd-kind-icon">EXnum</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/EXnumDoesNotExist.html" class="tsd-kind-icon">EXnum<wbr/>Does<wbr/>Not<wbr/>Exist</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/EXnumMissingRequiredValue.html" class="tsd-kind-icon">EXnum<wbr/>Missing<wbr/>Required<wbr/>Value</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#EXnumable" class="tsd-kind-icon">EXnumable</a></li><li class="tsd-kind-class"><a href="classes/Environment.html" class="tsd-kind-icon">Environment</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#NestedArray" class="tsd-kind-icon">Nested<wbr/>Array</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#NestedKeyOf" class="tsd-kind-icon">Nested<wbr/>Key<wbr/>Of</a></li><li class="tsd-kind-class"><a href="classes/NilError.html" class="tsd-kind-icon">Nil<wbr/>Error</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Nilable" class="tsd-kind-icon">Nilable</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Nullable" class="tsd-kind-icon">Nullable</a></li></ul></nav></div></div></div><footer class=""><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="overlay"></div><script src="assets/main.js"></script></body></html>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/ArrayUtil.html">Array<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/BooleanUtil.html">Boolean<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/NumberUtil.html">Number<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/ObjectUtil.html">Object<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/ProcessUtil.html">Process<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/StringUtil.html">String<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/TimeUtil.html">Time<wbr/>Util</a></li><li class=" tsd-kind-namespace"><a href="modules/TypesUtil.html">Types<wbr/>Util</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-type-alias"><a href="modules.html#Booleanable" class="tsd-kind-icon">Booleanable</a></li><li class="tsd-kind-class"><a href="classes/EXnum.html" class="tsd-kind-icon">EXnum</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/EXnumDoesNotExist.html" class="tsd-kind-icon">EXnum<wbr/>Does<wbr/>Not<wbr/>Exist</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/EXnumMissingRequiredValue.html" class="tsd-kind-icon">EXnum<wbr/>Missing<wbr/>Required<wbr/>Value</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#EXnumable" class="tsd-kind-icon">EXnumable</a></li><li class="tsd-kind-class"><a href="classes/Environment.html" class="tsd-kind-icon">Environment</a></li><li class="tsd-kind-type-alias"><a href="modules.html#Falseable" class="tsd-kind-icon">Falseable</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#NestedArray" class="tsd-kind-icon">Nested<wbr/>Array</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#NestedKeyOf" class="tsd-kind-icon">Nested<wbr/>Key<wbr/>Of</a></li><li class="tsd-kind-class"><a href="classes/NilError.html" class="tsd-kind-icon">Nil<wbr/>Error</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Nilable" class="tsd-kind-icon">Nilable</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Nullable" class="tsd-kind-icon">Nullable</a></li><li class="tsd-kind-type-alias"><a href="modules.html#NumericalString" class="tsd-kind-icon">Numerical<wbr/>String</a></li><li class="tsd-kind-type-alias"><a href="modules.html#Trueable" class="tsd-kind-icon">Trueable</a></li></ul></nav></div></div></div><footer class=""><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="overlay"></div><script src="assets/main.js"></script></body></html>
