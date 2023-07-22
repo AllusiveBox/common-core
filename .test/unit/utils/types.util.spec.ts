@@ -360,6 +360,48 @@ describe("TypesUtil Unit Test Suite", () => {
             .toBeTrue();
     });
 
+    const nonNumericalValues = [
+        null,
+        undefined,
+        true,
+        "foo",
+        new Date(),
+        {},
+        [],
+        Symbol(),
+        NaN
+    ];
+
+    const numericalValues = [
+        1,
+        "100000",
+        Infinity
+    ];
+
+    test.each(nonNumericalValues)
+    ("that given %s, isNumericalString returns false", (arg) => {
+        expect(TypesUtil.isNumericalString(arg))
+            .toBeFalse();
+    });
+
+    test.each(numericalValues)
+    ("that given %s, isNumericalString returns true", (arg) => {
+        expect(TypesUtil.isNumericalString(arg))
+            .toBeTrue();
+    });
+
+    test.each(numericalValues)
+    ("that given %s, isNotNumericalString returns false", (arg) => {
+        expect(TypesUtil.isNotNumericalString(arg))
+            .toBeFalse();
+    });
+
+    test.each(nonNumericalValues)
+    ("that given %s, isNotNumericalString returns true", (arg) => {
+        expect(TypesUtil.isNotNumericalString(arg))
+            .toBeTrue();
+    });
+
     const nonObjectValues = [
         ...nullOrUndefinedValues,
         [],
@@ -509,8 +551,8 @@ describe("TypesUtil Unit Test Suite", () => {
         { arg: new Error(), result: "Error" },
         { arg: 1, result: "number" },
         { arg: {}, result: "object" },
-        { arg: "1", result: "string" },
-        { arg: Symbol, result: "unknown" },
+        { arg: "1", result: "NumericalString" },
+        { arg: Symbol, result: "unknown (function Symbol() { [native code] })" },
         { arg: Environment.TEST, result: "environment" }
     ])
     ("that given $arg, getType returns $result", ({ arg, result }) => {

@@ -13,11 +13,15 @@ export {
 
 /* type exports */
 export {
+	Booleanable,
 	EXnumable,
+	Falseable,
 	NestedArray,
 	NestedKeyOf,
 	Nilable,
-	Nullable
+	Nullable,
+	NumericalString,
+	Trueable
 } from "./types";
 
 /* utility exports */
