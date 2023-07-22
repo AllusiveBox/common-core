@@ -1,4 +1,9 @@
-import { getType, isNotString, isString } from "./types.util";
+import {
+    getType,
+    isNotString,
+    isString
+} from "./types.util";
+import { EmptyString } from "../types";
 
 /**
  *
@@ -11,14 +16,18 @@ import { getType, isNotString, isString } from "./types.util";
  *
  */
 export function capitalize(
-	str: string
+    str: string
 ): string {
-	// Validate
-	if (isNotString(str)) {
-		throw new TypeError(`Cannot capitalize type of ${getType(str)}; Convert to a string first`);
-	}
+    // Validate
+    if (isNotString(str)) {
+        throw new TypeError(`Cannot capitalize type of ${getType(str)}; Convert to a string first`);
+    }
 
-	return str ? str.charAt(0).toUpperCase() + str.substring(1, str.length) : "";
+    return str ? str.charAt(0)
+        .toUpperCase() + str.substring(
+        1,
+        str.length
+    ) : "";
 }
 
 /**
@@ -32,44 +41,46 @@ export function capitalize(
  *
  */
 export function doubleQuotes(
-	arg: string
+    arg: string
 ): string {
-	// Validate
-	if (isNotString(arg)) {
-		throw new TypeError(`Cannot wrap type of ${getType(arg)} in double quotes; Convert to a string first`);
-	}
+    // Validate
+    if (isNotString(arg)) {
+        throw new TypeError(`Cannot wrap type of ${getType(arg)} in double quotes; Convert to a string first`);
+    }
 
-	return `"${arg}"`;
+    return `"${arg}"`;
+}
+
+/**
+ *
+ * Indicates if the provided string is not empty.
+ *
+ * @param {unknown} arg The value to check.
+ * @returns {boolean} True if the value is a non-empty string, otherwise false.
+ * @since Version 0.3.2
+ *
+ */
+export function isNonEmptyString(
+    arg: unknown
+): arg is string {
+    return ((isString(arg))
+        && (arg !== ""));
 }
 
 /**
  *
  * Indicates if the provided string is empty.
  *
- * @param {string} arg The string to check.
+ * @param {unknown} arg The value to check.
  * @returns {boolean} True if the string is empty, otherwise false.
  * @since Version 0.1.0
  *
  */
 export function isEmptyString(
-	arg: string
-): arg is "" {
-	return isString(arg) && arg === "";
-}
-
-/**
- *
- * Indicates if the provided string is set.
- *
- * @param {string} arg the string to check.
- * @returns {boolean} True if the string is not empty, otherwise false.
- * @since Version 0.1.0
- *
- */
-export function isSetString(
-	arg: string
-): arg is Exclude<typeof arg, ""> {
-	return isString(arg) && arg !== "";
+    arg: unknown
+): arg is EmptyString {
+    return ((isString(arg))
+        && (arg === ""));
 }
 
 /**
@@ -83,12 +94,12 @@ export function isSetString(
  *
  */
 export function singleQuotes(
-	arg: string
+    arg: string
 ): string {
-	// Validate
-	if (isNotString(arg)) {
-		throw new TypeError(`Cannot wrap type of ${getType(arg)} in single quotes; Convert to string first`);
-	}
+    // Validate
+    if (isNotString(arg)) {
+        throw new TypeError(`Cannot wrap type of ${getType(arg)} in single quotes; Convert to string first`);
+    }
 
-	return `'${arg}'`;
+    return `'${arg}'`;
 }

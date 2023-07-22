@@ -241,13 +241,13 @@ describe("ArrayUtil Unit Test Suite", () => {
 			.toBeTrue();
 	});
 
-	test("that given an empty array, isNotEmptyArray returns false", () => {
-		expect(ArrayUtil.isNotEmptyArray([]))
+	test("that given an empty array, isNonEmptyArray returns false", () => {
+		expect(ArrayUtil.isNonEmptyArray([]))
 			.toBeFalse();
 	});
 
-	test("that given a non-empty array, isNotEmptyArray returns true", () => {
-		expect(ArrayUtil.isNotEmptyArray(["hello", "world"]))
+	test("that given a non-empty array, isNonEmptyArray returns true", () => {
+		expect(ArrayUtil.isNonEmptyArray(["hello", "world"]))
 			.toBeTrue();
 	});
 

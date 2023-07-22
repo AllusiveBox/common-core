@@ -1,9 +1,2 @@
-export {
-	Environment
-} from "./Environment";
-
-export {
-	EXnum,
-	EXnumDoesNotExist,
-	EXnumMissingRequiredValue
-} from "./EXnum";
+export * from "./Environment";
+export * from "./EXnum";
