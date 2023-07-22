@@ -1,5 +1,14 @@
-import { getType, isArray, isNotArray, isNotNumber, isNotString } from "./types.util";
-import { NestedArray } from "../types";
+import {
+    getType,
+    isArray,
+    isNotArray,
+    isNotNumber,
+    isNotString
+} from "./types.util";
+import {
+    EmptyArray,
+    NestedArray
+} from "../types";
 
 /**
  *
@@ -12,7 +21,7 @@ import { NestedArray } from "../types";
  *
  */
 export function chunk<T>(
-	items: Array<T>
+    items: Array<T>
 ): NestedArray<T>;
 
 /**
@@ -31,8 +40,8 @@ export function chunk<T>(
  *
  */
 export function chunk<T>(
-	items: Array<T>,
-	chunkSize: number
+    items: Array<T>,
+    chunkSize: number
 ): NestedArray<T>
 
 /**
@@ -51,28 +60,31 @@ export function chunk<T>(
  *
  */
 export function chunk<T>(
-	items: Array<T>,
-	chunkSize: number = 10
+    items: Array<T>,
+    chunkSize: number = 10
 ): NestedArray<T> {
-	// Validate
-	if (isNotArray(items)) {
-		throw new TypeError(`Unable to chunk type: ${getType(items)}; Must be an Array`);
-	} else if (isNotNumber(chunkSize)) {
-		throw new TypeError(`Unable to determine chunking size with type ${getType(chunkSize)}`);
-	} else if (chunkSize < 1) {
-		throw new Error("Unable to chunk an array smaller than 1 element each");
-	}
+    // Validate
+    if (isNotArray(items)) {
+        throw new TypeError(`Unable to chunk type: ${getType(items)}; Must be an Array`);
+    } else if (isNotNumber(chunkSize)) {
+        throw new TypeError(`Unable to determine chunking size with type ${getType(chunkSize)}`);
+    } else if (chunkSize < 1) {
+        throw new Error("Unable to chunk an array smaller than 1 element each");
+    }
 
-	const chunkedArray: NestedArray<T> = new Array<T>();
-	let index: number = 0;
+    const chunkedArray: NestedArray<T> = new Array<T>();
+    let index: number = 0;
 
-	// While the current index is less than the array length
-	while (index < items?.length) {
-		chunkedArray.push(items.slice(index, chunkSize + index));
-		index += chunkSize;
-	}
+    // While the current index is less than the array length
+    while (index < items?.length) {
+        chunkedArray.push(items.slice(
+            index,
+            chunkSize + index
+        ));
+        index += chunkSize;
+    }
 
-	return chunkedArray;
+    return chunkedArray;
 }
 
 /**
@@ -88,20 +100,20 @@ export function chunk<T>(
  *
  */
 export function combine<T, U = T>(
-	array1: Array<T>,
-	array2: Array<U>
+    array1: Array<T>,
+    array2: Array<U>
 ): Array<T | U> {
-	const combinedArray: Array<T | U> = new Array<T | U>();
+    const combinedArray: Array<T | U> = new Array<T | U>();
 
-	if (isNotEmptyArray(array1)) {
-		combinedArray.push(...array1);
-	}
+    if (isNonEmptyArray(array1)) {
+        combinedArray.push(...array1);
+    }
 
-	if (isNotEmptyArray(array2)) {
-		combinedArray.push(...array2);
-	}
+    if (isNonEmptyArray(array2)) {
+        combinedArray.push(...array2);
+    }
 
-	return combinedArray;
+    return combinedArray;
 }
 
 /**
@@ -115,7 +127,7 @@ export function combine<T, U = T>(
  *
  */
 export function convertToString<T>(
-	items: Array<T>
+    items: Array<T>
 ): string;
 
 /**
@@ -132,8 +144,8 @@ export function convertToString<T>(
  *
  */
 export function convertToString<T>(
-	items: Array<T>,
-	joinOn: string
+    items: Array<T>,
+    joinOn: string
 ): string;
 
 /**
@@ -150,21 +162,21 @@ export function convertToString<T>(
  *
  */
 export function convertToString<T>(
-	items: Array<T>,
-	joinOn: string = ", "
+    items: Array<T>,
+    joinOn: string = ", "
 ): string {
-	// Validate
-	if (isNotArray(items)) {
-		throw new TypeError(`Unable to convert ${getType(items)} to a string using Array logic; Items must be of `
-			+ "type Array");
-	}
+    // Validate
+    if (isNotArray(items)) {
+        throw new TypeError(`Unable to convert ${getType(items)} to a string using Array logic; Items must be of `
+            + "type Array");
+    }
 
-	if (isNotString(joinOn)) {
-		throw new TypeError(`Unable to join Array into a string with type: ${getType(joinOn)}; Convert to a ` +
-			"string first");
-	}
+    if (isNotString(joinOn)) {
+        throw new TypeError(`Unable to join Array into a string with type: ${getType(joinOn)}; Convert to a ` +
+            "string first");
+    }
 
-	return items.length !== 0 ? items.join(joinOn) : "";
+    return items.length !== 0 ? items.join(joinOn) : "";
 }
 
 /**
@@ -179,49 +191,51 @@ export function convertToString<T>(
  *
  */
 export function flatten<T>(
-	items: Array<NestedArray<T>>
+    items: Array<NestedArray<T>>
 ): Array<T> {
-	// Validate
-	if (isNotArray(items)) {
-		throw new TypeError(`Unable to flatten type: ${getType(items)}; Must be an Array`);
-	}
-	const flattenedArray: Array<T> = new Array<T>();
+    // Validate
+    if (isNotArray(items)) {
+        throw new TypeError(`Unable to flatten type: ${getType(items)}; Must be an Array`);
+    }
+    const flattenedArray: Array<T> = new Array<T>();
 
-	items?.forEach((item) => {
-		isArray(item) ? flattenedArray.push(...flatten(item)) : flattenedArray.push(item);
-	});
+    items?.forEach((item) => {
+        isArray(item) ? flattenedArray.push(...flatten(item)) : flattenedArray.push(item);
+    });
 
-	return flattenedArray;
+    return flattenedArray;
 }
 
 /**
  *
  * Helper method that indicates if the provided array is an empty array.
  *
- * @param {Array<T>} arg The array to check.
+ * @param {unknown} arg The value to check.
  * @returns {boolean} True if the array is empty, otherwise false.
  * @template T
  * @since Version 0.1.0
  *
  */
 export function isEmptyArray<T>(
-	arg: Array<T>
-): arg is Exclude<typeof arg, Array<T>> {
-	return isArray(arg) && arg.length === 0;
+    arg: unknown
+): arg is EmptyArray {
+    return ((isArray(arg))
+        && (arg.length === 0));
 }
 
 /**
  *
  * Helper method that indicates if the provided array is not empty.
  *
- * @param {Array<T>} arg The array to check.
+ * @param {unknown} arg The value to check.
  * @returns {boolean} True if the array is not empty, otherwise false.
  * @template T
  * @since Version 0.1.0
  *
  */
-export function isNotEmptyArray<T>(
-	arg: Array<T>
+export function isNonEmptyArray<T>(
+    arg: unknown
 ): arg is Array<T> {
-	return !isEmptyArray(arg);
+    return ((isArray(arg))
+        && (arg.length !== 0));
 }

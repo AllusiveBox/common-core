@@ -1,7 +1,12 @@
-import { NumericalString } from "../types";
-import { isEmptyArray, isNotEmptyArray } from "./array.util";
-import { isEmptyObject, isNotEmptyObject } from "./object.util";
-import { isEmptyString, isSetString } from "./string.util";
+import {
+    EmptyArray,
+    EmptyObject,
+    EmptyString,
+    NumericalString
+} from "../types";
+import { isEmptyArray, isNonEmptyArray } from "./array.util";
+import { isEmptyObject, isNonEmptyObject } from "./object.util";
+import { isEmptyString, isNonEmptyString } from "./string.util";
 import { EXnum } from "../../.src/exnums/EXnum";
 
 /**
@@ -77,7 +82,7 @@ export function getType(
  */
 export function isArray<T>(
     arg: T
-): arg is T & Array<any> {
+): arg is T & Array<T> {
     return Array.isArray(arg);
 }
 
@@ -93,7 +98,7 @@ export function isArray<T>(
  */
 export function isNotArray<T>(
     arg: T
-): arg is Exclude<T, Array<any>> {
+): arg is Exclude<T, Array<T>> {
     return !isArray(arg);
 }
 
@@ -175,7 +180,13 @@ export function isNotDate<T>(
  */
 export function isEmpty<T>(
     arg: T
-): arg is T & (Array<T> | object | string) {
+): arg is T & (
+    T extends Array<T>
+        ? EmptyArray
+        : T extends object
+            ? EmptyObject
+            : EmptyString
+    ) {
 	if (isArray(arg)) {
 		return isEmptyArray(arg);
 	} else if (isString(arg)) {
@@ -199,13 +210,19 @@ export function isEmpty<T>(
  */
 export function isNotEmpty<T>(
     arg: T
-): arg is Exclude<T, Array<any> | object | string> {
+): arg is T & (
+    T extends Array<T>
+        ? Array<T>
+        : T extends object
+            ? T
+            : string
+    ) {
     if (isArray(arg)) {
-        return isNotEmptyArray(arg);
+        return isNonEmptyArray(arg);
     } else if (isString(arg)) {
-        return isSetString(arg);
+        return isNonEmptyString(arg);
     } else if (isObject(arg)) {
-        return isNotEmptyObject(arg);
+        return isNonEmptyObject(arg);
     } else {
         return isNotNullOrUndefined(arg);
     }

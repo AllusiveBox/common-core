@@ -1,11 +1,12 @@
 import {
-	boolean as booleanFunc,
-	isBooleanable as isBooleanableFunc
+    boolean as booleanFunc,
+    isBooleanable as isBooleanableFunc
 } from "boolean";
 import {
-	Booleanable,
-	Falseable, Nullable,
-	Trueable
+    Booleanable,
+    Falseable,
+    Nullable,
+    Trueable
 } from "../types";
 
 /**
@@ -39,10 +40,10 @@ export const FALSE: boolean = false;
  *
  */
 export function convertToBoolean(
-	arg: any,
-	defaultValue: Nullable<boolean> = null
+    arg: any,
+    defaultValue: Nullable<boolean> = null
 ): Nullable<boolean> {
-	return isBooleanable(arg) ? booleanFunc(arg) : defaultValue == null ? null : !!defaultValue
+    return isBooleanable(arg) ? booleanFunc(arg) : defaultValue == null ? null : !!defaultValue
 }
 
 /**
@@ -57,9 +58,9 @@ export function convertToBoolean(
  *
  */
 export function isBooleanable<T>(
-	arg: T
+    arg: T
 ): arg is T & Booleanable {
-	return isBooleanableFunc(arg) === TRUE;
+    return isBooleanableFunc(arg) === TRUE;
 }
 
 /**
@@ -73,9 +74,9 @@ export function isBooleanable<T>(
  *
  */
 export function isFalse<T>(
-	arg: T
+    arg: T
 ): arg is T & Falseable {
-	return booleanFunc(arg) === FALSE;
+    return booleanFunc(arg) === FALSE;
 }
 
 /**
@@ -89,7 +90,7 @@ export function isFalse<T>(
  *
  */
 export function isTrue<T>(
-	arg: T
+    arg: T
 ): arg is T & Trueable {
-	return booleanFunc(arg) === TRUE;
+    return booleanFunc(arg) === TRUE;
 }
