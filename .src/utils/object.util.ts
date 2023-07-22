@@ -4,11 +4,12 @@ import {
 	isNullOrUndefined,
 	isObject
 } from "./types.util";
+import { NilError } from "../errors";
 import {
+	EmptyObject,
 	NestedKeyOf,
 	Nullable
 } from "../types";
-import { NilError } from "../errors";
 
 /**
  *
@@ -66,28 +67,30 @@ export function getProperty<TObject extends object>(
  *
  * Indicates if an object is empty.
  *
- * @param {object} arg The object to check.
+ * @param {unknown} arg The value to check.
  * @returns {boolean} True if the value is an empty object, otherwise false.
  * @since Version 0.1.0
  *
  */
-export function isEmptyObject(
+export function isEmptyObject<T>(
 	arg: object
-): arg is Record<string, never> {
-	return isObject(arg) && Object.keys(arg).length === 0;
+): arg is EmptyObject {
+	return ((isObject(arg))
+		&& (Object.keys(arg).length === 0));
 }
 
 /**
  *
  * Indicates if an object is not empty.
  *
- * @param {object} arg The object to check.
- * @returns {arg is object} True if the value is not an empty object, otherwise false.
+ * @param {unknown} arg The value to check.
+ * @returns {boolean} True if the value is not an empty object, otherwise false.
  * @since Version 0.1.0
  *
  */
-export function isNotEmptyObject(
-	arg: object
-): arg is object {
-	return isObject(arg) && Object.keys(arg).length !== 0;
+export function isNonEmptyObject<T>(
+	arg: unknown
+): arg is object & T {
+	return ((isObject(arg))
+		&& (Object.keys(arg).length !== 0));
 }
