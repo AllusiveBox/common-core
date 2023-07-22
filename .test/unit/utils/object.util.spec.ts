@@ -105,13 +105,13 @@ describe("ObjectUtil Unit Test Suite", () => {
 			.toBeTrue();
 	});
 
-	test("that given an empty object, isNotEmptyObject returns false", () => {
-		expect(ObjectUtil.isNotEmptyObject({}))
+	test("that given an empty object, isNonEmptyObject returns false", () => {
+		expect(ObjectUtil.isNonEmptyObject({}))
 			.toBeFalse();
 	});
 
-	test("that given a non-empty object, isNotEmptyObject returns true", () => {
-		expect(ObjectUtil.isNotEmptyObject({ foo: "bar" }))
+	test("that given a non-empty object, isNonEmptyObject returns true", () => {
+		expect(ObjectUtil.isNonEmptyObject({ foo: "bar" }))
 			.toBeTrue();
 	});
 

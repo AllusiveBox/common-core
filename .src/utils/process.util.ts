@@ -1,4 +1,7 @@
-import { getType, isString } from "./types.util";
+import {
+    getType,
+    isString
+} from "./types.util";
 import { Environment } from "../exnums";
 
 /**
@@ -10,8 +13,8 @@ import { Environment } from "../exnums";
  *
  */
 export function getEnvironment(): Environment {
-	return isString(process.env.NODE_ENV) ?
-		Environment.getEnvironment(process.env.NODE_ENV) : Environment.UNKNOWN;
+    return isString(process.env.NODE_ENV) ?
+        Environment.getEnvironment(process.env.NODE_ENV) : Environment.UNKNOWN;
 }
 
 /**
@@ -25,18 +28,18 @@ export function getEnvironment(): Environment {
  *
  */
 export function setEnvironment(
-	arg: Environment | string
+    arg: Environment | string
 ): void {
-	let environment: Environment;
+    let environment: Environment;
 
-	if (isString(arg)) {
-		environment = Environment.getEnvironment(arg);
-	} else if (Environment.isValid(arg)) {
-		environment = arg;
-	} else {
-		throw new TypeError(`Unable to set environment with type: ${getType(arg)}; Must be either a string `
-			+ "or valid Environment instance");
-	}
+    if (isString(arg)) {
+        environment = Environment.getEnvironment(arg);
+    } else if (Environment.isValid(arg)) {
+        environment = arg;
+    } else {
+        throw new TypeError(`Unable to set environment with type: ${getType(arg)}; Must be either a string `
+            + "or valid Environment instance");
+    }
 
-	process.env.NODE_ENV = Environment.getValue(environment);
+    process.env.NODE_ENV = Environment.getValue(environment);
 }

@@ -1,1 +1,1 @@
-export { NilError } from "./NilError";
+export * from "./NilError";

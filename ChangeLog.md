@@ -1,4 +1,66 @@
 # Change Log
+## Version 0.3.2 (Beta Release)
+<details>
+    <summary>Version 0.3.2 Change Log</summary>
+
+### Newly Added
+
+#### EmptyArray
+
+* Added the new `EmptyArray` utility type. This type is used to type arrays that are empty.
+
+#### EmptyObject
+
+* Added the new `EmptyObject` utility type. This type is used to type objects that are empty.
+
+#### EmptyString
+
+* Added the new `EmptyString` utility type. This type is used to type strings that are empty.
+
+#### StringOfLength
+
+* Added the new `StringOfLength` utility type. This type is used to get the length of a string as a type.
+* Referenced from https://github.com/doox911-opensource/typescript/blob/main/type-challenges/medium/Length_of_String.md
+
+### Updates to existing Features
+
+#### ArrayUtil
+
+* Updated the return typing for the `isEmptyArray` function. It now indicates if the passed value is an `EmptyArray` 
+  or not.
+* Renamed the `isNotEmptyArray` function to `isNonEmptyArray`, bringing it in line with the other functions of this 
+  type.
+
+#### ObjectUtil
+
+* Updated the return typing for the `isEmptyObject` function. It now indicates if the passed value is an 
+  `EmptyObject` or not.
+* Renamed the `isNotEmptyObject` function to `isNonEmptyObject`, bringing it line with the other functions of this type.
+* Updated the return typing for the `isNotEmptyObject` function. In addition to indicating the passed value is an 
+  object, it will also indicate that the value is of type `T`, if the object passes validation.
+
+#### StringUtil
+
+* Updated the return typing for the `isEmptyString` function. It now indicates if the passed value is an 
+  `EmptyString` or not.
+* Renamed the `isSetString` function to `isNonEmptyString`, bringing it in line with the other functions of this type.
+
+#### TypesUtil
+
+* Updated the `isArray` and `isNotArray` functions to indicate the value is possibly of type `Array<T>`, rather than 
+  `Array<any>`.
+* Updated the `isEmpty` function to use the new names for the empty checker functions, noted above.
+* Updated the return typing for the `isEmpty` function to now use the new `EmptyArray`, `EmptyObject`, or 
+  `EmptyString` types.
+* Updated the return typing for the `isNotEmpty` function, as it was previously typed incorrectly.
+
+### Breaking Changes
+
+* The `ArrayUtil.isNotEmptyArray` function has been renamed to `ArrayUtil.isNonEmptyArray`.
+* The `ObjectUtil.isNotEmptyObject` function has been renamed to `ObjectUtil.isNonEmptyObject`.
+* The `StringUtil.isSetString` function has been renamed to `StringUtil.isNonEmptyString`.
+
+</details>
 
 ## Version 0.3.1 (Beta Release)
 <details>
@@ -252,7 +314,7 @@
 
 ##### AbstractEntity
 
-* Added the `AbstractEntity` model. Intended to be used as a base for any custom entities that that do things? Not really sure what all I'll do with this, but I wanted it, so it's here.
+* Added the `AbstractEntity` model. Intended to be used as a base for any custom entities that do things? Not really sure what all I'll do with this, but I wanted it, so it's here.
 * This class has the following constructor signature:
     * `new AbstractEntity(code: string, text: string, type: string);`
     * **Note**: This class' constructor is **protected**, it cannot be called as is without first being extended.
@@ -333,7 +395,7 @@
 
 ##### DateUtil
 
-* Added the `DateUtil` namespace, which has a bunch of utilty functions related to JavaScript dates (which everyone loves).
+* Added the `DateUtil` namespace, which has a bunch of utility functions related to JavaScript dates (which everyone loves).
 * Added the `calculateDaysApart` function.
     * This function has the following signatures:
         * `calculateDaysApart(date: Date): number;`
@@ -474,7 +536,7 @@
 * Added the `isNotError` function.
     * This function has the following signature:
         * `isNotError<T>(arg: T): boolean;`
-* Aded the `isNull` function.
+* Added the `isNull` function.
     * This function has the following signature:
         * `isNull<T>(arg: T): boolean;`
 * Added the `isNotNull` function.
