@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NilError Unit Test Suite that given null, NilError correctly sets the message field 1`] = `"Null or undefined value"`;
+
+exports[`NilError Unit Test Suite that given undefined, NilError correctly sets the message field 1`] = `"Null or undefined value"`;

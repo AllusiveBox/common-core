@@ -10,41 +10,51 @@ import { NilError } from "../../../.src";
  * @group nil
  *
  */
-describe("NilError Unit Test Suite", () => {
+describe(
+    "NilError Unit Test Suite",
+    () => {
 
-	test("that NilError has it's name correctly set", () => {
-		expect(new NilError().name)
-			.toBe("NilError");
-	});
+        test(
+            "that NilError initializes correctly",
+            () => {
+                // setup
+                const error = new NilError();
 
-	test("that NilError has it's message correctly set", () => {
-		expect(new NilError().message)
-			.toBe("Null or undefined value");
-		expect(new NilError("Test").message)
-			.toBe("Null or undefined value; Cause: Test");
-	});
+                expect(error)
+                    .toMatchObject({
+                        cause: "Null or undefined value",
+                        context: undefined,
+                        message: "Null or undefined value",
+                        name: "NilError"
+                    });
+            }
+        );
 
-	test("that when no causedBy is provided, sets causedBy to null", () => {
-		expect(new NilError().causedBy)
-			.toBeNull();
-	});
+        test.each([
+            null,
+            undefined
+        ])
+        (
+            "that given %s, NilError correctly sets the message field",
+            (arg) => {
+                // Setup
+                const error: NilError<never> = new NilError<never>(arg as any);
 
-	test("that when a causedBy is provided, sets causedBy to the provided value", () => {
-		// Setup
-		const nilError = new NilError("Test");
+                expect(error.message)
+                    .toMatchSnapshot();
+            }
+        );
 
-		expect(nilError.causedBy)
-			.toBe("Test");
-	});
+        test(
+            "that given a message, NilError correctly sets the message field",
+            () => {
+                // Setup
+                const error: NilError<never> = new NilError<never>("Test");
 
-	test("that throwing a NilError works as expected", () => {
-		expect(() => {
-			throw new NilError();
-		}).toThrowError("Null or undefined value");
+                expect(error.message)
+                    .toMatchInlineSnapshot(`"Test"`);
+            }
+        );
 
-		expect(() => {
-			throw new NilError("Test");
-		}).toThrowError("Null or undefined value; Cause: Test");
-	});
-
-});
+    }
+);

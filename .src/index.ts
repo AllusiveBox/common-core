@@ -1,11 +1,6 @@
-/* Error exports */
+export * from "./declarations";
 export * from "./errors";
-
-/* exnum exports */
-export * from "./exnums";
-
-/* type exports */
+export * from "./services";
 export * from "./types";
-
-/* utility exports */
 export * from "./utils";
+export * from "./znums";

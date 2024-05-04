@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Znum Unit Test Suite that given {}, getValue returns {} 1`] = `"TEST"`;
+
+exports[`Znum Unit Test Suite that given {}, getValue returns {} 2`] = `1`;
+
+exports[`Znum Unit Test Suite that given 1, getZnum returns the expected result 1`] = `TestZnum {}`;
+
+exports[`Znum Unit Test Suite that given 1, getZnum returns the expected result 2`] = `TestZnum {}`;
+
+exports[`Znum Unit Test Suite that given TEST, getZnum returns the expected result 1`] = `TestZnum {}`;
+
+exports[`Znum Unit Test Suite that given TestZnum:1, "code" returns the expected result 1`] = `1`;
+
+exports[`Znum Unit Test Suite that given TestZnum:1, "symbol" returns the expected result 1`] = `Symbol(1)`;
+
+exports[`Znum Unit Test Suite that given TestZnum:TEST, "code" returns the expected result 1`] = `"TEST"`;
+
+exports[`Znum Unit Test Suite that given TestZnum:TEST, "symbol" returns the expected result 1`] = `Symbol(TEST)`;
+
+exports[`Znum Unit Test Suite that given test, getZnum returns the expected result 1`] = `TestZnum {}`;

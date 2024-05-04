@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Environment Unit Test Suite that given Environment:DEVELOPMENT, getValue returns the expected result 1`] = `"DEVELOPMENT"`;
+
+exports[`Environment Unit Test Suite that given Environment:LOCAL, getValue returns the expected result 1`] = `"LOCAL"`;
+
+exports[`Environment Unit Test Suite that given Environment:PRODUCTION, getValue returns the expected result 1`] = `"PRODUCTION"`;
+
+exports[`Environment Unit Test Suite that given Environment:TEST, getValue returns the expected result 1`] = `"TEST"`;
+
+exports[`Environment Unit Test Suite that given Environment:UAT, getValue returns the expected result 1`] = `"UAT"`;
+
+exports[`Environment Unit Test Suite that given Environment:UNKNOWN, getValue returns the expected result 1`] = `"UNKNOWN"`;
+
+exports[`Environment Unit Test Suite that given Invalid, getEnvironment returns the expected result 1`] = `Environment {}`;
+
+exports[`Environment Unit Test Suite that given Invalid, getValue returns the expected result 1`] = `"UNKNOWN"`;
+
+exports[`Environment Unit Test Suite that given dev, getEnvironment returns the expected result 1`] = `Environment {}`;
+
+exports[`Environment Unit Test Suite that given development, getEnvironment returns the expected result 1`] = `Environment {}`;
+
+exports[`Environment Unit Test Suite that given local, getEnvironment returns the expected result 1`] = `Environment {}`;
+
+exports[`Environment Unit Test Suite that given null, getEnvironment returns the expected result 1`] = `Environment {}`;
+
+exports[`Environment Unit Test Suite that given null, getValue returns the expected result 1`] = `"UNKNOWN"`;
+
+exports[`Environment Unit Test Suite that given prod, getEnvironment returns the expected result 1`] = `Environment {}`;
+
+exports[`Environment Unit Test Suite that given production, getEnvironment returns the expected result 1`] = `Environment {}`;
+
+exports[`Environment Unit Test Suite that given test, getEnvironment returns the expected result 1`] = `Environment {}`;
+
+exports[`Environment Unit Test Suite that given uat, getEnvironment returns the expected result 1`] = `Environment {}`;
+
+exports[`Environment Unit Test Suite that given undefined, getEnvironment returns the expected result 1`] = `Environment {}`;
+
+exports[`Environment Unit Test Suite that given undefined, getValue returns the expected result 1`] = `"UNKNOWN"`;
+
+exports[`Environment Unit Test Suite that given unknown, getEnvironment returns the expected result 1`] = `Environment {}`;
