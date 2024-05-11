@@ -36,3 +36,5 @@ declare namespace NodeJS {
     }
 
 }
+
+export {}
