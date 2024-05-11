@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ProcessService Unit Test Suite that given a directory mismatch "change" throws a ProcessServiceError 1`] = `"ENOENT: no such file or directory, chdir 'C:\\Users\\megaz\\workspace' -> ''"`;
