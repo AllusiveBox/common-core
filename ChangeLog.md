@@ -1,4 +1,187 @@
 # Change Log
+## Version 0.4.0 (Beta Release)
+<details>
+    <summary>Version 0.4.0</summary>
+
+### Newly Added
+
+#### NodeJS
+* 
+* Added `NodeJS` namespace which includes a `ProcessEnv` interface and outlines some additional environment settings.
+
+#### ExtendedError
+
+* Added a new custom Error class, `ExtendedError`. This class extends the basic functionality of the `Error` class, 
+  while adding additional functionality in the form of the `context` field.
+  * The `ExtendedError#context` field is intended to contain additional context regarding the error, and is typed as 
+    `T | undefined`.
+* In addition to the `context` field, this class also makes use of the `Error#cause` field as well.
+  * By default, if provided, sets `Error#cause` to the literal value that was passed, be it an Error or a string. If 
+    the optional `options#wrapCause` field is passed to the constructor, a `string` cause will be wrapped in a 
+    standard `Error` object and assigned to the `Error#cause` field.
+
+#### ZnumDoesNotExist
+
+* Added a new `ZnumDoesNotExist` custom Error class, which extends `ExtendedError`.
+* This Error replaces the old named `EXnumDoesNotExist`.
+* Like the Error that came before it, this is intended to be used when a `Znum` or `Znumable` value does not exist 
+  in a `Znum` mapping.
+
+#### ZnumMissingRequiredValue
+
+* Added a new `ZnumMissingRequiredValue` custom Error class, which extends `ExtendedError`.
+* This Error replaces the old named `EXnumDoesNotExist`.
+* Like the Error that came before it, this is intended to be used when attempting to initialize a new `Znum` value, 
+  but a required field is missing.
+  * This is therefore an internal Error and not one that should be exposed during runtime, unless the creation of 
+    `Znum` values is enabled during runtime.
+
+#### ILoggerService
+
+* Added a new interface, `ILoggerService`, which outlines the requirements to make a `LoggerService` instance.
+  * Note: There is not currently a `LoggerService` included in this package.
+
+#### IProcessService
+
+* Added a new interface, `IProcessService`, which outlines the requirements to make a `ProcessService` instance.
+
+#### ProcessService
+
+* Added a new `ProcessService` instance which implements the `IProcessService` interface.
+  * This replaces the old `ProcessUtil`. See the `ProcessUtil` Breaking Changes section for additional details. 
+* This service is intended to abstract some of the basic stuff that one would use `process.*` for to do it in a more type safe way.
+
+#### ExtendedErrorOptions
+
+* Added a new interface, `ExtendedErrorOptions`, which outlines the object shape for the customization options that 
+  can be provided to the `ExtendedError` constructor.
+
+#### Maybe
+
+* Added a new utility type, `Maybe`.
+* This is a union of `T` and `undefined`.
+
+#### ZnumMissingRequiredValueOptions
+
+* Added a new interface, `ZnumMissingRequiredValueOptions`, which outlines the object shape for the 
+  `ZnumMissingRequiredValue` constructor.
+
+#### Znum
+
+* Added a new custom class, `Znum`, which replaces the previously named `EXnum` class.
+  * Functionally, these classes are nearly identical, with only minor differences between them.
+
+### Updated to existing Features
+
+#### NilError
+
+* Updated the `NilError` class to now be an instance of `ExtendedError`, rather than just `Error`.
+
+#### Environment
+
+* The `Environment` class now extends `Znum`, rather than `EXnum`.
+* See the `EXnum` Breaking Changes section for more details.
+
+#### NumericalString
+
+* The `NumericalString` type alias has been made more strict and no longer allows `number` values.
+* See the `NumericalString` Breaking Changes section for more details.
+
+#### TypesUtil
+
+* Updated the `getType` function to account for the change of `EXnum` to `Znum`.
+* Added two additional return options to the `getType` function, `Function`, if the input is a Function, and 
+  `symbol`, if the input is a `Symbol`.
+* Updated the return typing of the following functions:
+  * `isArray`
+  * `isNotArray`
+  * `isBoolean`
+  * `isDate`
+  * `isError`
+  * `isNull`
+  * `isNumber`
+  * `isNumericalString`
+  * `isObject`
+  * `isString`
+  * `isUndefined`
+  * `isNullOrUndefined`
+* Updated the input typing of the following functions:
+  * `isArray`
+  * `isBoolean`
+  * `isDate`
+  * `isEmpty`
+  * `isError`
+  * `isNull`
+  * `isNumber`
+  * `isNumericalString`
+  * `isObject`
+  * `isString`
+  * `isUndefined`
+  * `isNullOrUndefined`
+* Added a new `isFunction` function.
+  * This function takes an `unknown` input and returns `true` if the provided input is a function, otherwise `false`.
+  * This function has the following signature:
+    * `isFunction(arg: unknown): boolean;`
+* Added a new `isNotFunction` function.
+  * This function takes an `unknown` input and returns `true` if the provided input is <b><em>not</em></b> a 
+    function, otherwise `false`.
+  * This function has the following signature:
+    * `isNotFunction(arg: unknown): boolean;`
+* Updated the `isNumericalString` function to account for the changes to the `NumericalString` type alias.
+  * Now, `isNumericalString` will only return `true` if the provided value is `${number}`. A value of `number` will 
+    result in a return value of `false`.
+  * See the `TypesUtil` Breaking Changes section for more details.
+* Added a new `isSymbol` function.
+  * This function takes an `unknown` input and returns `true` if the provided input is a symbol, otherwise `false`.
+  * This function has the following signature:
+    * `isSymbol(arg: unknown): boolean;`
+* Added a new `isNotSymbol` function.
+  * This function takes an `unknown` input and returns `true` if the provided input is <b><em>not</em></b> a symbol, 
+    otherwise `false`.
+* Added a new `isZnum` function.
+  * This function takes the place of the old `isEXnum` function. Its functionality is identical.
+  * See the `TypesUtil` Breaking Changes section for more details.
+* Added a new `isNotZnum` function.
+  * This function takes the place of the old `isNotEXnum` function. Its functionality is identical.
+  * See the `TypesUtil` Breaking Changes section for more details.
+
+### Breaking Changes
+
+#### NumericalString
+
+* The `NumericalString` type alias has had its definition made more strict. Previously it would allow raw `number` 
+  values in addition to `${number}` values. This however made developing a lot more difficult as TypeScript treated 
+  `NumericalStrings` as neither a `string` or `number` until the value was further type checked, and went against 
+  the initial purpose of the type.
+* Now, instead of being a union between `${number}` and `number`, `NumericalString` is simple just a type alias for 
+  `${number}`.
+
+#### EXnumable
+
+* The `EXnumable` type alias has been renamed to `Znumable`, bringing it in line with the `EXnum` to `Znum` change.
+  * All references to `EXnumable` should have been updated to `Znumable`.
+
+#### EXnum
+
+* The `EXnum` class has been renamed to `Znum`.
+  * All references to `EXnum` should have been updated to `Znum`.
+* Functionality wise, this class remains the same.
+
+#### ProcessUtil
+
+* The `ProcessUtil` sub package has been removed in favor of the `ProcessService`.
+  * All the functionality that was included in the `ProcessUtil` should have been captured in the new service instance.
+
+#### TypesUtil
+
+* The `isEXnum` and `isNotEXnum` functions have been removed in favor of functions that match the naming convention 
+  of the new `Znum` class.
+  * The new `isZnum` and `isNotZnum` functions should be used instead.
+* The `isNumericalString` and `isNotNumericalString` methods have had their acceptance criteria made more strict.
+  * See the `NumericalString` Breaking Changes section for more details.
+
+</details>
+
 ## Version 0.3.2 (Beta Release)
 <details>
     <summary>Version 0.3.2 Change Log</summary>

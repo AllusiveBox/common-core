@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
-    "target": "es6",
+    "target": "es2022",
     "module": "commonjs",
     "rootDir": "./",
     "moduleResolution": "node",
@@ -16,7 +16,8 @@
     "noUnusedLocals": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "noImplicitOverride": true
   },
   "include": [
     ".src/**/*.ts",

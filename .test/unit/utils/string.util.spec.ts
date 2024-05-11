@@ -1,5 +1,5 @@
 import "jest-extended";
-import { StringUtil } from "../../../.src";
+import { StringUtil } from "../../../.src/utils";
 import { getType } from "../../../.src/utils/types.util";
 
 /**
@@ -105,7 +105,7 @@ describe(
                 expect(StringUtil.isNonEmptyString(arg))
                     .toBeTrue();
             }
-        )
+        );
 
         test.each(nonStringValues)
         (

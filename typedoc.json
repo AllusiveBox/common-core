@@ -20,7 +20,11 @@
     "breaks": false,
     "langPrefix": "typescript"
   },
-  "sort": ["static-first","visibility", "alphabetical"],
+  "sort": [
+    "static-first",
+    "visibility",
+    "alphabetical"
+  ],
   "validation": {
     "invalidLink": true,
     "notExported": true
