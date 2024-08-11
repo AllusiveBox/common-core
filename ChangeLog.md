@@ -1,4 +1,21 @@
 # Change Log
+## Version 0.5.0 (Beta Release)
+<details>
+    <summary>Version 0.5.0</summary>
+
+### Newly Added
+
+* Nothing new was added in the 0.5.0 release.
+
+### Updates to existing Features
+
+* Removed the `ILoggerService`, `IProcessService`, and the `ProcessService`, as I have deemed them to be beyond the scope of this package.
+
+#### TypesUtil
+
+* Updated the return typing for the `isNotObject` to be more accurate.
+</details>
+
 ## Version 0.4.0 (Beta Release)
 <details>
     <summary>Version 0.4.0</summary>
@@ -6,7 +23,7 @@
 ### Newly Added
 
 #### NodeJS
-* 
+
 * Added `NodeJS` namespace which includes a `ProcessEnv` interface and outlines some additional environment settings.
 
 #### ExtendedError

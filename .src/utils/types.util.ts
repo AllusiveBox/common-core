@@ -430,9 +430,9 @@ export function isObject<T>(
  * @since Version 0.1.0
  *
  */
-export function isNotObject<T>(
+export function isNotObject<T, N extends T>(
     arg: T
-): arg is Exclude<T, object> {
+): arg is Exclude<T, N> {
     return !isObject(arg);
 }
 
