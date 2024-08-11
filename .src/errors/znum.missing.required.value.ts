@@ -1,6 +1,6 @@
 import ExtendedError from "./extended.error";
 import { Znumable } from "../types";
-import { ZnumMissingRequiredValueOptions } from "../types/znum.missing.required.value.options";
+import { ZnumMissingRequiredValueOptions } from "../types/internal/znum.missing.required.value.options";
 import { isObject } from "../utils/types.util";
 import { Znum } from "../znums";
 

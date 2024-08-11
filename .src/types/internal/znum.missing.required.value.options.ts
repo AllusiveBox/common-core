@@ -1,5 +1,5 @@
-import { Znumable } from "./znumable";
-import { Znum } from "../znums";
+import { Znumable } from "../znum/znumable";
+import { Znum } from "../../znums";
 
 /**
  *
