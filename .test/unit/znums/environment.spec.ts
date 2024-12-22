@@ -21,6 +21,7 @@ describe(
             }
         );
 
+        // TODO 5/14/2024: Refactor this test like LogLevel test. Also add toJSON check
         test(
             "that SUPPORTED_ZNUMS is the correct shape and size",
             () => {

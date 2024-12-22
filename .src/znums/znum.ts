@@ -365,6 +365,16 @@ export default abstract class Znum<T extends Znumable> {
 
     /**
      *
+     * Abstract method that converts a {@link Znum} instance into a standard object. Useful for testing purposes.
+     *
+     * @returns {object}
+     * @since Version 0.5.0
+     *
+     */
+    public abstract toJSON(): object;
+
+    /**
+     *
      * Converts the {@link Znum} to a string.
      *
      * @returns {string}

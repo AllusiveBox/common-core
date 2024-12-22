@@ -307,6 +307,22 @@ export default class Environment extends Znum<string> {
 
     /**
      *
+     * Converts the {@link Environment} instance into a standard JavaScript object.
+     *
+     * @returns {{code: string, type: string, symbol: symbol}}
+     * @since Version 0.5.0
+     *
+     */
+    public override toJSON(): { code: string, type: string, symbol: symbol } {
+        return {
+            code: this.code,
+            type: this.type,
+            symbol: this.symbol
+        };
+    }
+
+    /**
+     *
      * Indicates if the {@link Environment} is {@link Environment#DEVELOPMENT}.
      *
      * @returns{boolean}

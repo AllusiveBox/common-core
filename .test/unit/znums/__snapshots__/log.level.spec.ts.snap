@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogLevel Unit Test Suite that SUPPORTED_ZNUMS is the correct shape and size 1`] = `
+{
+  "code": "FATAL",
+  "logLevel": 0,
+}
+`;
+
+exports[`LogLevel Unit Test Suite that SUPPORTED_ZNUMS is the correct shape and size 2`] = `
+{
+  "code": "ERROR",
+  "logLevel": 1,
+}
+`;
+
+exports[`LogLevel Unit Test Suite that SUPPORTED_ZNUMS is the correct shape and size 3`] = `
+{
+  "code": "WARN",
+  "logLevel": 2,
+}
+`;
+
+exports[`LogLevel Unit Test Suite that SUPPORTED_ZNUMS is the correct shape and size 4`] = `
+{
+  "code": "INFO",
+  "logLevel": 3,
+}
+`;
+
+exports[`LogLevel Unit Test Suite that SUPPORTED_ZNUMS is the correct shape and size 5`] = `
+{
+  "code": "VERBOSE",
+  "logLevel": 4,
+}
+`;
+
+exports[`LogLevel Unit Test Suite that SUPPORTED_ZNUMS is the correct shape and size 6`] = `
+{
+  "code": "DEBUG",
+  "logLevel": 5,
+}
+`;
+
+exports[`LogLevel Unit Test Suite that given debug, getLogLevel returns the expected result 1`] = `LogLevel {}`;
+
+exports[`LogLevel Unit Test Suite that given error, getLogLevel returns the expected result 1`] = `LogLevel {}`;
+
+exports[`LogLevel Unit Test Suite that given fatal, getLogLevel returns the expected result 1`] = `LogLevel {}`;
+
+exports[`LogLevel Unit Test Suite that given info, getLogLevel returns the expected result 1`] = `LogLevel {}`;
+
+exports[`LogLevel Unit Test Suite that given verbose, getLogLevel returns the expected result 1`] = `LogLevel {}`;
+
+exports[`LogLevel Unit Test Suite that given warn, getLogLevel returns the expected result 1`] = `LogLevel {}`;
