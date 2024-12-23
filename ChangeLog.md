@@ -1,4 +1,22 @@
 # Change Log
+## Version 0.5.1 (Patch Release)
+<details>
+    <summary>Version 0.5.1</summary>
+
+### Newly Added
+
+* Nothing new was added in the 0.5.1 release.
+
+### Updates to existing Features
+
+#### Misc.
+* Removed the `process.env` export from the `./src/declarations` directory, as it was not actually exporting anything.
+  * See the Breaking Changes section for more details.
+* Updated `typedoc` and `typescript` dependencies for this package.
+* Updated the `typescript` peer dependency version for this package.
+
+### Breaking Changes
+</details>
 ## Version 0.5.0 (Beta Release)
 <details>
     <summary>Version 0.5.0</summary>
