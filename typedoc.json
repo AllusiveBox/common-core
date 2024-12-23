@@ -12,14 +12,9 @@
   "excludePrivate": true,
   "hideGenerator": true,
   "includeVersion": true,
-  "includes": "./",
   "out": "docs",
   "readme": "ChangeLog.md",
   "logLevel": "Verbose",
-  "markedOptions": {
-    "breaks": false,
-    "langPrefix": "typescript"
-  },
   "sort": [
     "static-first",
     "visibility",
