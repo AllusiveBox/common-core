@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import {
     isEmptyArray,
     isNonEmptyArray
@@ -98,7 +99,7 @@ export function getType(
  * @since Version 0.1.0
  *
  */
-export function isArray<T>(
+export function isArray<T = unknown>(
     arg: unknown
 ): arg is Array<T> {
     return Array.isArray(arg);
@@ -110,13 +111,13 @@ export function isArray<T>(
  *
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not an array, otherwise false.
- * @template T
+ * @template {unknown} T
  * @since Version 0.1.0
  *
  */
-export function isNotArray<T>(
+export function isNotArray<T, N extends Array<E>, E = unknown>(
     arg: T
-): arg is Exclude<T, Array<unknown>> {
+): arg is Exclude<T, N> {
     return !isArray(arg);
 }
 
@@ -129,7 +130,7 @@ export function isNotArray<T>(
  * @since Version 0.1.0
  *
  */
-export function isBoolean<T>(
+export function isBoolean(
     arg: unknown
 ): arg is boolean {
     return typeof arg === "boolean";
@@ -141,13 +142,13 @@ export function isBoolean<T>(
  *
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not a boolean, otherwise false.
- * @template T
+ * @template {unknown} T
  * @since Version 0.1.0
  *
  */
-export function isNotBoolean<T>(
+export function isNotBoolean<T, N extends boolean>(
     arg: T
-): arg is Exclude<T, boolean> {
+): arg is Exclude<T, N> {
     return !isBoolean(arg);
 }
 
@@ -160,12 +161,12 @@ export function isNotBoolean<T>(
  * @since Version 0.1.0
  *
  */
-export function isDate<T>(
+export function isDate(
     arg: unknown
 ): arg is Date {
-    return isNotNull(arg)
-        && Object.prototype.toString.call(arg) === "[object Date]"
-        && !!Date.parse(arg as unknown as string);
+    // The isObject check here insures we do not return true on Date Strings or numbers
+    return (isObject(arg)
+        && dayjs(arg as any).isValid())
 }
 
 /**
@@ -174,14 +175,16 @@ export function isDate<T>(
  *
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not a Date, otherwise false.
- * @template T
+ * @template {unknown} T
  * @since Version 0.1.0
  *
  */
-export function isNotDate<T>(
+export function isNotDate<T, N extends Date>(
     arg: T
-): arg is Exclude<T, Date> {
-    return !isDate(arg);
+): arg is Exclude<T, N> {
+    // The isNotObject check here lets us shortcut Dates, as they are objects
+    return (isNotObject(arg)
+        || !dayjs(arg as any).isValid())
 }
 
 /**
@@ -251,7 +254,7 @@ export function isNotEmpty<T>(
  * @since Version 0.1.0
  *
  */
-export function isError<T>(
+export function isError(
     arg: unknown
 ): arg is Error {
     return arg instanceof Error;
@@ -263,13 +266,13 @@ export function isError<T>(
  *
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not an Error, otherwise false.
- * @template T
+ * @template {unknown} T
  * @since Version 0.1.0
  *
  */
-export function isNotError<T>(
+export function isNotError<T, N extends Error>(
     arg: T
-): arg is Exclude<T, Error> {
+): arg is Exclude<T, N> {
     return !isError(arg);
 }
 
@@ -282,7 +285,7 @@ export function isNotError<T>(
  * @since Version 0.4.0
  *
  */
-export function isFunction<T>(
+export function isFunction(
     arg: unknown
 ): arg is Function {
     return typeof arg === "function";
@@ -294,13 +297,13 @@ export function isFunction<T>(
  *
  * @param {T} arg The value to check.
  * @returns{boolean} True if the value is not a function, otherwise false.
- * @template T
+ * @template {unknown} T
  * @since Version 0.4.0
  *
  */
-export function isNotFunction<T>(
+export function isNotFunction<T, N extends Function>(
     arg: T
-): arg is Exclude<T, Function> {
+): arg is Exclude<T, N> {
     return !isFunction(arg);
 }
 
@@ -313,7 +316,7 @@ export function isNotFunction<T>(
  * @since Version 0.1.0
  *
  */
-export function isNull<T>(
+export function isNull(
     arg: unknown
 ): arg is null {
     return arg === null;
@@ -325,13 +328,13 @@ export function isNull<T>(
  *
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not null, otherwise false.
- * @template T
+ * @template {unknown} T
  * @since Version 0.1.0
  *
  */
-export function isNotNull<T>(
-    arg: T
-): arg is Exclude<T, null> {
+export function isNotNull<T, N extends null>(
+    arg: unknown
+): arg is Exclude<T, N> {
     return !isNull(arg);
 }
 
@@ -344,7 +347,7 @@ export function isNotNull<T>(
  * @since Version 0.1.0
  *
  */
-export function isNumber<T>(
+export function isNumber(
     arg: unknown
 ): arg is number {
     return typeof arg === "number"
@@ -357,7 +360,7 @@ export function isNumber<T>(
  *
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not a number, otherwise false.
- * @template T
+ * @template {unknown} T
  * @since Version 0.1.0
  *
  */
@@ -392,7 +395,7 @@ export function isNumericalString<T>(
  *
  * @param {T} arg The value to check.
  * @returns {boolean}
- * @template T
+ * @template {unknown} T
  * @since Version 0.3.1
  *
  */
@@ -426,7 +429,7 @@ export function isObject<T>(
  *
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not an object, otherwise false.
- * @template T
+ * @template {unknown} T
  * @since Version 0.1.0
  *
  */
@@ -457,7 +460,7 @@ export function isString<T>(
  *
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not a string, otherwise false.
- * @template T
+ * @template {unknown} T
  * @since Version 0.1.0
  *
  */
@@ -488,7 +491,7 @@ export function isSymbol<T>(
  *
  * @param {T} arg The value to check.
  * @returns{boolean} True if the value is not a symbol, otherwise false.
- * @template T
+ * @template {unknown} T
  * @since Version 0.3.3
  *
  */
@@ -519,7 +522,7 @@ export function isUndefined<T>(
  *
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not undefined, otherwise false.
- * @template T
+ * @template {unknown} T
  * @since Version 0.1.0
  *
  */
@@ -551,7 +554,7 @@ export function isNullOrUndefined<T>(
  *
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is neither null nor undefined, otherwise false.
- * @template T
+ * @template {unknown} T
  * @since Version 0.1.0
  *
  */
@@ -583,7 +586,7 @@ export function isZnum<T, U extends Znumable>(
  *
  * @param {T} arg The value to check.
  * @returns {boolean} True if the value is not a Znum, otherwise false.
- * @template T
+ * @template {unknown} T
  * @since Version 0.2.0
  *
  */
