@@ -6,7 +6,7 @@
  * @since Version 0.4.0
  *
  */
-export interface ExtendedErrorOptions<T extends object = never> {
+export interface ExtendedErrorOptions<T = never> {
 
     /**
      *
@@ -23,7 +23,7 @@ export interface ExtendedErrorOptions<T extends object = never> {
      * Additional context to be passed along to the error.
      *
      * @type {?T}
-     * @template T
+     * @template {any} T
      * @since Version 0.4.0
      *
      */
