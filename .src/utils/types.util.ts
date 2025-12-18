@@ -382,7 +382,7 @@ export function isNotNumber<T>(
  * @since Version 0.3.1
  *
  */
-export function isNumericalString<T>(
+export function isNumericalString(
     arg: unknown
 ): arg is NumericalString {
     return isString(arg)
@@ -414,7 +414,7 @@ export function isNotNumericalString<T>(
  * @since Version 0.1.0
  *
  */
-export function isObject<T>(
+export function isObject(
     arg: unknown
 ): arg is object {
     return isNotNull(arg)
@@ -448,7 +448,7 @@ export function isNotObject<T, N extends T>(
  * @since Version 0.1.0
  *
  */
-export function isString<T>(
+export function isString(
     arg: unknown
 ): arg is string {
     return typeof arg === "string";
@@ -479,7 +479,7 @@ export function isNotString<T>(
  * @since Version 0.3.3
  *
  */
-export function isSymbol<T>(
+export function isSymbol(
     arg: unknown
 ): arg is symbol {
     return typeof arg === "symbol";
@@ -510,7 +510,7 @@ export function isNotSymbol<T>(
  * @since Version 0.1.0
  *
  */
-export function isUndefined<T>(
+export function isUndefined(
     arg: unknown
 ): arg is undefined {
     return typeof arg === "undefined";
@@ -541,7 +541,7 @@ export function isNotUndefined<T>(
  * @since Version 0.1.0
  *
  */
-export function isNullOrUndefined<T>(
+export function isNullOrUndefined(
     arg: unknown
 ): arg is (null | undefined) {
     return isNull(arg)
@@ -574,7 +574,7 @@ export function isNotNullOrUndefined<T>(
  * @since Version 0.2.0
  *
  */
-export function isZnum<T, U extends Znumable>(
+export function isZnum<U extends Znumable>(
     arg: unknown
 ): arg is Znum<U> {
     return arg instanceof Znum;
@@ -590,8 +590,8 @@ export function isZnum<T, U extends Znumable>(
  * @since Version 0.2.0
  *
  */
-export function isNotZnum<T, U extends Znumable>(
+export function isNotZnum<T, N extends Znum<U>, U extends Znumable>(
     arg: unknown
-): arg is Exclude<typeof arg, Znum<U>> {
+): arg is Exclude<T, N> {
     return !isZnum(arg);
 }

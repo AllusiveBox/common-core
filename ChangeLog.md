@@ -30,9 +30,41 @@
 * Updated the typing for the `ExtendedErrorOptions#context` field. Now, instead of `T` being typed as extending `object`, `T` is typed as `any`.
   * The default behavior where `T` defaults to `never` when not specified remains unchanged.
 
+#### TypesUtil
+
+* Updated the generic typing for a number of functions in the `TypesUtil` utility namespace.
+* `isArray` is now set to have `T` default to `unknown`, rather than `any`.
+* `isNotArray` is now type to include two new generics, `N`, which extends `Array<E>` and `E` which is `unknown`. This allows for TypeScript to correctly infer that the value is not an Array, instead of doing what it was before when the Excluded value was `Array<unknown>`.
+* Removed the generic `T` from the `isBoolean` function, as it was redundant.
+* `isNotBoolean` is now typed to include an additional generic, `N`, which extends `boolean`. This allows for TypeScript to correctly infer that the value is not a Boolean, instead of doing what it was before when the Excluded value was `boolean`.
+* Removed the generic `T` from the `isDate` function, as it was redundant.
+  * Additionally, changed the workings of the `isDate` function to better handle Date Strings and Numbers that were being parsed incorrectly as Dates. See the Breaking Changes > TypesUtil section for more details.
+* `isNotDate` is now typed to include an additional generic, `N`, which extends `Date`. This allows for TypeScript to correctly infer that the value is not a Date, instead of doing what it was before when the Excluded value was `Date`.
+  * Additionally, changed the workings of the `isNotDate` function to better handle Date Strings and Numbers that were being parsed incorrectly as Dates. See the Breaking Changes > TypesUtil section for more details.
+* Removed the generic `T` from the `isError` function, as it was redundant.
+* `isNotError` is now typed to include an additional generic, `N`, which extends `Error`. This allows for TypeScript to correctly infer that the value is not a Boolean, instead of doing what it was before when the Excluded value was `Error`.
+* Removed the generic `T` from the `isFunction` function, as it was redundant.
+* `isNotFunction` is now typed to include an additional generic, `N`, which extends `Function`. This allows for TypeScript to correctly infer that the value is not a Boolean, instead of doing what it was before when the Excluded value was `Function`.
+* Removed the generic `T` from the `isNull` function, as it was redundant.
+* `isNotNull` is now typed to include an additional generic, `N`, which extends `null`. This allows for TypeScript to correctly infer that the value is not a Boolean, instead of doing what it was before when the Excluded value was `null`.
+* Removed the generic `T` from the `isNumber` function, as it was redundant.
+* `isNotNumber` is now typed to include an additional generic, `N`, which extends `number`. This allows for TypeScript to correctly infer that the value is not a Boolean, instead of doing what it was before when the Excluded value was `number`.
+* Removed the generic `T` from the `isNumericalString` function, as it was redundant.
+* Removed the generic `T` from the `isObject` function, as it was redundant.
+* Removed the generic `T` from the `isString` function, as it was redundant.
+* Removed the generic `T` from the `isSymbol` function, as it was redundant.
+* Removed the generic `T` from the `isUndefined` function, as it was redundant.
+* Removed the generic `T` from the `isNullOrUndefined` function, as it was redundant.
+* Removed the generic `T` from the `isZnum` function, as it was redundant.
+  * The `U` generic remains unchanged.
+* `isNotZnum` is now typed to include an additional generic, `N`, which extends `Znum<U>`. This allows for TypeScript to correctly infer that the value is not a Boolean, instead of doing what it was before when the Excluded value was `Znum<U>`.
+
 ### Breaking Changes
 
-* There are no known breaking changes when upgrading from Version 0.5.1 to Version 0.6.0.
+#### TypesUtil
+
+* The `isDate` function now leverages the `dayjs` library to properly detect if a date is Valid. This ensures that Date Strings and numbers that were previously getting through incorrectly will no longer, but also helps handle wierd date oddities such as attempting to create a Date using a string like `02/31/2025`, since JavaScript would just convert that to `March 03 2025`.
+* The `isNotDate` function has been updated similarly to the `isDate` function mentioned above.
 </details>
 
 ## Version 0.5.1 (Patch Release)
