@@ -2,6 +2,7 @@ export * from "./booleanable";
 export * from "./empty.array";
 export * from "./empty.object";
 export * from "./empty.string";
+export * from "./error.like";
 export * from "./extended.error.options";
 export * from "./falseable";
 export * from "./maybe";

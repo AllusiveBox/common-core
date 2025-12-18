@@ -1,4 +1,40 @@
 # Change Log
+## Version 0.6.0 (Minor Release)
+<details>
+    <summary>Version 0.6.0</summary>
+
+### Newly Added
+
+#### ErrorLike
+
+* Added two new `ErrorLike` interfaces: 
+  * `ErrorLike`, which is an object that includes the `message` field, and marks the other fields as optional. The `message` field in this object <strong><em>must</em></strong> be a valid `string` to be considered `ErrorLike`.
+  * `ErrorLikeWithCode`, which extends the `ErrorLike` interface, but also includes a required `code` field. This field must be either a `NumericalString` or `number`, in order for the object to be considered `ErrorLikeWithCode`.
+
+#### ErrorUtil
+
+* Added a new utility namespace, `ErrorUtil`, which includes functions that handle `Error` or `Error`-like operations.
+* Added the `isErrorLike` function:
+  * This function has the following signature:
+    * `isErrorLike(arg: unknown): arg is ErrorLike;`
+  * This function takes an unknown value, `arg`, and returns `true` if the provided value is an `object` with a `message` field that is of type `string`, otherwise it returns `false`.
+* Added the `isErrorLikeWithCode` function:
+  * This function has the following signature:
+    * `isErrorLikeWithCode(arg: unknown): arg is ErrorLikeWithCode;`
+  * This function takes an unknown value, `arg`, and returns `true` if the provided value is an `object` with a `message` field that is of type `string` and a `code` field that is either of type `NumericalString` or `number`.
+
+### Updates to existing Features
+
+#### ExtendedErrorOptions
+
+* Updated the typing for the `ExtendedErrorOptions#context` field. Now, instead of `T` being typed as extending `object`, `T` is typed as `any`.
+  * The default behavior where `T` defaults to `never` when not specified remains unchanged.
+
+### Breaking Changes
+
+* There are no known breaking changes when upgrading from Version 0.5.1 to Version 0.6.0.
+</details>
+
 ## Version 0.5.1 (Patch Release)
 <details>
     <summary>Version 0.5.1</summary>
@@ -17,6 +53,7 @@
 
 ### Breaking Changes
 </details>
+
 ## Version 0.5.0 (Beta Release)
 <details>
     <summary>Version 0.5.0</summary>
