@@ -20,7 +20,6 @@ import {
 } from "../types";
 import Znum from "../znums/znum";
 
-
 /**
  *
  * Utility method that returns the type of the provided argument. More descriptive compared to the JavaScript
@@ -164,9 +163,12 @@ export function isNotBoolean<T, N extends boolean>(
 export function isDate(
     arg: unknown
 ): arg is Date {
-    // The isObject check here insures we do not return true on Date Strings or numbers
-    return (isObject(arg)
-        && dayjs(arg as any).isValid())
+    /*
+     In order to avoid infinite looping, we have to manually check to ensure the type is an object, as the isObject
+      function calls isNotDate
+     */
+    return typeof arg === "object"
+        && dayjs(arg as any).isValid();
 }
 
 /**
@@ -182,9 +184,7 @@ export function isDate(
 export function isNotDate<T, N extends Date>(
     arg: T
 ): arg is Exclude<T, N> {
-    // The isNotObject check here lets us shortcut Dates, as they are objects
-    return (isNotObject(arg)
-        || !dayjs(arg as any).isValid())
+    return !isDate(arg);
 }
 
 /**
